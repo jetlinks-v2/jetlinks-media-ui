@@ -1,0 +1,19 @@
+{
+  "name": "jetlinks-media-ui",
+  "version": "1.0.0",
+  "description": "视频中心",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jetlinks-v2/jetlinks-media-ui.git"
+  },
+  "keywords": [
+    "jetlinks"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jetlinks-v2/jetlinks-media-ui/issues"
+  },
+  "homepage": "https://github.com/jetlinks-v2/jetlinks-media-ui#readme"
+}
