@@ -274,7 +274,7 @@ const lastValueFrom = (params: any) => {
  * 新增
  */
 const handleAdd = () => {
-  menuStory.jumpPage('media/Cascade/Save');
+  menuStory.jumpPage('media/Cascade/Save', {params: {id: ':id'}});
 };
 
 const publishVis = ref(false);
@@ -298,7 +298,7 @@ const getActions = (
       },
       icon: 'EditOutlined',
       onClick: () => {
-        menuStory.jumpPage('media/Cascade/Save',{ params: {id: data.id,}},
+        menuStory.jumpPage('media/Cascade/Save', {params: {id: data.id}, query: {id: data.id}},
         );
       },
     },
