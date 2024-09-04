@@ -1,11 +1,12 @@
 const routerModules = import.meta.glob('./views/**/index.vue')
 
+const MODULE_CODE = 'media'
 
 const getAsyncRoutesMap = () => {
     const modules = {}
     Object.keys(routerModules).forEach(item => {
         const code = item.replace('./views/', '').replace('/index.vue', '')
-        const key = `${code}`
+        const key = `${MODULE_CODE}/${code}`
         modules[key] = routerModules[item]
     })
 
@@ -23,7 +24,39 @@ const getExtraRoutesMap = () => {
         //             component: () => import('./views/Product/Detail/index.vue')
         //         }
         //     ]
-        // }
+        // },
+        'media/Device': {
+            children: [
+                {
+                    code: 'Save',
+                    name: '详情',
+                    url: '/save:id',
+                    component: () => import('./views/Device/Save/index.vue')
+                },
+                {
+                    code: 'Channel',
+                    name: '通道',
+                    url: '/channel:id',
+                    component: () => import('./views/Device/Channel/index.vue')
+                }
+            ]
+        },
+        'media/Cascade': {
+            children: [
+                {
+                    code: 'Save',
+                    name: '详情',
+                    url: '/save:id',
+                    component: () => import('./views/Cascade/Save/index.vue')
+                },
+                {
+                    code: 'Channel',
+                    name: '通道',
+                    url: '/channel:id',
+                    component: () => import('./views/Cascade/Channel/index.vue')
+                }
+            ]
+        }
     }
 }
 
