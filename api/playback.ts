@@ -1,8 +1,7 @@
 import {recordsItemType} from '../views/Device/Playback/typings';
 import {request} from '@jetlinks-web/core'
 import {LocalStore} from '@jetlinks-web/utils';
-import {TOKEN_KEY} from '@jetlinks-web/constants'
-import {BASE_API} from '@jetlinks-web/constants';
+import {TOKEN_KEY, BASE_API} from '@jetlinks-web/constants'
 
 export default {
     // 开始直播

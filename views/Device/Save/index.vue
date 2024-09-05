@@ -4,7 +4,7 @@
     <a-card>
       <a-row :gutter="24">
         <a-col :span="12">
-          <a-form ref="formRef" :mode="formData" layout="vertical">
+          <a-form ref="formRef" :model="formData" layout="vertical">
             <a-form-item
                 label="接入方式"
                 name="channel"
