@@ -18,7 +18,7 @@
 
     <JProTable
         ref="listRef"
-        model="table"
+        mode="table"
         :columns="columns"
         :request="CascadeApi.queryChannelList"
         :defaultParams="{

@@ -39,7 +39,7 @@
       />
       <JProTable
           ref="tableRef"
-          model="table"
+          mode="table"
           rowKey="id"
           :columns="columns"
           :request="deviceApi.list"
@@ -90,16 +90,13 @@ import deviceApi from '../../api/device';
 
 import {useMenuStore} from '@/store/menu';
 import {onlyMessage} from '@/utils/comm';
-
-import bottom6 from '../../assets/home/bottom-6.png'
-import bottom7 from '../../assets/home/bottom-7.png'
-import bottom8 from '../../assets/home/bottom-8.png'
+import {homeImg} from "../../assets/home/index";
 import {useAuthStore} from "@/store";
 
 const menuStory = useMenuStore();
 
 // 权限控制
-const { hasPermission } = useAuthStore();
+const {hasPermission} = useAuthStore();
 
 const deviceBootConfig: bootConfig[] = [
   {
@@ -124,14 +121,14 @@ const deviceStepDetails: recommendList[] = [
   {
     title: '添加视频设备',
     details: '根据视频设备的传输协议，在已创建的产品下添加对应的设备。',
-    iconUrl: bottom6,
+    iconUrl: homeImg.bottom6,
     linkUrl: 'media/Device/Save',
     auth: hasPermission('media/Device:add'),
   },
   {
     title: '查看通道',
     details: '查看设备下的通道数据，可以进行直播、录制等操作。',
-    iconUrl: bottom7,
+    iconUrl: homeImg.bottom7,
     linkUrl: 'media/Device/Channel',
     linkUrl: '',
     auth: hasPermission('media/Device:view'),
@@ -146,7 +143,7 @@ const deviceStepDetails: recommendList[] = [
   {
     title: '分屏展示',
     details: '对多个通道的视频流数据进行分屏展示。',
-    iconUrl: bottom8,
+    iconUrl: homeImg.bottom8,
     linkUrl: 'media/SplitScreen',
   },
 ];

@@ -43,7 +43,7 @@
           >
             <template #img>
               <slot name="img">
-                <img :src="deviceMedia"/>
+                <img :src="deviceImg.deviceMedia"/>
               </slot>
             </template>
             <template #content>
@@ -175,14 +175,13 @@
 
 <script setup lang="ts">
 import DeviceApi from '../../api/device';
-import type {ActionsType} from './typings';
 import {onlyMessage} from '@jetlinks-web/utils'
 import {PROVIDER_OPTIONS} from './const';
 import {providerType} from './const';
-import encodeQuery from '@/utils/encodeQuery';
+import {encodeQuery} from '@/utils/encodeQuery';
 import {useMenuStore} from '@/store/menu';
 import Summary from './Summary/index.vue';
-import deviceMedia from '../../assets/device/device-media.png'
+import {deviceImg} from "../../assets/device/index";
 
 const menuStory = useMenuStore();
 
@@ -301,7 +300,7 @@ const handleAdd = () => {
 const getActions = (
     data: Partial<Record<string, any>>,
     type: 'card' | 'table',
-): ActionsType[] => {
+): any => {
   if (!data) return [];
   const actions = [
     {
@@ -314,7 +313,7 @@ const getActions = (
       onClick: () => {
         menuStory.jumpPage(
             'media/Device/Save',
-            {params: {id: data.id}}
+            {params: {id: data.id}, query: {id: data.id}}
         );
       },
     },

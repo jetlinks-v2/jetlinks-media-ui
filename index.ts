@@ -38,6 +38,12 @@ const getExtraRoutesMap = () => {
                     name: '通道',
                     url: '/channel:id',
                     component: () => import('./views/Device/Channel/index.vue')
+                },
+                {
+                    code: 'Playback',
+                    name: '回放',
+                    url: '/playback:id',
+                    component: () => import('./views/Device/Playback/index.vue')
                 }
             ]
         },

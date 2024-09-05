@@ -12,7 +12,7 @@
     <a-form ref="formRef" :model="formData" layout="vertical">
       <a-form
           ref="pluginFormRef"
-          :model="productData"
+          :mode="productData"
           layout="vertical"
           v-if="productTypes.length"
       >

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { queryOwnThree } from '../api/menu'
+import { queryOwnThree } from '@/api/system/menu'
 import {
   handleMenus,
   MenuItem,

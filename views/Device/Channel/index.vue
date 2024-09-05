@@ -16,7 +16,7 @@
         <FullPage>
           <JProTable
               ref="listRef"
-              model="table"
+              mode="table"
               :columns="newColumns"
               :request="(e:any) => ChannelApi.list(e, route?.query.id as string)"
               :defaultParams="{
@@ -133,11 +133,7 @@
                       <a-button
                           style="padding: 0px"
                           type="link"
-                          @click="
-                                                    i.onClick &&
-                                                        i.onClick(slotProps)
-                                                "
-                      >
+                          @click="i.onClick &&i.onClick(slotProps)">
                         <a-button
                             :disabled="i.disabled"
                             style="padding: 0"
@@ -171,7 +167,6 @@
 
 <script setup lang="ts">
 import ChannelApi from '../../../api/channel';
-import type {ActionsType} from '../../Device/typings';
 import {useMenuStore} from '@/store/menu';
 import Save from './Save.vue';
 import Live from './Live/index.vue';
@@ -281,7 +276,7 @@ const playData = ref();
 const getActions = (
     data: Partial<Record<string, any>>,
     type: 'card' | 'table',
-): ActionsType[] => {
+): any => {
   if (!data) return [];
   const actions = [
     {

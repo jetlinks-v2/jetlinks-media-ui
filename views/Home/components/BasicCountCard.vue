@@ -10,12 +10,12 @@
       <div class="box-item">
         <div class="label">设备数量</div>
         <div class="value">{{ deviceCount }}</div>
-        <img :src="top1" alt=""/>
+        <img :src="homeImg.top1" alt=""/>
       </div>
       <div class="box-item">
         <div class="label">通道数量</div>
         <div class="value">{{ channelCount }}</div>
-        <img :src="product" alt=""/>
+        <img :src="homeImg.product" alt=""/>
       </div>
     </div>
   </div>
@@ -24,9 +24,7 @@
 <script setup lang="ts">
 import homeApi from '../../../api/home';
 import {useMenuStore} from '@/store/menu';
-
-import top1 from '../../../assets/home/top-1.png';
-import product from '../../../assets/home/product.png'
+import {homeImg} from "../../../assets/home/index";
 
 const menuStory = useMenuStore();
 

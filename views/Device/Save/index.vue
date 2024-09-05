@@ -4,7 +4,7 @@
     <a-card>
       <a-row :gutter="24">
         <a-col :span="12">
-          <a-form ref="formRef" :model="formData" layout="vertical">
+          <a-form ref="formRef" :mode="formData" layout="vertical">
             <a-form-item
                 label="接入方式"
                 name="channel"
@@ -379,7 +379,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc1"
+                  :src="deviceImg.doc1"
               />
             </div>
             <h2>1、SIP服务器编号/SIP域</h2>
@@ -390,7 +390,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc2"
+                  :src="deviceImg.doc2"
               />
             </div>
             <h2>2、SIP服务器IP/端口</h2>
@@ -400,7 +400,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc3"
+                  :src="deviceImg.doc3"
               />
             </div>
             <h2>3、设备编号</h2>
@@ -414,7 +414,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc4"
+                  :src="deviceImg.doc4"
               />
             </div>
             <h2>5、其他字段</h2>
@@ -456,7 +456,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc5"
+                  :src="deviceImg.doc5"
               />
             </div>
             <div>平台端配置</div>
@@ -471,7 +471,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc6"
+                  :src="deviceImg.doc6"
               />
             </div>
             <div>接入账户：输入设备端配置时添加的用户名</div>
@@ -479,7 +479,7 @@
             <div class="image">
               <a-image
                   width="100%"
-                  :src="doc7"
+                  :src="deviceImg.doc7"
               />
             </div>
             <h1>3.所有配置项填写完成，点击保存。</h1>
@@ -523,14 +523,7 @@ import {omit} from 'lodash-es';
 import {queryDeviceConfig} from '../../../api/instance';
 import RadioCard from '../../../components/RadioCard/index.vue';
 
-import deviceMedia from '../../../assets/device/device-media.png';
-import doc1 from '../../../assets/device/doc1.png';
-import doc2 from '../../../assets/device/doc2.png';
-import doc3 from '../../../assets/device/doc3.png';
-import doc4 from '../../../assets/device/doc4.png';
-import doc5 from '../../../assets/device/doc5.png';
-import doc6 from '../../../assets/device/doc6.png';
-import doc7 from '../../../assets/device/doc7.png';
+import {deviceImg} from "../../../assets/device/index";
 
 const route = useRoute();
 
@@ -539,7 +532,7 @@ const formData = ref<any>({
   id: '',
   name: '',
   channel: 'gb28181-2016',
-  photoUrl: deviceMedia,
+  photoUrl: deviceImg.deviceMedia,
   productId: undefined,
   description: '',
   others: {

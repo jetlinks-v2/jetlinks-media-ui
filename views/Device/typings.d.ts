@@ -90,19 +90,6 @@ export type gatewayType = {
     description?: string;
 }
 
-export interface ActionsType {
-    key: string;
-    text?: string;
-    disabled?: boolean;
-    permission?: boolean;
-    onClick?: (data: any) => void;
-    style?: CSSProperties;
-    tooltip?: TooltipProps;
-    popConfirm?: PopconfirmProps;
-    icon?: string;
-    children?: ActionsType[];
-}
-
 export const PROVIDER_OPTIONS = [
     { label: 'GB/T28181', value: 'gb28181-2016' },
     { label: '固定地址', value: 'fixed-media' },

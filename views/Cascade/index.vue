@@ -43,7 +43,7 @@
           >
             <template #img>
               <slot name="img">
-                <img alt="" :src="cascade"/>
+                <img alt="" :src="cascade.cascade1"/>
               </slot>
             </template>
             <template #content>
@@ -157,12 +157,10 @@
 
 <script setup lang="ts">
 import CascadeApi from '../../api/cascade';
-import type {ActionsType} from './typings';
 import {onlyMessage} from '@jetlinks-web/utils'
 import Publish from './Publish/index.vue';
 import {useMenuStore} from '@/store/menu';
-
-import cascade from "../../assets/cascade/cascade.png";
+import {cascade} from '../../assets/cascade/index'
 
 const menuStory = useMenuStore();
 
@@ -287,7 +285,7 @@ const currentData = ref();
 const getActions = (
     data: Partial<Record<string, any>>,
     type: 'card' | 'table',
-): ActionsType[] => {
+): any => {
   if (!data) return [];
   const actions = [
     {
@@ -313,9 +311,7 @@ const getActions = (
         menuStory.jumpPage(
             'media/Cascade/Channel',
             {
-              params: {
-                id: data.id
-              }
+              params: {id: data.id}, query: {id: data.id}
             }
         );
       },

@@ -548,7 +548,7 @@
 
 <script lang="ts" setup name="StreamDetail">
 import { onlyMessage } from '@/utils/comm';
-import { queryProviders, queryDetail, save, update } from '@/api/media/stream';
+import { queryProviders, queryDetail, save, update } from '../../../api/stream';
 import type { FormInstance } from 'ant-design-vue';
 
 import { FormDataType } from '../type';

@@ -13,12 +13,12 @@
         <a @click="handleClick">
             <AIcon :type="iconType" />
         </a>
-    </-tooltip>
+    </a-tooltip>
 </template>
 
 <script setup lang="ts">
 import type { recordsItemType } from './typings';
-import playBackApi from '@/api/media/playback';
+import playBackApi from '../../../api/playback';
 import { onlyMessage } from '@jetlinks-web/utils';
 
 interface Props {

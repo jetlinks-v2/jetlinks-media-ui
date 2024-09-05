@@ -24,7 +24,7 @@
                 <template #headerLeftRender>
                     <h3>通道列表</h3>
                 </template>
-                <template #rightExtraRender>
+                <template #headerRightRender>
                     <a-space>
                         <a-button type="primary" @click="bindVis = true">
                             绑定通道
@@ -145,7 +145,6 @@
 <script setup lang="ts">
 import CascadeApi from '../../../api/cascade';
 import { onlyMessage } from '@jetlinks-web/utils';
-import type { ActionsType } from '../typings';
 import BindChannel from './BindChannel/index.vue';
 
 const route = useRoute();
@@ -323,7 +322,7 @@ const cancelSelectAll = () => {
 const getActions = (
     data: Partial<Record<string, any>>,
     type: 'card' | 'table',
-): ActionsType[] => {
+): any => {
     if (!data) return [];
     const actions = [
         {

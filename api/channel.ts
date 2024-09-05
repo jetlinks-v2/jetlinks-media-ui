@@ -1,7 +1,7 @@
 import {request} from '@jetlinks-web/core'
 import {LocalStore} from '@jetlinks-web/utils';
 import {TOKEN_KEY} from '@jetlinks-web/constants'
-import {BASE_API_PATH} from "../utils/variable";
+import { BASE_API } from '@jetlinks-web/constants';
 
 export default {
     // 列表
@@ -23,7 +23,7 @@ export default {
     // ========== 视频播放 ==========
     // 开始直播
     ptzStart: (deviceId: string, channelId: string, type: string) =>
-        `${BASE_API_PATH}/media/device/${deviceId}/${channelId}/live.${type}?:X_Access_Token=${LocalStore.get(TOKEN_KEY)}`,
+        `${BASE_API}/media/device/${deviceId}/${channelId}/live.${type}?:X_Access_Token=${LocalStore.get(TOKEN_KEY)}`,
 
     // 云台控制-停止
     ptzStop: (deviceId: string, channelId: string) => request.post(`/media/device/${deviceId}/${channelId}/_ptz/STOP`),

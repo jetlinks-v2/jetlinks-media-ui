@@ -1,114 +1,115 @@
 <!-- 回放 -->
 <template>
-    <j-page-container>
-        <FullPage>
-            <div class="playback-warp">
-                <!-- 播放器/进度条 -->
-                <div class="playback-left">
-                    <LivePlayer
-                        ref="player"
-                        autoplay
-                        :url="url"
-                        className="playback-media"
-                        :live="type === 'local'"
-                        :on-play="
+  <j-page-container>
+    <FullPage>
+      <div class="playback-warp">
+        <!-- 播放器/进度条 -->
+        <div class="playback-left">
+          <LivePlayer
+              ref="player"
+              autoplay
+              :url="url"
+              className="playback-media"
+              :live="type === 'local'"
+              :on-play="
                             () => {
                                 isEnded = false;
                                 playStatus = 1;
                             }
                         "
-                        :on-pause="
+              :on-pause="
                             () => {
                                 playStatus = 2;
                             }
                         "
-                        :on-ended="onEnded"
-                        :on-error="
+              :on-ended="onEnded"
+              :on-error="
                             () => {
                                 playStatus = 0;
                             }
                         "
-                        :on-time-update="
+              :on-time-update="
                             (e) => {
                                 playTime = e.currentTime;
                             }
                         "
-                    />
-                    <TimeLine
-                        ref="playTimeNode"
-                        :type="type"
-                        :data="historyList"
-                        :date-time="time"
-                        :on-change="handleTimeLineChange"
-                        :play-status="playStatus"
-                        :play-time="playNowTime + playTime * 1000"
-                        :local-to-server="cloudTime"
-                    />
-                </div>
-                <div class="playback-right">
-                    <a-spin :spinning="loading">
-                        <a-tooltip placement="topLeft">
-                            <template #title>
-                                <div>云端：存储在服务器中</div>
-                                <div>本地：存储在设备本地</div>
-                            </template>
-                            <div>
-                                类型: <AIcon type="QuestionCircleOutlined" />
-                            </div>
-                        </a-tooltip>
-                        <RadioCard
-                            layout="horizontal"
-                            :options="deviceType !== 'onvif' ?[
+          />
+          <TimeLine
+              ref="playTimeNode"
+              :type="type"
+              :data="historyList"
+              :date-time="time"
+              :on-change="handleTimeLineChange"
+              :play-status="playStatus"
+              :play-time="playNowTime + playTime * 1000"
+              :local-to-server="cloudTime"
+          />
+        </div>
+        <div class="playback-right">
+          <a-spin :spinning="loading">
+            <a-tooltip placement="topLeft">
+              <template #title>
+                <div>云端：存储在服务器中</div>
+                <div>本地：存储在设备本地</div>
+              </template>
+              <div>
+                类型:
+                <AIcon type="QuestionCircleOutlined"/>
+              </div>
+            </a-tooltip>
+            <RadioCard
+                layout="horizontal"
+                :options="deviceType !== 'onvif' ?[
                                 {
                                     label: '云端',
                                     value: 'cloud',
-                                    logo: getImage('/media/cloud.png'),
+                                    logo: deviceImg.cloud,
                                 },
                                 {
                                     label: '本地',
                                     value: 'local',
-                                    logo: getImage('/local.png'),
+                                    logo: deviceImg.local,
                                     disabled: deviceType === 'fixed-media',
                                 },
                             ]:
                             [{
                                 label: '云端',
                                 value: 'cloud',
-                                logo: getImage('/media/cloud.png'),
+                                logo: deviceImg.cloud,
                             }]"
-                            :checkStyle="true"
-                            v-model="type"
-                        />
-                        <div class="playback-calendar">
-                            <a-calendar
-                                v-model:value="time"
-                                :fullscreen="false"
-                                :disabledDate="
+                :checkStyle="true"
+                v-model="type"
+            />
+            <div class="playback-calendar">
+              <a-calendar
+                  v-model:value="time"
+                  :fullscreen="false"
+                  :disabledDate="
                                     (currentDate: Dayjs) => currentDate > dayjs(new Date())
                                 "
-                                @change="handlePanelChange"
-                            />
-                        </div>
-                        <div
-                            class="playback-list"
-                            :class="{ 'no-list': !historyList.length }"
-                        >
-                            <a-empty
-                                v-if="!historyList.length"
-                                description="暂无数据"
-                            />
-                            <a-list
-                                v-else
-                                class="playback-list-items"
-                                itemLayout="horizontal"
-                                :dataSource="historyList"
-                            >
-                                <template #renderItem="{ item }">
-                                    <a-list-item>
-                                        <template #actions>
-                                            <a-tooltip
-                                                key="play-btn"
-                                                :title="
+                  @change="handlePanelChange"
+              />
+            </div>
+            <div
+                class="playback-list"
+                :class="{ 'no-list': !historyList.length }"
+            >
+              <a-empty
+                  v-if="!historyList.length"
+                  description="暂无数据"
+              />
+              <a-list
+                  v-else
+                  class="playback-list-items"
+                  itemLayout="horizontal"
+                  :dataSource="historyList"
+              >
+                <template #renderItem="{ item }">
+                  <a-list-item>
+                    <template #actions>
+                      <a-tooltip
+                          key="play-btn"
+                          :title="
                                                     (item.startTime ||
                                                         item.mediaStartTime) ===
                                                         playNowTime &&
@@ -116,17 +117,17 @@
                                                         ? '暂停'
                                                         : '播放'
                                                 "
-                                            >
-                                                <a
-                                                    @click="
+                      >
+                        <a
+                            @click="
                                                         handlePlay(
                                                             item.startTime ||
                                                                 item.mediaStartTime,
                                                         )
                                                     "
-                                                >
-                                                    <AIcon
-                                                        :type="
+                        >
+                          <AIcon
+                              :type="
                                                             (item.startTime ||
                                                                 item.mediaStartTime) ===
                                                                 playNowTime &&
@@ -134,54 +135,55 @@
                                                                 ? 'PauseCircleOutlined'
                                                                 : 'PlayCircleOutlined'
                                                         "
-                                                    />
-                                                </a>
-                                            </a-tooltip>
-                                            <IconNode
-                                                :type="type"
-                                                :item="item"
-                                                :on-cloud-view="cloudView"
-                                                :on-down-load="
+                          />
+                        </a>
+                      </a-tooltip>
+                      <IconNode
+                          :type="type"
+                          :item="item"
+                          :on-cloud-view="cloudView"
+                          :on-down-load="
                                                     () => downloadClick(item)
                                                 "
-                                            />
-                                        </template>
+                      />
+                    </template>
 
-                                        <div>
-                                            {{
-                                                dayjs(
-                                                    item.startTime ||
-                                                        item.mediaStartTime,
-                                                ).format('HH:mm:ss')
-                                            }}
-                                            ~
-                                            {{
-                                                dayjs(
-                                                    item.endTime ||
-                                                        item.mediaEndTime,
-                                                ).format('HH:mm:ss')
-                                            }}
-                                        </div>
-                                    </a-list-item>
-                                </template>
-                            </a-list>
-                        </div>
-                    </a-spin>
-                </div>
+                    <div>
+                      {{
+                        dayjs(
+                            item.startTime ||
+                            item.mediaStartTime,
+                        ).format('HH:mm:ss')
+                      }}
+                      ~
+                      {{
+                        dayjs(
+                            item.endTime ||
+                            item.mediaEndTime,
+                        ).format('HH:mm:ss')
+                      }}
+                    </div>
+                  </a-list-item>
+                </template>
+              </a-list>
             </div>
-        </FullPage>
-    </j-page-container>
+          </a-spin>
+        </div>
+      </div>
+    </FullPage>
+  </j-page-container>
 </template>
 
 <script setup lang="ts">
-import playBackApi from '@/api/media/playback';
+import playBackApi from '../../../api/playback';
 import TimeLine from './timeLine.vue';
 import IconNode from './iconNode.vue';
-import type { recordsItemType } from './typings';
+import type {recordsItemType} from './typings';
 import LivePlayer from '@/components/Player/index.vue';
-import { getImage } from '@/utils/comm';
 import dayjs from 'dayjs';
-import type { Dayjs } from 'dayjs';
+import type {Dayjs} from 'dayjs';
+import {deviceImg} from "../../../assets/device/index";
+import RadioCard from '../../../components/RadioCard/index.vue'
 
 const route = useRoute();
 
@@ -208,56 +210,56 @@ const deviceType = ref('');
  * @param date
  */
 const queryLocalRecords = async (date: Dayjs) => {
-    playStatus.value = 0;
-    url.value = '';
+  playStatus.value = 0;
+  url.value = '';
 
-    if (deviceId.value && channelId.value && date) {
-        loading.value = true;
-        const params = {
-            startTime: date.format('YYYY-MM-DD 00:00:00'),
-            endTime: date.format('YYYY-MM-DD 23:59:59'),
-        };
-        const localResp = await playBackApi
-            .queryRecordLocal(deviceId.value, channelId.value, params)
-            .finally(() => {
-                loading.value = false;
-            });
-        if (localResp.status === 200 && localResp.result.length) {
-            const serviceResp = await playBackApi.recordsInServer(
-                deviceId.value,
-                channelId.value,
-                {
-                    ...params,
-                    includeFiles: false,
-                },
-            );
-            let newList: recordsItemType[] = serviceResp.result;
-            // console.log(newList)
-            if (serviceResp.status === 200 && serviceResp.result) {
-                // 判断是否已下载云端视频
-                newList = localResp.result.map((item: recordsItemType) => {
-                    return {
-                        ...item,
-                        isServer: serviceResp.result.length
-                            ? serviceResp.result.some(
-                                  (serverFile: any) =>
-                                      item.startTime <=
-                                          serverFile.streamStartTime &&
-                                      serverFile.streamEndTime <= item.endTime,
-                              )
-                            : false,
-                    };
-                });
+  if (deviceId.value && channelId.value && date) {
+    loading.value = true;
+    const params = {
+      startTime: date.format('YYYY-MM-DD 00:00:00'),
+      endTime: date.format('YYYY-MM-DD 23:59:59'),
+    };
+    const localResp = await playBackApi
+        .queryRecordLocal(deviceId.value, channelId.value, params)
+        .finally(() => {
+          loading.value = false;
+        });
+    if (localResp.status === 200 && localResp.result.length) {
+      const serviceResp = await playBackApi.recordsInServer(
+          deviceId.value,
+          channelId.value,
+          {
+            ...params,
+            includeFiles: false,
+          },
+      );
+      let newList: recordsItemType[] = serviceResp.result;
+      // console.log(newList)
+      if (serviceResp.status === 200 && serviceResp.result) {
+        // 判断是否已下载云端视频
+        newList = localResp.result.map((item: recordsItemType) => {
+          return {
+            ...item,
+            isServer: serviceResp.result.length
+                ? serviceResp.result.some(
+                    (serverFile: any) =>
+                        item.startTime <=
+                        serverFile.streamStartTime &&
+                        serverFile.streamEndTime <= item.endTime,
+                )
+                : false,
+          };
+        });
 
-                historyList.value = newList;
-            } else {
-                historyList.value = newList;
-            }
-        } else {
-            loading.value = false;
-            historyList.value = [];
-        }
+        historyList.value = newList;
+      } else {
+        historyList.value = newList;
+      }
+    } else {
+      loading.value = false;
+      historyList.value = [];
     }
+  }
 };
 
 /**
@@ -265,31 +267,31 @@ const queryLocalRecords = async (date: Dayjs) => {
  * @param date
  */
 const queryServiceRecords = async (date: Dayjs) => {
-    playStatus.value = 0;
-    url.value = '';
-    if (deviceId.value && channelId.value && date) {
-        loading.value = true;
-        const params = {
-            startTime: date.format('YYYY-MM-DD 00:00:00'),
-            endTime: date.format('YYYY-MM-DD 23:59:59'),
-            includeFiles: true,
-        };
+  playStatus.value = 0;
+  url.value = '';
+  if (deviceId.value && channelId.value && date) {
+    loading.value = true;
+    const params = {
+      startTime: date.format('YYYY-MM-DD 00:00:00'),
+      endTime: date.format('YYYY-MM-DD 23:59:59'),
+      includeFiles: true,
+    };
 
-        const resp = await playBackApi.recordsInServerFiles(
-            deviceId.value,
-            channelId.value,
-            params,
-        );
-        loading.value = false;
-        if (resp.status === 200) {
-            historyList.value = resp.result;
-        }
+    const resp = await playBackApi.recordsInServerFiles(
+        deviceId.value,
+        channelId.value,
+        params,
+    );
+    loading.value = false;
+    if (resp.status === 200) {
+      historyList.value = resp.result;
     }
+  }
 };
 
 const cloudView = (startTime: number, endTime: number) => {
-    type.value = 'cloud';
-    cloudTime.value = { startTime, endTime };
+  type.value = 'cloud';
+  cloudTime.value = {startTime, endTime};
 };
 
 /**
@@ -297,16 +299,16 @@ const cloudView = (startTime: number, endTime: number) => {
  * @param item
  */
 const downloadClick = async (item: recordsItemType) => {
-    const downloadUrl = playBackApi.downLoadFile(item.id);
-    const downNode = document.createElement('a');
-    downNode.href = downloadUrl;
-    downNode.download = `${channelId}-${dayjs(item.startTime).format(
-        'YYYY-MM-DD-HH-mm-ss',
-    )}.mp4`;
-    downNode.style.display = 'none';
-    document.body.appendChild(downNode);
-    downNode.click();
-    document.body.removeChild(downNode);
+  const downloadUrl = playBackApi.downLoadFile(item.id);
+  const downNode = document.createElement('a');
+  downNode.href = downloadUrl;
+  downNode.download = `${channelId}-${dayjs(item.startTime).format(
+      'YYYY-MM-DD-HH-mm-ss',
+  )}.mp4`;
+  downNode.style.display = 'none';
+  document.body.appendChild(downNode);
+  downNode.click();
+  document.body.removeChild(downNode);
 };
 
 const onEnded = () => {
@@ -319,19 +321,19 @@ const onEnded = () => {
 
 
 onMounted(() => {
-    const _type = route.query.type as string;
-    if (_type) {
-        deviceType.value = _type;
-        const _timeStr = dayjs(new Date());
-        time.value = _timeStr;
-        if (_type === 'fixed-media' || _type === 'onvif') {
-            type.value = 'cloud';
-            queryServiceRecords(_timeStr);
-        } else {
-            queryLocalRecords(_timeStr);
-            type.value = 'local';
-        }
+  const _type = route.query.type as string;
+  if (_type) {
+    deviceType.value = _type;
+    const _timeStr = dayjs(new Date());
+    time.value = _timeStr;
+    if (_type === 'fixed-media' || _type === 'onvif') {
+      type.value = 'cloud';
+      queryServiceRecords(_timeStr);
+    } else {
+      queryLocalRecords(_timeStr);
+      type.value = 'local';
     }
+  }
 });
 
 /**
@@ -339,32 +341,32 @@ onMounted(() => {
  * @param times
  */
 const handleTimeLineChange = (times: any) => {
-    if (times) {
-        playNowTime.value = Number(times.startTime.valueOf());
-        playTime.value = 0;
-        url.value =
-            type.value === 'local'
-                ? playBackApi.playbackLocal(
-                      times.deviceId,
-                      times.channelId,
-                      'mp4',
-                      dayjs(times.startTime).format('YYYY-MM-DD HH:mm:ss'),
-                      dayjs(times.endTime).format('YYYY-MM-DD HH:mm:ss'),
-                  )
-                : playBackApi.playbackStart(times.deviceId);
-    } else {
-        url.value = '';
-    }
+  if (times) {
+    playNowTime.value = Number(times.startTime.valueOf());
+    playTime.value = 0;
+    url.value =
+        type.value === 'local'
+            ? playBackApi.playbackLocal(
+                times.deviceId,
+                times.channelId,
+                'mp4',
+                dayjs(times.startTime).format('YYYY-MM-DD HH:mm:ss'),
+                dayjs(times.endTime).format('YYYY-MM-DD HH:mm:ss'),
+            )
+            : playBackApi.playbackStart(times.deviceId);
+  } else {
+    url.value = '';
+  }
 };
 
 watch(
     () => type.value,
     (val: string) => {
-        if (val === 'cloud') {
-            queryServiceRecords(time.value!);
-        } else {
-            queryLocalRecords(time.value!);
-        }
+      if (val === 'cloud') {
+        queryServiceRecords(time.value!);
+      } else {
+        queryLocalRecords(time.value!);
+      }
     },
 );
 
@@ -373,12 +375,12 @@ watch(
  * @param date
  */
 const handlePanelChange = (date: any) => {
-    time.value = date;
-    if (type.value === 'cloud') {
-        queryServiceRecords(date);
-    } else {
-        queryLocalRecords(date);
-    }
+  time.value = date;
+  if (type.value === 'cloud') {
+    queryServiceRecords(date);
+  } else {
+    queryLocalRecords(date);
+  }
 };
 
 /**
@@ -386,13 +388,13 @@ const handlePanelChange = (date: any) => {
  * @param _startTime
  */
 const handlePlay = (_startTime: any) => {
-    if (playStatus.value === 0 || _startTime !== playNowTime.value) {
-        playTimeNode.value?.playByStartTime(_startTime);
-    } else if (playStatus.value == 1 && _startTime === playNowTime.value) {
-        player.value?.pause();
-    } else if (playStatus.value == 2 && _startTime === playNowTime.value) {
-        player.value?.play();
-    }
+  if (playStatus.value === 0 || _startTime !== playNowTime.value) {
+    playTimeNode.value?.playByStartTime(_startTime);
+  } else if (playStatus.value == 1 && _startTime === playNowTime.value) {
+    player.value?.pause();
+  } else if (playStatus.value == 2 && _startTime === playNowTime.value) {
+    player.value?.play();
+  }
 };
 </script>
 

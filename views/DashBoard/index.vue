@@ -4,7 +4,7 @@
       <a-col :span="6">
         <TopCard
             title="设备数量"
-            :img="dashboard1"
+            :img="dashboard.dashboard1"
             :footer="deviceFooter"
             :value="deviceTotal"
         />
@@ -12,7 +12,7 @@
       <a-col :span="6">
         <TopCard
             title="通道数量"
-            :img="dashboard2"
+            :img="dashboard.dashboard2"
             :footer="channelFooter"
             :value="channelTotal"
         />
@@ -20,7 +20,7 @@
       <a-col :span="6">
         <TopCard
             title="录像数量"
-            :img="dashboard3"
+            :img="dashboard.dashboard3"
             :footer="aggFooter"
             :value="aggTotal"
         />
@@ -29,7 +29,7 @@
         <TopCard
             title="播放中数量"
             tooltip="当前正在播放的通道数量之和"
-            :img="dashboard4"
+            :img="dashboard.dashboard4"
             :footer="aggPlayingFooter"
             :value="aggPlayingTotal"
         />
@@ -53,15 +53,10 @@ import Card from './components/Card.vue';
 import homeApi from '../../api/home';
 import dashboardApi from '../../api/dashboard';
 import type {Footer} from './typings';
-import encodeQuery from '@/utils/encodeQuery';
+import {encodeQuery} from '@/utils/encodeQuery';
 import {timestampFormat} from '../../utils/utils';
 import dayjs from 'dayjs';
-
-import dashboard1 from '../../assets/dashboard/dashboard-1.png'
-import dashboard2 from '../../assets/dashboard/dashboard-2.png'
-import dashboard3 from '../../assets/dashboard/dashboard-3.png'
-import dashboard4 from '../../assets/dashboard/dashboard-4.png'
-
+import {dashboard} from "../../assets/dashboard/index";
 
 // 设备
 const deviceFooter = ref<Footer[]>([]);

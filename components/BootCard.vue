@@ -27,16 +27,13 @@ import {onlyMessage} from '@jetlinks-web/utils';
 import {useI18n} from 'vue-i18n'
 
 const menuStory = useMenuStore();
-
-import img1 from '../assets/home/1.png'
-import img2 from '../assets/home/2.png'
-import img3 from '../assets/home/3.png'
+import {homeImg} from "../assets/home/index";
 
 const imgMap = new Map()
 
-imgMap.set(1, img1)
-imgMap.set(2, img2)
-imgMap.set(3, img3)
+imgMap.set(1, homeImg.img1)
+imgMap.set(2, homeImg.img2)
+imgMap.set(3, homeImg.img3)
 
 const {t: $t} = useI18n()
 const {jumpPage: _jumpPage} = useMenuStore();
