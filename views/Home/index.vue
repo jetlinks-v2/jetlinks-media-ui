@@ -89,7 +89,7 @@ import type {bootConfig, recommendList} from './typings';
 import deviceApi from '../../api/device';
 
 import {useMenuStore} from '@/store/menu';
-import {onlyMessage} from '@/utils/comm';
+import { onlyMessage } from '@jetlinks-web/utils';
 import {homeImg} from "../../assets/home/index";
 import {useAuthStore} from "@/store";
 
