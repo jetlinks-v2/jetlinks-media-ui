@@ -9,7 +9,7 @@
       <FullPage>
         <j-pro-table
             ref="tableRef"
-            model="CARD"
+            mode="CARD"
             :columns="columns"
             :gridColumn="2"
             :gridColumns="[1, 2]"
