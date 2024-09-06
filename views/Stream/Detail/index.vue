@@ -547,7 +547,7 @@
 </template>
 
 <script lang="ts" setup name="StreamDetail">
-import { onlyMessage } from '@/utils/comm';
+import { onlyMessage } from '@jetlinks-web/utils';
 import { queryProviders, queryDetail, save, update } from '../../../api/stream';
 import type { FormInstance } from 'ant-design-vue';
 

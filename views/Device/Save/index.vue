@@ -513,7 +513,7 @@
 </template>
 
 <script setup lang="ts">
-import {onlyMessage} from '@/utils/comm';
+import { onlyMessage } from '@jetlinks-web/utils';
 import DeviceApi from '../../../api/device';
 import {PROVIDER_OPTIONS} from '../const';
 import type {ProductType} from '../typings';

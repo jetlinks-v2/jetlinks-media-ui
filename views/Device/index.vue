@@ -175,7 +175,7 @@
 
 <script setup lang="ts">
 import DeviceApi from '../../api/device';
-import {onlyMessage} from '@jetlinks-web/utils'
+import { onlyMessage } from '@jetlinks-web/utils';
 import {PROVIDER_OPTIONS} from './const';
 import {providerType} from './const';
 import {encodeQuery} from '@/utils/encodeQuery';

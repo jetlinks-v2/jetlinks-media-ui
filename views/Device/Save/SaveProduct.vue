@@ -205,7 +205,7 @@
 
 <script setup lang="ts">
 import DeviceApi from '../../../api/device';
-import {onlyMessage} from '@/utils/comm';
+import { onlyMessage } from '@jetlinks-web/utils';
 import {getProductsById, savePluginData} from '../../../api/plugin';
 import {gatewayType} from '../../Device/typings';
 import {providerType} from '../const';
