@@ -26,5 +26,8 @@ export default {
     // 查询网关配置
     getConfiguration: (id: string, transport: string) => request.get<any>(`/protocol/${id}/${transport}/configuration`),
     //校验ID合法
-    validateId: (id:string) => request.get<any>('/media/device/id/_validate',{id:id})
+    validateId: (id:string) => request.get<any>('/media/device/id/_validate',{id:id}),
+
+    //视频分享地址
+    getShare: (deviceId: string,channelId:string,data:any) => request.get<any>(`/media/device/${deviceId}/${channelId}/addresses`,data),
 }

@@ -104,9 +104,11 @@
                 >
                   <j-permission-button
                       v-if="
-                                            i.key !== 'play' &&
-                                            i.key !== 'backPlay'
-                                        "
+                        i.key !== 'play' &&
+                        i.key !== 'backPlay' &&
+                        i.key !== 'share' &&
+                        i.key !== 'plan'
+                      "
                       :danger="i.key === 'delete'"
                       :disabled="i.disabled"
                       :popConfirm="i.popConfirm"
@@ -115,7 +117,7 @@
                                         }"
                       @click="i.onClick"
                       type="link"
-                      style="padding: 0px"
+                      style="padding: 3px"
                       :hasPermission="'media/Device:' + i.key"
                   >
                     <template #icon
@@ -162,6 +164,17 @@
         :data="playData"
         @refresh="listRef.reload()"
     />
+    <VideoShare
+      v-if="visible"
+      @close="visible = false"
+      :data="channelData"
+    />
+    <Plan
+      v-if="planVis"
+      :data="channelData"
+      @close="planVis = false"
+      :type="planType"
+    />
   </j-page-container>
 </template>
 
@@ -174,6 +187,8 @@ import Tree from './Tree/index.vue';
 import {cloneDeep} from 'lodash-es';
 import {onlyMessage} from '@jetlinks-web/utils';
 import DeviceApi from '../../../api/device';
+import VideoShare from './VideoShare/index.vue';
+import Plan from './Plan/index.vue';
 
 const menuStory = useMenuStore();
 const route: any = useRoute();
@@ -233,21 +248,24 @@ const columns = [
   {
     title: '操作',
     key: 'action',
-    width: 200,
+    width: 280,
     scopedSlots: true,
   },
 ];
 
 const newColumns = computed(() => {
   if (route.query.type === 'fixed-media') {
-    return columns.filter(item => item.key !== 'manufacturer')
+    return columns.filter((item) => item.key !== 'manufacturer');
   } else {
-    return columns
+    return columns;
   }
 });
 
 const params = ref<Record<string, any>>({});
 const deviceData = ref<any>();
+const visible = ref(false);
+const planVis = ref(false);
+const planType = ref('');
 
 /**
  * 搜索
@@ -297,7 +315,7 @@ const getActions = (
       tooltip: {
         title: '播放',
       },
-      icon: 'VideoCameraOutlined',
+      icon: 'PlayCircleOutlined',
       onClick: () => {
         playData.value = cloneDeep(data);
         playerVis.value = true;
@@ -313,13 +331,52 @@ const getActions = (
       onClick: () => {
         menuStory.jumpPage(
             'media/Device/Playback',
-            {},
-            {
+          {
+            query: {
               id: route.query.id,
               type: route.query.type,
               channelId: data.channelId,
-            },
+            }
+          }
         );
+      },
+    },
+    {
+      key: 'plan',
+      text: '抓拍计划',
+      tooltip: {
+        title: '抓拍计划',
+      },
+      icon: 'CameraOutlined',
+      onClick: () => {
+        planVis.value = true;
+        planType.value = 'screenshot';
+        channelData.value = cloneDeep(data);
+      },
+    },
+    {
+      key: 'plan',
+      text: '录像计划',
+      tooltip: {
+        title: '录像计划',
+      },
+      icon: 'VideoCameraOutlined',
+      onClick: () => {
+        planType.value = 'video';
+        planVis.value = true;
+        channelData.value = cloneDeep(data);
+      },
+    },
+    {
+      key: 'share',
+      text: '分享地址',
+      tooltip: {
+        title: '分享地址',
+      },
+      icon: 'ShareAltOutlined',
+      onClick: () => {
+        visible.value = true;
+        channelData.value = cloneDeep(data);
       },
     },
     {

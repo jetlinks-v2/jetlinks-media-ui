@@ -8,6 +8,8 @@ import doc6 from './doc6.png';
 import doc7 from './doc7.png';
 import cloud from './cloud.png';
 import local from './local.png';
+import capturePlan from './capturePlan.png';
+import videoPlan from './videoPlan.png';
 
 export const deviceImg = {
     deviceMedia,
@@ -19,5 +21,7 @@ export const deviceImg = {
     doc6,
     doc7,
     cloud,
-    local
+    local,
+    capturePlan,
+    videoPlan
 }

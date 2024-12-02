@@ -262,13 +262,13 @@ const getActions = (data: Partial<Record<string, any>>): any => {
 };
 
 const handlAdd = () => {
-  menuStory.jumpPage(`media/Stream/Detail`, {id: ':id'}, {view: false});
+  menuStory.jumpPage(`media/Stream/Detail`, {params: {id: ':id'}, query: {view: false}});
 };
 const handlEdit = (id: string) => {
-  menuStory.jumpPage(`media/Stream/Detail`, {id}, {view: false});
+  menuStory.jumpPage(`media/Stream/Detail`, {params: {id}, query: {view: false}});
 };
 const handlEye = (id: string) => {
-  menuStory.jumpPage(`media/Stream/Detail`, {id}, {view: true});
+  menuStory.jumpPage(`media/Stream/Detail`, {params: {id}, query: {view: true}});
 };
 
 /**

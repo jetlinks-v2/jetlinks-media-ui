@@ -23,3 +23,21 @@ export const timestampFormat = (time: number) => {
         .replace('mm', minute.toString())
         .replace('ss', second.toString());
 };
+
+/**
+ * ms转换h:m:s
+ * @param ms
+ * @returns "00:00:00"
+ */
+export const formatTime = (ms:number)=> {
+    let seconds = Math.round(ms / 1000);
+    let result =[];
+    let count =2;
+    while(count >= 0){
+        let current = Math.floor(seconds /(60 ** count));
+        result.push(current);
+        seconds -= current * (60 ** count);
+        --count
+    }
+    return result.map(item=>item<=9 ? `0${item}`: item ).join(':')
+}

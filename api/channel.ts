@@ -25,6 +25,12 @@ export default {
     ptzStart: (deviceId: string, channelId: string, type: string) =>
         `${BASE_API}/media/device/${deviceId}/${channelId}/live.${type}?:X_Access_Token=${LocalStore.get(TOKEN_KEY)}`,
 
+    ptzStartPlay: (deviceId: string, channelId: string, type: string, data: any) =>
+        request.post(`/media/device/${deviceId}/${channelId}/live.${type}?:X_Access_Token=${LocalStore.get(TOKEN_KEY)}`, data, {
+            responseType: 'json',
+            headers:{
+                'Content-Type':'text/plain;charset=utf-8'
+            }}),
     // 云台控制-停止
     ptzStop: (deviceId: string, channelId: string) => request.post(`/media/device/${deviceId}/${channelId}/_ptz/STOP`),
 
@@ -70,5 +76,15 @@ export default {
     playbackStart: (recordId: string) => request.get(`/media/record/${recordId}.mp4`),
 
     // 设备预置位相关接口
-    opFunction: (deviceId: string, functionId: string, data?: any) => request.post(`/device/invoked/${deviceId}/function/${functionId}`, data)
+    opFunction: (deviceId: string, functionId: string, data?: any) => request.post(`/device/invoked/${deviceId}/function/${functionId}`, data),
+
+    broadcastPushUrl: (deviceId: string, channelId: string) => `${BASE_API}/media/device/${deviceId}/${channelId}/broadcast/_push`,
+    broadcastPush: (deviceId: string, channelId: string, data: any) => request.post(`/media/device/${deviceId}/${channelId}/broadcast/_push`, data, {
+        responseType: 'json',
+        headers:{
+            'Content-Type':'text/plain;charset=utf-8'
+        }}),
+
+    broadcastStart: (deviceId: string, channelId: string, extra: any) => request.post(`/media/device/${deviceId}/${channelId}/broadcast/_start`, {}, extra),
+    broadcastStop: (deviceId: string, channelId: string) => request.post(`/media/device/${deviceId}/${channelId}/broadcast/_stop`, {}),
 }

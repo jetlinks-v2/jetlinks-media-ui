@@ -506,7 +506,7 @@
         v-model:visible="saveProductVis"
         v-model:productId="formData.productId"
         v-model:password="formData.others.access_pwd"
-        :channel="formData.channel"
+        :channels="[formData.channel]"
         @close="getProductList"
     />
   </j-page-container>
@@ -529,31 +529,31 @@ const route = useRoute();
 
 // 表单数据
 const formData = ref<any>({
-  id: '',
-  name: '',
-  channel: 'gb28181-2016',
-  photoUrl: deviceImg.deviceMedia,
-  productId: undefined,
-  description: '',
-  others: {
-    access_pwd: '',
-    onvifUrl: '',
-    onvifPassword: '',
-    onvifUsername: '',
-  },
-  // 编辑字段
-  streamMode: '',
-  manufacturer: '',
-  model: '',
-  firmware: '',
+    id: '',
+    name: '',
+    channel: 'gb28181-2016',
+    photoUrl: getImage('/device-media.png'),
+    productId: undefined,
+    description: '',
+    others: {
+        access_pwd: '',
+        onvifUrl: '',
+        onvifPassword: '',
+        onvifUsername: '',
+    },
+    // 编辑字段
+    streamMode: '',
+    manufacturer: '',
+    model: '',
+    firmware: '',
 });
 
 const metadata = ref<any>({
-  properties: [],
+    properties: [],
 });
 const handleChannelChange = () => {
-  formData.value.productId = undefined;
-  getProductList();
+    formData.value.productId = undefined;
+    getProductList();
 };
 
 /**
@@ -561,55 +561,54 @@ const handleChannelChange = () => {
  */
 const productList = ref<ProductType[]>([]);
 const getProductList = async () => {
-  const params = {
-    paging: false,
-    sorts: [{name: 'createTime', order: 'desc'}],
-    terms: [
-      {column: 'accessProvider', value: formData.value.channel},
-      {column: 'state', value: 1},
-    ],
-  };
-  const {result} = await DeviceApi.queryProductList(params);
-  productList.value = result;
-  if (result.length && !route.query.id) {
-    formData.value.productId = result[0]?.id
-    formData.value.others.access_pwd = result[0]?.configuration?.access_pwd
-    formData.value.streamMode = result[0]?.configuration?.stream_mode
-  }
-
+    const params = {
+        paging: false,
+        sorts: [{ name: 'createTime', order: 'desc' }],
+        terms: [
+            { column: 'accessProvider', value: formData.value.channel },
+            { column: 'state', value: 1 },
+        ],
+    };
+    const { result } = await DeviceApi.queryProductList(params);
+    productList.value = result;
+    if (result.length && !route.query.id) {
+        formData.value.productId = result[0]?.id;
+        formData.value.others.access_pwd = result[0]?.configuration?.access_pwd;
+        formData.value.streamMode = result[0]?.configuration?.stream_mode;
+    }
 };
 
 const handleProductChange = () => {
-  formData.value.others.access_pwd =
-      productList.value.find((f: any) => f.id === formData.value.productId)
-          ?.configuration.access_pwd || '';
-  formData.value.streamMode =
-      productList.value.find((f: any) => f.id === formData.value.productId)
-          ?.configuration.stream_mode || '';
+    formData.value.others.access_pwd =
+        productList.value.find((f: any) => f.id === formData.value.productId)
+            ?.configuration.access_pwd || '';
+    formData.value.streamMode =
+        productList.value.find((f: any) => f.id === formData.value.productId)
+            ?.configuration.stream_mode || '';
 };
 
 //获取物模型下拉选项
 const getOptions = (i: any) => {
-  if (i.type.type === 'enum') {
-    return (i.type?.elements || []).map((item) => {
-      return {
-        label: item?.text,
-        value: item?.value,
-      };
-    });
-  } else if (i.type.type === 'boolean') {
-    return [
-      {
-        label: i.type?.falseText,
-        value: i.type?.falseValue,
-      },
-      {
-        label: i.type?.trueText,
-        value: i.type?.trueValue,
-      },
-    ];
-  }
-  return undefined;
+    if (i.type.type === 'enum') {
+        return (i.type?.elements || []).map((item) => {
+            return {
+                label: item?.text,
+                value: item?.value,
+            };
+        });
+    } else if (i.type.type === 'boolean') {
+        return [
+            {
+                label: i.type?.falseText,
+                value: i.type?.falseValue,
+            },
+            {
+                label: i.type?.trueText,
+                value: i.type?.trueValue,
+            },
+        ];
+    }
+    return undefined;
 };
 /**
  * 新增产品
@@ -620,42 +619,45 @@ const saveProductVis = ref(false);
  * 获取详情
  */
 const getDetail = async () => {
-  const res = await DeviceApi.detail(route.query.id as string);
-  Object.assign(formData.value, res.result);
-  formData.value.channel = res.result.provider;
-  await getProductList();
-  if (formData.value.productId) {
-    const productData = productList.value.find((i: any) => {
-      return i.id === formData.value.productId;
-    });
-    if (productData && formData.value.channel !== 'media-plugin') {
-      formData.value.others.access_pwd = formData.value.others.access_pwd
-          ? formData.value.others.access_pwd
-          : productData?.configuration?.access_pwd;
-      formData.value.streamMode = formData.value.streamMode
-          ? formData.value.streamMode
-          : productData?.configuration?.stream_mode;
+    const res = await DeviceApi.detail(route.query.id as string);
+    Object.assign(formData.value, res.result);
+    formData.value.channel = res.result.provider;
+    await getProductList();
+    if (formData.value.productId) {
+        const productData = productList.value.find((i: any) => {
+            return i.id === formData.value.productId;
+        });
+        if (productData && formData.value.channel !== 'media-plugin') {
+            formData.value.others.access_pwd = formData.value.others.access_pwd
+                ? formData.value.others.access_pwd
+                : productData?.configuration?.access_pwd;
+            formData.value.streamMode = formData.value.streamMode
+                ? formData.value.streamMode
+                : productData?.configuration?.stream_mode;
+        }
+        if (productData && formData.value.channel === 'media-plugin') {
+            if (
+                !res.result.others ||
+                JSON.stringify(res.result?.others) === '{}'
+            ) {
+                formData.value.others = productData?.configuration;
+            }
+            const resp: any = await queryDeviceConfig(formData.value.id);
+            if (resp.success) {
+                metadata.value = resp?.result[0] || {
+                    properties: [],
+                };
+            }
+        }
     }
-    if (productData && formData.value.channel === 'media-plugin') {
-      if (!res.result.others || JSON.stringify(res.result?.others) === "{}") {
-        formData.value.others = productData?.configuration;
-      }
-      const resp: any = await queryDeviceConfig(formData.value.id);
-      if (resp.success) {
-        metadata.value = resp?.result[0] || {
-          properties: [],
-        };
-      }
-    }
-  }
 };
 
 onMounted(async () => {
-  if (!route.query.id) {
-    getProductList();
-  } else {
-    getDetail();
-  }
+    if (!route.query.id) {
+        getProductList();
+    } else {
+        getDetail();
+    }
 });
 
 /**
@@ -664,95 +666,97 @@ onMounted(async () => {
 const btnLoading = ref<boolean>(false);
 const formRef = ref();
 const handleSubmit = () => {
-  let {
-    others,
-    id,
-    streamMode,
-    manufacturer,
-    model,
-    firmware,
-    ...extraParams
-  } = formData.value;
-  let params: any;
-  if (formData.value.channel === 'fixed-media') {
-    // 固定地址
-    params = !id
-        ? extraParams
-        : {id, streamMode, manufacturer, model, firmware, ...extraParams};
-  } else if (formData.value.channel === 'gb28181-2016') {
-    // 国标
-    others = omit(others, ['onvifUrl', 'onvifPassword', 'onvifUsername']);
-    const getParams = () => {
-      if (others?.stream_mode) {
-        others.stream_mode = streamMode;
-      }
-      return {
+    let {
         others,
         id,
         streamMode,
         manufacturer,
         model,
         firmware,
-        ...extraParams,
-      };
-    };
-    params = !id ? {others, id, ...extraParams} : getParams();
-  } else if (formData.value.channel === 'onvif') {
-    others = omit(others, ['access_pwd']);
-    params = !id
-        ? {others, ...extraParams}
-        : {
-          id,
-          streamMode,
-          manufacturer,
-          model,
-          firmware,
-          others,
-          ...extraParams,
+        ...extraParams
+    } = formData.value;
+    let params: any;
+    if (
+        formData.value.channel === 'fixed-media' ||
+        formData.value.channel === 'agent-media-device-gateway'
+    ) {
+        // 固定地址
+        params = !id
+            ? extraParams
+            : { id, streamMode, manufacturer, model, firmware, ...extraParams };
+    } else if (formData.value.channel === 'gb28181-2016') {
+        // 国标
+        others = omit(others, ['onvifUrl', 'onvifPassword', 'onvifUsername']);
+        const getParams = () => {
+            if (others?.stream_mode) {
+                others.stream_mode = streamMode;
+            }
+            return {
+                others,
+                id,
+                streamMode,
+                manufacturer,
+                model,
+                firmware,
+                ...extraParams,
+            };
         };
-  } else if (formData.value.channel === 'media-plugin') {
-    params = !id
-        ? extraParams
-        : {
-          id,
-          streamMode,
-          manufacturer,
-          model,
-          firmware,
-          others,
-          ...extraParams,
-        };
-  }
-
-  formRef.value
-      ?.validate()
-      .then(async () => {
-        btnLoading.value = true;
-        let res;
-        if (!route.query.id) {
-          const resp: any = await DeviceApi.validateId(id);
-          if (resp.status === 200 && resp?.result?.passed) {
-            res = await DeviceApi.save(params);
-          } else {
-            notification.error({
-              key: 'error',
-              message: '设备ID已重复',
-            });
-          }
-        } else {
-          res = await DeviceApi.update(params);
-        }
-        if (res?.success) {
-          onlyMessage('保存成功');
-          history.back();
-        }
-      })
-      .catch((err: any) => {
-        console.log('err: ', err);
-      })
-      .finally(() => {
-        btnLoading.value = false;
-      });
+        params = !id ? { others, id, ...extraParams } : getParams();
+    } else if (formData.value.channel === 'onvif') {
+        others = omit(others, ['access_pwd']);
+        params = !id
+            ? { others, ...extraParams }
+            : {
+                id,
+                streamMode,
+                manufacturer,
+                model,
+                firmware,
+                others,
+                ...extraParams,
+            };
+    } else if (formData.value.channel === 'media-plugin') {
+        params = !id
+            ? extraParams
+            : {
+                id,
+                streamMode,
+                manufacturer,
+                model,
+                firmware,
+                others,
+                ...extraParams,
+            };
+    }
+    formRef.value
+        ?.validate()
+        .then(async () => {
+            btnLoading.value = true;
+            let res;
+            if (!route.query.id) {
+                const resp: any = await DeviceApi.validateId(id);
+                if (resp.status === 200 && resp?.result?.passed) {
+                    res = await DeviceApi.save(params);
+                } else {
+                    notification.error({
+                        key: 'error',
+                        message: '设备ID已重复',
+                    });
+                }
+            } else {
+                res = await DeviceApi.update(params);
+            }
+            if (res?.success) {
+                onlyMessage('保存成功');
+                history.back();
+            }
+        })
+        .catch((err: any) => {
+            console.log('err: ', err);
+        })
+        .finally(() => {
+            btnLoading.value = false;
+        });
 };
 </script>
 

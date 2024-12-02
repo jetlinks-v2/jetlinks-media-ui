@@ -62,6 +62,32 @@ const getExtraRoutesMap = () => {
                     component: () => import('./views/Cascade/Channel/index.vue')
                 }
             ]
+        },
+        'media/AutoVideo/Plan': {
+            children: [
+                {
+                    code: 'Detail',
+                    name: '详情',
+                    url: '/detail/:id',
+                    component: () => import('./views/AutoVideo/Plan/Detail/index.vue')
+                },
+                {
+                    code: 'Channel',
+                    name: '通道',
+                    url: '/channel:id',
+                    component: () => import('./views/Cascade/Channel/index.vue')
+                }
+            ]
+        },
+        'media/Stream': {
+            children: [
+                {
+                    code: 'Detail',
+                    name: '详情',
+                    url: '/detail/:id',
+                    component: () => import('./views/Stream/Detail/index.vue')
+                },
+            ]
         }
     }
 }

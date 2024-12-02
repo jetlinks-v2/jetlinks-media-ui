@@ -35,6 +35,8 @@ export default {
     updateGbChannelId: (id: string, data: any): any => request.put(`/media/gb28181-cascade/binding/${id}`, data),
     // 查询通道分页列表
     queryChannelList: (data: any): any => request.post(`/media/channel/_query`, data),
+    // 查询通道不分页
+    queryChannelNoPage: (data: any): any => request.post(`/media/channel/_query/no-paging`, data),
     // 推送
     publish: (id: string, params: any) => request.get(`/media/gb28181-cascade/${id}/bindings/publish`, params),
 
