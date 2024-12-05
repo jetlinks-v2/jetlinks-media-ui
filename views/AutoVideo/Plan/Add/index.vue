@@ -3,7 +3,7 @@
         visible
         title="新增-录像计划"
         :confirmLoading="loading"
-         :maskClosable="false"
+        :maskClosable="false"
         @ok="submitData"
         @cancel="$emit('closeModal')"
     >
@@ -29,10 +29,10 @@
 </template>
 
 <script setup>
-import { savePlan } from '../../../../api/auto';
-import { onlyMessage } from '@jetlinks-web/utils';
-import { useMenuStore } from '@/store/menu';
-import { useRequest } from '@jetlinks-web/hooks'
+import {savePlan} from '../../../../api/auto';
+import {onlyMessage} from '@jetlinks-web/utils';
+import {useMenuStore} from '@/store/menu';
+import {useRequest} from '@jetlinks-web/hooks'
 
 const emit = defineEmits(['closeModal']);
 const formRef = ref();
@@ -42,20 +42,22 @@ const formData = ref({
 });
 const menuStory = useMenuStore();
 
-const { loading, run } = useRequest(savePlan, {
-  immediate:false,
-  onSuccess(res) {
-    onlyMessage('操作成功');
-    menuStory.jumpPage(
-      'media/AutoVideo/Plan/Detail',
-      {
-        id: res.result.id,
-      },
-      {
-        type: 'edit',
-      },
-    );
-  }
+const {loading, run} = useRequest(savePlan, {
+    immediate: false,
+    onSuccess(res) {
+        onlyMessage('操作成功');
+        menuStory.jumpPage(
+            'media/AutoVideo/Plan/Detail',
+            {
+                params: {
+                    id: res.result.id,
+                },
+                query: {
+                    type: 'edit',
+                },
+            },
+        );
+    }
 })
 const submitData = () => {
     formRef.value.validate().then(() => {

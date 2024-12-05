@@ -10,23 +10,25 @@
                 ref="tableRef"
                 :columns="columns"
                 :request="queryList"
-                model="CARD"
+                mode="CARD"
+                modelValue="CARD"
                 :gridColumn="2"
+                :gridColumns="[2]"
                 :defaultParams="{
                     sorts: [{ name: 'createTime', order: 'desc' }],
                     terms: [{ column: 'type', value: 'screenshot',termType:'eq' }],
                 }"
                 :params="params"
             >
-                <template #headerTitle>
-                    <PermissionButton
+                <template #headerLeftRender>
+                    <j-permission-button
                         type="primary"
                         @click="handleAdd"
                         hasPermission="media/TimingCapture/Plan:add"
                     >
                         <template #icon><AIcon type="PlusOutlined" /></template>
                         新增计划
-                    </PermissionButton>
+                    </j-permission-button>
                 </template>
                 <template #card="slotProps">
                     <CardBox
@@ -91,7 +93,7 @@
                             </a-row>
                         </template>
                         <template #actions="item">
-                            <PermissionButton
+                            <j-permission-button
                                 :disabled="item.disabled"
                                 :popConfirm="item.popConfirm"
                                 :tooltip="{
@@ -108,7 +110,7 @@
                                     <AIcon :type="item.icon" />
                                     <span>{{ item?.text }}</span>
                                 </template>
-                            </PermissionButton>
+                            </j-permission-button>
                         </template>
                     </CardBox>
                 </template>
