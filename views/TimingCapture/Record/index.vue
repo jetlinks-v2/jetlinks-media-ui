@@ -41,7 +41,7 @@
                             {{slotProps.fileSize ? (slotProps.fileSize / 1024 / 1024).toFixed(2):0 }}M
                         </template>
                             <template #action="slotProps">
-                                <j-space :size="16">
+                                <a-space :size="16">
                                     <template
                                         v-for="i in getActions(
                                             slotProps,
@@ -49,7 +49,7 @@
                                         )"
                                         :key="i.key"
                                     >
-                                        <PermissionButton
+                                        <j-permission-button
                                             :disabled="i.disabled"
                                             :popConfirm="i.popConfirm"
                                             type="link"
@@ -60,8 +60,8 @@
                                             @click="i.onClick"
                                         >
                                             <AIcon :type="i.icon" />
-                                        </PermissionButton> </template
-                                ></j-space> </template
+                                        </j-permission-button> </template
+                                ></a-space> </template
                         ></j-pro-table>
                     </FullPage>
                 </div>

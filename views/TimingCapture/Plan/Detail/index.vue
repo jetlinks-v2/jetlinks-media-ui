@@ -9,14 +9,14 @@
             <div class="title">
                 <div v-if="!isEdit">
                     {{ detail?.name || '-' }}
-                    <PermissionButton
+                    <j-permission-button
                         type="link"
                         :hasPermission="true"
                         :loading="loading"
                         @click="onSave(true)"
                     >
                         <AIcon type="EditOutlined" />
-                    </PermissionButton>
+                    </j-permission-button>
                 </div>
                 <div v-else>
                     <a-space>
@@ -25,10 +25,10 @@
                             <div v-if="nameTips" class="tips">{{ nameTips }}</div>
                         </div>
                         <a-button @click="cancel">取消</a-button>
-                        <PermissionButton
+                        <j-permission-button
                             type="primary"
                             @click="onSave(false)"
-                            >确认</PermissionButton
+                            >确认</j-permission-button
                         >
                     </a-space>
                 </div>

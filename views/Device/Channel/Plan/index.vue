@@ -21,7 +21,7 @@
                                 @change="(option) => onChange(option, item)"
                             />
                         </div>
-                        <PermissionButton
+                        <j-permission-button
                             shape="circle"
                             :tooltip="{
                                 title: '删除',
@@ -30,7 +30,7 @@
                             @click="onDel(item)"
                         >
                             <AIcon type="DeleteOutlined" />
-                        </PermissionButton>
+                        </j-permission-button>
                     </div>
                     <div v-if="item?.times" class="header-detail">
                         <span

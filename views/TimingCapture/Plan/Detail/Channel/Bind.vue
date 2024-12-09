@@ -59,12 +59,12 @@
                         />
                     </template>
                     <template #action="slotProps">
-                        <j-space :size="16">
+                        <a-space :size="16">
                             <template
                                 v-for="i in getActions(slotProps, 'table')"
                                 :key="i.key"
                             >
-                                <PermissionButton
+                                <j-permission-button
                                     :disabled="i.disabled"
                                     :popConfirm="i.popConfirm"
                                     type="link"
@@ -74,8 +74,8 @@
                                     @click="i.onClick"
                                 >
                                     <AIcon :type="i.icon" />
-                                </PermissionButton> </template
-                        ></j-space> </template
+                                </j-permission-button> </template
+                        ></a-space> </template
                 ></j-pro-table>
             </div>
         </div>

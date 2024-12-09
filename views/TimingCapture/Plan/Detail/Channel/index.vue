@@ -8,13 +8,13 @@
                     <a-button @click="showBind">绑定通道</a-button>
                 </a-space>
                 <div v-else>
-                    <PermissionButton
+                    <j-permission-button
                         type="link"
                         hasPermission="device/Instance:action"
                         @click="editType = true"
                     >
                         <AIcon type="EditOutlined" />
-                    </PermissionButton>
+                    </j-permission-button>
                 </div>
             </div>
             <div class="bound">
@@ -67,12 +67,12 @@
                             />
                         </template>
                         <template #channelId="slotProps">
-                            <Ellipsis>{{ slotProps.channelId }}</Ellipsis>
+                            <j-ellipsis>{{ slotProps.channelId }}</j-ellipsis>
                         </template>
                         <template #action="slotProps">
-                            <j-space :size="16">
+                            <a-space :size="16">
                                 <template v-if="editType">
-                                    <PermissionButton
+                                    <j-permission-button
                                         type="link"
                                         style="padding: 0px"
                                         key="play"
@@ -84,8 +84,8 @@
                                         "
                                     >
                                         <AIcon type="VideoCameraOutlined" />
-                                    </PermissionButton>
-                                    <PermissionButton
+                                    </j-permission-button>
+                                    <j-permission-button
                                         type="link"
                                         key="unbind"
                                         style="padding: 0px"
@@ -100,10 +100,10 @@
                                         }"
                                     >
                                         <AIcon type="DisconnectOutlined" />
-                                    </PermissionButton>
+                                    </j-permission-button>
                                 </template>
                                 <template v-else>
-                                    <PermissionButton
+                                    <j-permission-button
                                         type="link"
                                         key="picture"
                                         style="padding: 0px"
@@ -115,8 +115,8 @@
                                         "
                                     >
                                         <AIcon type="PictureOutlined" />
-                                    </PermissionButton>
-                                    <PermissionButton
+                                    </j-permission-button>
+                                    <j-permission-button
                                         type="link"
                                         style="padding: 0px"
                                         key="logs"
@@ -128,9 +128,9 @@
                                         "
                                     >
                                         <AIcon type="ExceptionOutlined" />
-                                    </PermissionButton>
+                                    </j-permission-button>
                                 </template>
-                            </j-space>
+                            </a-space>
                         </template>
                     </j-pro-table>
                 </div>

@@ -27,13 +27,13 @@
                 </template>
             </a-input-number>
             <div v-else>{{ expires }}{{ unitMap.get(unit) }}</div>
-            <PermissionButton
+            <j-permission-button
                 type="link"
                 :hasPermission="true"
                 @click="onClick"
             >
                 <AIcon :type="isEdit ? 'CheckOutlined' : 'EditOutlined'" />
-            </PermissionButton>
+            </j-permission-button>
         </div>
         <a-table
             :columns="columns"

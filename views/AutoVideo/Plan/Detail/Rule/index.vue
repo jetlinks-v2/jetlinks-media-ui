@@ -15,13 +15,13 @@
                     "
                 />
                 {{ detail.state?.value === 'enabled' ? '正常' : '禁用' }}
-                <PermissionButton
+                <j-permission-button
                     type="link"
                     hasPermission="device/Instance:action"
                     @click="editType = true"
                 >
                     <AIcon type="EditOutlined" />
-                </PermissionButton>
+                </j-permission-button>
             </div>
         </div>
         <div class="rule-item">

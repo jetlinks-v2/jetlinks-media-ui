@@ -12,14 +12,14 @@
                         <span>
                             {{ detail?.name || '----' }}
                         </span>
-                        <PermissionButton
+                        <j-permission-button
                             type="link"
                             :hasPermission="true"
                             :loading="loading"
                             @click="onSave(!isEdit)"
                         >
                             <AIcon type="EditOutlined" />
-                        </PermissionButton>
+                        </j-permission-button>
                     </div>
                     <div v-else>
                         <a-space>
@@ -33,10 +33,10 @@
                                 </div>
                             </div>
                             <a-button @click="cancel">取消</a-button>
-                            <PermissionButton
+                            <j-permission-button
                                 type="primary"
                                 @click="onSave(!isEdit)"
-                                >确认</PermissionButton
+                                >确认</j-permission-button
                             >
                         </a-space>
                     </div>
