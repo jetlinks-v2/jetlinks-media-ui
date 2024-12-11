@@ -25,7 +25,7 @@
             <template #icon>
               <AIcon type="PlusOutlined"/>
             </template>
-            新增
+            {{ $t('Cascade.index.122691-0') }}
           </j-permission-button>
         </template>
         <template #card="slotProps">
@@ -52,7 +52,7 @@
                                     {{ slotProps.name }}
                                 </span>
               </j-ellipsis>
-              <p>通道数量：{{ slotProps.count || 0 }}</p>
+              <p>{{ $t('Cascade.index.122691-1') }}{{ slotProps.count || 0 }}</p>
               <a-badge
                   :status="
                                     slotProps.status?.value === 'enabled'
@@ -161,7 +161,9 @@ import {onlyMessage} from '@jetlinks-web/utils'
 import Publish from './Publish/index.vue';
 import {useMenuStore} from '@/store/menu';
 import {cascade} from '../../assets/cascade/index'
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const menuStory = useMenuStore();
 
 const listRef = ref<Record<string, any>>({});
@@ -169,7 +171,7 @@ const params = ref<Record<string, any>>({});
 
 const columns = [
   {
-    title: '名称',
+    title: $t('Cascade.index.122691-2'),
     dataIndex: 'name',
     key: 'name',
     width: 200,
@@ -180,28 +182,28 @@ const columns = [
     },
   },
   {
-    title: '上级SIP ID',
+    title: $t('Cascade.index.122691-3'),
     dataIndex: 'sipId',
     key: 'sipId',
     scopedSlots: true,
     ellipsis: true,
   },
   {
-    title: '上级SIP 地址',
+    title: $t('Cascade.index.122691-4'),
     dataIndex: 'publicHost',
     key: 'publicHost',
     scopedSlots: true,
     ellipsis: true,
   },
   {
-    title: '通道数量',
+    title: $t('Cascade.index.122691-5'),
     dataIndex: 'count',
     key: 'count',
     scopedSlots: true,
     width: 100,
   },
   {
-    title: '状态',
+    title: $t('Cascade.index.122691-6'),
     dataIndex: 'status',
     key: 'status',
     scopedSlots: true,
@@ -209,8 +211,8 @@ const columns = [
     search: {
       type: 'select',
       options: [
-        {label: '正常', value: 'enabled'},
-        {label: '禁用', value: 'disabled'},
+        {label: $t('Cascade.index.122691-7'), value: 'enabled'},
+        {label: $t('Cascade.index.122691-8'), value: 'disabled'},
       ],
       handleValue: (v: any) => {
         return v;
@@ -218,7 +220,7 @@ const columns = [
     },
   },
   {
-    title: '级联状态',
+    title: $t('Cascade.index.122691-9'),
     dataIndex: 'onlineStatus',
     key: 'onlineStatus',
     scopedSlots: true,
@@ -226,8 +228,8 @@ const columns = [
     search: {
       type: 'select',
       options: [
-        {label: '已连接', value: 'online'},
-        {label: '未连接', value: 'offline'},
+        {label: $t('Cascade.index.122691-10'), value: 'online'},
+        {label: $t('Cascade.index.122691-11'), value: 'offline'},
       ],
       handleValue: (v: any) => {
         return v;
@@ -235,7 +237,7 @@ const columns = [
     },
   },
   {
-    title: '操作',
+    title: $t('Cascade.index.122691-12'),
     key: 'action',
     fixed: 'right',
     width: 200,
@@ -290,9 +292,9 @@ const getActions = (
   const actions = [
     {
       key: 'update',
-      text: '编辑',
+      text: $t('Cascade.index.122691-13'),
       tooltip: {
-        title: '编辑',
+        title: $t('Cascade.index.122691-13'),
       },
       icon: 'EditOutlined',
       onClick: () => {
@@ -302,9 +304,9 @@ const getActions = (
     },
     {
       key: 'channel',
-      text: '选择通道',
+      text: $t('Cascade.index.122691-14'),
       tooltip: {
-        title: '选择通道',
+        title: $t('Cascade.index.122691-14'),
       },
       icon: 'LinkOutlined',
       onClick: () => {
@@ -318,12 +320,12 @@ const getActions = (
     },
     {
       key: 'push',
-      text: '推送',
+      text: $t('Cascade.index.122691-15'),
       tooltip: {
         title:
             data.status?.value === 'disabled'
-                ? '禁用状态下不可推送'
-                : '推送',
+                ? $t('Cascade.index.122691-16')
+                : $t('Cascade.index.122691-15'),
       },
       disabled: data.status?.value === 'disabled',
       icon: 'ShareAltOutlined',
@@ -334,18 +336,16 @@ const getActions = (
     },
     {
       key: 'action',
-      text: data.status?.value === 'enabled' ? '禁用' : '启用',
+      text: data.status?.value === 'enabled' ? $t('Cascade.index.122691-8') : $t('Cascade.index.122691-17'),
       tooltip: {
-        title: data.status?.value === 'enabled' ? '禁用' : '启用',
+        title: data.status?.value === 'enabled' ? $t('Cascade.index.122691-8') : $t('Cascade.index.122691-17'),
       },
       icon:
           data.status?.value === 'enabled'
               ? 'StopOutlined'
               : 'PlayCircleOutlined',
       popConfirm: {
-        title: `确认${
-            data.status?.value === 'enabled' ? '禁用' : '启用'
-        }?`,
+        title: $t('Cascade.index.542776-0', [data.status?.value === 'enabled' ? $t('Cascade.index.122691-8') : $t('Cascade.index.122691-17')]),
         onConfirm: () => {
           let response =
               data.status.value === 'enabled'
@@ -353,10 +353,10 @@ const getActions = (
                   : CascadeApi.enabled(data.id);
           response.then((res) => {
             if (res.success) {
-              onlyMessage('操作成功！');
+              onlyMessage($t('Cascade.index.122691-19'));
               listRef.value?.reload();
             } else {
-              onlyMessage('操作失败！', 'error');
+              onlyMessage($t('Cascade.index.122691-20'), 'error');
             }
           });
           return response;
@@ -365,24 +365,24 @@ const getActions = (
     },
     {
       key: 'delete',
-      text: '删除',
+      text: $t('Cascade.index.122691-21'),
       tooltip: {
         title:
             data.status?.value === 'enabled'
-                ? '请先禁用, 再删除'
-                : '删除',
+                ? $t('Cascade.index.122691-22')
+                : $t('Cascade.index.122691-21'),
       },
       disabled: data.status?.value === 'enabled',
       popConfirm: {
-        title: '确认删除?',
+        title: $t('Cascade.index.122691-23'),
         onConfirm: () => {
           const response = CascadeApi.del(data.id);
           response.then((resp) => {
             if (resp.status === 200) {
-              onlyMessage('操作成功！');
+              onlyMessage($t('Cascade.index.122691-19'));
               listRef.value?.reload();
             } else {
-              onlyMessage('操作失败！', 'error');
+              onlyMessage($t('Cascade.index.122691-20'), 'error');
             }
           });
           return response

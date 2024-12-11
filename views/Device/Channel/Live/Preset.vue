@@ -14,7 +14,7 @@
                     v-if="!record.flag || props.share"
                     :disabled="loading"
                     @click="onSetting(record)"
-                    >设置</a-button
+                    >{{ $t('Live.Preset.5349826-0') }}</a-button
                 >
                 <template v-else>
                     <a-space>
@@ -24,14 +24,14 @@
                             :disabled="loading"
                             style="padding: 0"
                             @click="onDelete(record)"
-                            >删除</a-button
+                            >{{ $t('Live.Preset.5349826-1') }}</a-button
                         >
                         <a-button
                             type="link"
                             :disabled="loading"
                             style="padding: 0"
                             @click="onInvoke(record)"
-                            >调用</a-button
+                            >{{ $t('Live.Preset.5349826-2') }}</a-button
                         >
                     </a-space>
                 </template>
@@ -54,7 +54,9 @@ import channelApi from '../../../../api/channel';
 import { onlyMessage } from '@jetlinks-web/utils';
 import { isNumber, unionBy } from 'lodash-es';
 import { PropType } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 type Item = { id: string | number; name: string; flag?: boolean };
 const props = defineProps({
     data: {
@@ -71,16 +73,16 @@ const emits = defineEmits(['refresh'])
 
 const columns = [
     {
-        title: '序号',
+        title: $t('Live.Preset.5349826-3'),
         dataIndex: 'id',
         width: 60,
     },
     {
-        title: '预置点位',
+        title: $t('Live.Preset.5349826-4'),
         dataIndex: 'name',
     },
     {
-        title: '操作',
+        title: $t('Live.Preset.5349826-5'),
         dataIndex: 'actions',
         width: 90,
     },
@@ -89,7 +91,7 @@ const columns = [
 const init = new Array(50).fill(0).map((_, index) => {
     return {
         id: String(index + 1),
-        name: `预置点${index + 1}`,
+        name: $t('Live.Preset.5349826-6', [index + 1]),
         flag: false,
     };
 });
@@ -147,7 +149,7 @@ const onFunction = (id: string, functionId: string, params: any) => {
         .opFunction(id, functionId, params)
         .then(async (resp) => {
             if (resp.status === 200) {
-                onlyMessage('操作成功！');
+                onlyMessage($t('Live.Preset.5349826-7'));
                 const preset = dataSource.value.map((item) => {
                     return {
                         id: item.id,

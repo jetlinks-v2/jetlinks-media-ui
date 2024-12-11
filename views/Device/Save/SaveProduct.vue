@@ -1,9 +1,9 @@
 <template>
   <a-modal
       v-model:visible="_vis"
-      title="快速添加"
-      cancelText="取消"
-      okText="确定"
+      :title="$t('Save.SaveProduct.534989-0')"
+      :cancelText="$t('Save.SaveProduct.534989-1')"
+      :okText="$t('Save.SaveProduct.534989-2')"
       @ok="handleOk"
       @cancel="handleCancel"
       :confirmLoading="btnLoading"
@@ -18,31 +18,31 @@
       >
         <a-form-item
             name="id"
-            label="产品类型"
-            :rules="[{ required: true, message: '请选择产品类型' }]"
+            :label="$t('Save.SaveProduct.534989-3')"
+            :rules="[{ required: true, message: $t('Save.SaveProduct.534989-4') }]"
         >
           <a-select
               v-model:value="productData.id"
               :options="productTypes"
               @change="productTypeChange"
-              placeholder="请选择产品类型"
+              :placeholder="$t('Save.SaveProduct.534989-4')"
           />
         </a-form-item>
       </a-form>
       <a-form-item
-          label="产品名称"
+          :label="$t('Save.SaveProduct.534989-5')"
           name="name"
           :rules="[
-                    { required: true, message: '请输入产品名称' },
+                    { required: true, message: $t('Save.SaveProduct.534989-6') },
                     {
                         max: 64,
-                        message: '最多输入64个字符',
+                        message: $t('Save.SaveProduct.534989-7'),
                     },
                 ]"
       >
         <a-input
             v-model:value="formData.name"
-            placeholder="请输入名称"
+            :placeholder="$t('Save.SaveProduct.534989-8')"
         />
       </a-form-item>
       <template v-if="deviceType !== 'gateway'">
@@ -58,7 +58,7 @@
                             },
                             {
                                 max: 64,
-                                message: '最多输入64个字符',
+                                message: $t('Save.SaveProduct.534989-7'),
                             },
                         ]"
           >
@@ -82,9 +82,9 @@
         </template>
       </template>
       <a-form-item
-          label="接入网关"
+          :label="$t('Save.SaveProduct.534989-9')"
           name="accessId"
-          :rules="{ required: true, message: '请选择接入网关' }"
+          :rules="{ required: true, message: $t('Save.SaveProduct.534989-10') }"
       >
         <div class="gateway-box">
           <a-empty
@@ -93,19 +93,19 @@
           >
             <template #description>
               <template v-if="!isPermission"
-              >暂无数据, 请联系管理员
+              >{{ $t('Save.SaveProduct.534989-11') }}
               </template
               >
               <template v-else>
-                暂无数据，请先
+                {{ $t('Save.SaveProduct.534989-12') }}
                 <a-button
                     type="link"
                     style="padding: 0"
                     @click="handleAdd"
                 >
-                  添加{{
+                  {{ $t('Save.SaveProduct.534989-13') }}{{
                     providerType[props.channel]
-                  }}接入网关
+                  }}{{ $t('Save.SaveProduct.534989-9') }}
                 </a-button>
               </template>
             </template>
@@ -212,7 +212,9 @@ import {providerType} from '../const';
 import {useAuthStore} from '@/store/auth';
 import {pick} from 'lodash-es';
 import {getAccessConfig} from '../../../api/product';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const isPermission = useAuthStore().hasPermission(
     'link/AccessConfig:add',
 );
@@ -318,8 +320,8 @@ const handleClick = async (e: any) => {
             required: !!item.type.expands?.required,
             message:
                 item.type?.type === 'enum'
-                    ? `请选择${item.name}`
-                    : `请输入${item.name}`,
+                    ? $t('Save.SaveProduct.534989-14', [item.name])
+                    : $t('Save.SaveProduct.534989-15', [item.name]),
           }),
       );
     }
@@ -347,8 +349,8 @@ const handleClick = async (e: any) => {
         required: !!item.type.expands?.required,
         message:
             item.type?.type === 'enum'
-                ? `请选择${item.name}`
-                : `请输入${item.name}`,
+                ? $t('Save.SaveProduct.534989-14', [item.name])
+                : $t('Save.SaveProduct.534989-15', [item.name]),
       }));
     }
   }
@@ -409,7 +411,7 @@ const handleOk = async () => {
           );
           if (deployResp.success) {
             emit('save', {...res.result});
-            onlyMessage('操作成功');
+            onlyMessage($t('Save.SaveProduct.534989-16'));
             handleCancel();
           }
         }

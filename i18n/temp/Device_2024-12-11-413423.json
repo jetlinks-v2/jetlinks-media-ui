@@ -1,0 +1,18 @@
+{
+	"zh": {
+		"Save.index.133456-0": "：用户自定义输入小于或等于64位字符",
+		"Save.index.133456-1": "：选择接入方式为Onvif的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择Onvif类型的网关完成产品创建",
+		"Save.index.133456-2": "：不同平台的摄像头接入地址组合方式不一致，请参考对应品牌接入Onvif的地址设置。如海康：http://ip/onvif/device_service。IP地址来自于海康监控设备端后台：配置",
+		"Save.index.133456-3": "：输入设备端配置时添加的用户名",
+		"Save.index.133456-4": "：输入设备端配置时添加的密码",
+		"Save.index.133456-5": "：选择接入方式为插件视频接入的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择插件类型的网关完成产品创建。"
+	},
+	"en": {
+		"Save.index.133456-0": "User defined input is less than or equal to 64 characters",
+		"Save.index.133456-1": "Select the product with Onvif access method. If there is currently no corresponding product, click the quick add button on the right, fill in the product name, and select the Onvif type gateway to complete the product creation",
+		"Save.index.133456-2": "The combination of camera access addresses on different platforms is inconsistent. Please refer to the address settings for accessing Onvif for the corresponding brand. Hai Kang: http://ip/onvif/device_service The IP address comes from the backend of Hikvision monitoring equipment: configuration",
+		"Save.index.133456-3": ": Username added during device configuration input",
+		"Save.index.133456-4": ": Password added when configuring the input device",
+		"Save.index.133456-5": "Select the product with plug-in video access as the access method. If there is currently no corresponding product, click the quick add button on the right, fill in the product name, and select the gateway of the plug-in type to complete the product creation."
+	}
+}

@@ -13,33 +13,33 @@
                     <a-row :gutter="[16, 0]">
                         <a-col :span="12">
                             <a-form-item
-                                label="流媒体名称"
+                                :label="$t('Detail.index.416932-0')"
                                 name="name"
                                 :rules="[
                                     {
                                         required: true,
-                                        message: '请输入流媒体名称',
+                                        message: $t('Detail.index.416932-1'),
                                     },
                                     {
                                         max: 64,
-                                        message: '最多可输入64个字符',
+                                        message: $t('Detail.index.416932-2'),
                                     },
                                 ]"
                             >
                                 <a-input
                                     v-model:value="formData.name"
-                                    placeholder="请输入流媒体名称"
+                                    :placeholder="$t('Detail.index.416932-1')"
                                 />
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
                             <a-form-item
-                                label="服务商"
+                                :label="$t('Detail.index.416932-3')"
                                 name="provider"
                                 :rules="[
                                     {
                                         required: true,
-                                        message: '请选择服务商',
+                                        message: $t('Detail.index.416932-4'),
                                     },
                                 ]"
                             >
@@ -47,23 +47,23 @@
                                     ref="select"
                                     v-model:value="formData.provider"
                                     :options="options"
-                                    placeholder="请选择服务商"
+                                    :placeholder="$t('Detail.index.416932-4')"
                                 ></a-select>
                             </a-form-item>
                         </a-col>
                         <a-col :span="12">
                             <a-form-item
-                                label="密钥"
+                                :label="$t('Detail.index.416932-5')"
                                 :name="['configuration', 'secret']"
                                 :rules="[
                                     {
                                         max: 64,
-                                        message: '最多可输入64个字符',
+                                        message: $t('Detail.index.416932-2'),
                                     },
                                 ]"
                             >
                                 <a-input-password
-                                    placeholder="请输入密钥"
+                                    :placeholder="$t('Detail.index.416932-6')"
                                     v-model:value="
                                         formData.configuration.secret
                                     "
@@ -76,18 +76,18 @@
                                 :rules="[
                                     {
                                         required: true,
-                                        message: '请输入API Host',
+                                        message: $t('Detail.index.416932-7'),
                                     },
                                     {
                                         validator: validateAddress,
-                                        message: '请输入正确的IP地址或者域名',
+                                        message: $t('Detail.index.416932-8'),
                                     },
                                 ]"
                             >
                                 <template #label>
                                     API Host
                                     <a-tooltip
-                                        title="调用流媒体接口时请求的服务地址"
+                                        :title="$t('Detail.index.416932-9')"
                                     >
                                         <AIcon
                                             type="QuestionCircleOutlined"
@@ -96,7 +96,7 @@
                                     </a-tooltip>
                                 </template>
                                 <a-input
-                                    placeholder="请输入API Host"
+                                    :placeholder="$t('Detail.index.416932-7')"
                                     v-model:value="
                                         formData.configuration.apiHost
                                     "
@@ -110,7 +110,7 @@
                                 :rules="[
                                     {
                                         required: true,
-                                        message: '请输入端口',
+                                        message: $t('Detail.index.416932-10'),
                                     },
                                 ]"
                             >
@@ -121,7 +121,7 @@
                                     :min="1"
                                     :max="65535"
                                     :precision="0"
-                                    placeholder="请输入输入端口"
+                                    :placeholder="$t('Detail.index.416932-11')"
                                     v-model:value="
                                         formData.configuration.apiPort
                                     "
@@ -136,19 +136,19 @@
                                     :rules="[
                                         {
                                             required: true,
-                                            message: '请输入RTP IP',
+                                            message: $t('Detail.index.416932-12'),
                                         },
                                         {
                                             validator: validateAddress,
                                             message:
-                                                '请输入正确的IP地址或者域名',
+                                                $t('Detail.index.416932-8'),
                                         },
                                     ]"
                                 >
                                     <template #label>
                                         RTP IP
                                         <a-tooltip
-                                            title="视频设备将流推送到该IP地址下，部分设备仅支持IP地址，建议全是用IP地址"
+                                            :title="$t('Detail.index.416932-13')"
                                         >
                                             <AIcon
                                                 type="QuestionCircleOutlined"
@@ -157,7 +157,7 @@
                                         </a-tooltip>
                                     </template>
                                     <a-input
-                                        placeholder="请输入RTP IP"
+                                        :placeholder="$t('Detail.index.416932-12')"
                                         v-model:value="
                                             formData.configuration.rtpIp
                                         "
@@ -171,7 +171,7 @@
                                     :rules="[
                                         {
                                             required: true,
-                                            message: '请输入端口',
+                                            message: $t('Detail.index.416932-10'),
                                         },
                                     ]"
                                 >
@@ -182,7 +182,7 @@
                                         :min="1"
                                         :max="65535"
                                         :precision="0"
-                                        placeholder="请输入端口"
+                                        :placeholder="$t('Detail.index.416932-10')"
                                         v-model:value="
                                             formData.configuration.rtpPort
                                         "
@@ -199,7 +199,7 @@
                                     :rules="[
                                         {
                                             required: true,
-                                            message: '请输入起始端口',
+                                            message: $t('Detail.index.416932-14'),
                                         },
                                     ]"
                                 >
@@ -212,7 +212,7 @@
                                                 .dynamicRtpPortRange1 || 65535
                                         "
                                         :precision="0"
-                                        placeholder="起始端口"
+                                        :placeholder="$t('Detail.index.416932-15')"
                                         v-model:value="
                                             formData.configuration
                                                 .dynamicRtpPortRange0
@@ -221,7 +221,7 @@
                                 </a-form-item>
                             </a-col>
                             <div class="form-item-checked" v-if="checked">
-                                至
+                                {{ $t('Detail.index.416932-16') }}
                             </div>
                             <a-col :span="4" v-if="checked">
                                 <a-form-item
@@ -233,7 +233,7 @@
                                     :rules="[
                                         {
                                             required: true,
-                                            message: '请输入终止端口',
+                                            message: $t('Detail.index.416932-17'),
                                         },
                                     ]"
                                 >
@@ -246,7 +246,7 @@
                                         "
                                         :max="65535"
                                         :precision="0"
-                                        placeholder="终止端口"
+                                        :placeholder="$t('Detail.index.416932-18')"
                                         v-model:value="
                                             formData.configuration
                                                 .dynamicRtpPortRange1
@@ -266,7 +266,7 @@
                                                 .dynamicRtpPort
                                         "
                                     >
-                                        动态端口
+                                        {{ $t('Detail.index.416932-19') }}
                                     </a-checkbox>
                                 </a-form-item>
                             </a-col>
@@ -278,7 +278,7 @@
                                 IP
                                 <a-tooltip>
                                     <template #title
-                                    >对外分享的视频流地址</template
+                                    >{{ $t('Detail.index.416932-20') }}</template
                                     >
                                     <AIcon
                                         type="QuestionCircleOutlined"
@@ -293,11 +293,11 @@
                                         formData.configuration.distinguish
                                     "
                                 >
-                                    区分内/外网
+                                    {{ $t('Detail.index.416932-21') }}
                                 </a-checkbox>
                             </a-col>
                             <a-col :span="12">
-                                内网
+                                {{ $t('Detail.index.416932-22') }}
                                 <div class="item">
                                     <a-row :gutter="[16, 0]">
                                         <a-col :span="24">
@@ -310,7 +310,7 @@
                                                 :rules="[
                                                     {
                                                         required: true,
-                                                        message: '请输入内网IP',
+                                                        message: $t('Detail.index.416932-23'),
                                                     },
                                                 ]"
                                             >
@@ -320,7 +320,7 @@
                                                             .rtpIp
                                                     "
                                                     :disabled="true"
-                                                    placeholder="请输入内网IP"
+                                                    :placeholder="$t('Detail.index.416932-23')"
                                                 ></a-input>
                                             </a-form-item>
                                         </a-col>
@@ -334,14 +334,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入RTSP端口',
+                                                            $t('Detail.index.416932-24'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    RTSP 端口
+                                                    {{ $t('Detail.index.416932-25') }}
                                                     <a-tooltip
-                                                        title="对外分享的RTSP视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-26')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -356,7 +356,7 @@
                                                     :min="1"
                                                     :max="65535"
                                                     :precision="0"
-                                                    placeholder="RTSP 端口"
+                                                    :placeholder="$t('Detail.index.416932-25')"
                                                     v-model:value="
                                                         formData.configuration
                                                             .rtspPort
@@ -375,14 +375,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入RTMP端口',
+                                                            $t('Detail.index.416932-27'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    RTMP 端口
+                                                    {{ $t('Detail.index.416932-28') }}
                                                     <a-tooltip
-                                                        title="对外分享的RTMP视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-29')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -397,7 +397,7 @@
                                                     :min="1"
                                                     :max="65535"
                                                     :precision="0"
-                                                    placeholder="RTMP 端口"
+                                                    :placeholder="$t('Detail.index.416932-28')"
                                                     v-model:value="
                                                         formData.configuration
                                                             .rtmpPort
@@ -417,14 +417,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入RTC端口',
+                                                            $t('Detail.index.416932-30'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    RTC 端口
+                                                    {{ $t('Detail.index.416932-31') }}
                                                     <a-tooltip
-                                                        title="对外分享的RTC视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-32')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -439,7 +439,7 @@
                                                     :min="1"
                                                     :max="65535"
                                                     :precision="0"
-                                                    placeholder="RTMP 端口"
+                                                    :placeholder="$t('Detail.index.416932-28')"
                                                     v-model:value="
                                                         formData
                                                             .otherConfiguration
@@ -460,14 +460,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入MP4端口',
+                                                            $t('Detail.index.416932-33'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    MP4端口
+                                                    {{ $t('Detail.index.416932-34') }}
                                                     <a-tooltip
-                                                        title="对外分享的MP4视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-35')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -483,7 +483,7 @@
                                                     :max="65535"
                                                     :precision="0"
                                                     disabled
-                                                    placeholder="MP4端口"
+                                                    :placeholder="$t('Detail.index.416932-34')"
                                                     v-model:value="
                                                         formData
                                                             .otherConfiguration
@@ -504,14 +504,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入HLS端口',
+                                                            $t('Detail.index.416932-36'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    HLS端口
+                                                    {{ $t('Detail.index.416932-37') }}
                                                     <a-tooltip
-                                                        title="对外分享的HLS视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-38')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -527,7 +527,7 @@
                                                     :max="65535"
                                                     :precision="0"
                                                     disabled
-                                                    placeholder="HLS端口"
+                                                    :placeholder="$t('Detail.index.416932-37')"
                                                     v-model:value="
                                                         formData
                                                             .otherConfiguration
@@ -548,14 +548,14 @@
                                                     {
                                                         required: true,
                                                         message:
-                                                            '请输入FLV端口',
+                                                            $t('Detail.index.416932-39'),
                                                     },
                                                 ]"
                                             >
                                                 <template #label>
-                                                    FLV端口
+                                                    {{ $t('Detail.index.416932-40') }}
                                                     <a-tooltip
-                                                        title="对外分享的FLV视频流地址对应端口"
+                                                        :title="$t('Detail.index.416932-41')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -571,7 +571,7 @@
                                                     :max="65535"
                                                     :precision="0"
                                                     disabled
-                                                    placeholder="FLV端口"
+                                                    :placeholder="$t('Detail.index.416932-40')"
                                                     v-model:value="
                                                         formData
                                                             .otherConfiguration
@@ -585,7 +585,7 @@
                             </a-col>
                             <template v-if="formData.configuration.distinguish">
                                 <a-col :span="12">
-                                    外网
+                                    {{ $t('Detail.index.416932-42') }}
                                     <div class="item">
                                         <a-row :gutter="[16, 0]">
                                             <a-col :span="24"
@@ -599,11 +599,11 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入外网IP',
+                                                                $t('Detail.index.416932-43'),
                                                         },
                                                     ]"
                                             ><a-input
-                                                placeholder="请输入外网IP"
+                                                :placeholder="$t('Detail.index.416932-43')"
                                                 v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -622,14 +622,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入RTSP端口',
+                                                                $t('Detail.index.416932-24'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        RTSP端口
+                                                        {{ $t('Detail.index.416932-44') }}
                                                         <a-tooltip
-                                                            title="对外分享的RTSP视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-26')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -644,7 +644,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="RTSP 端口"
+                                                        :placeholder="$t('Detail.index.416932-25')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -666,14 +666,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入RTMP端口',
+                                                                $t('Detail.index.416932-27'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        RTMP端口
+                                                        {{ $t('Detail.index.416932-45') }}
                                                         <a-tooltip
-                                                            title="对外分享的RTMP视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-29')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -688,7 +688,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="RTMP 端口"
+                                                        :placeholder="$t('Detail.index.416932-28')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -710,14 +710,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入RTC端口',
+                                                                $t('Detail.index.416932-30'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        RTC 端口
+                                                        {{ $t('Detail.index.416932-31') }}
                                                         <a-tooltip
-                                                            title="对外分享的RTC视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-32')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -732,7 +732,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="RTMP 端口"
+                                                        :placeholder="$t('Detail.index.416932-28')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -754,14 +754,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入MP4端口',
+                                                                $t('Detail.index.416932-33'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        MP4端口
+                                                        {{ $t('Detail.index.416932-34') }}
                                                         <a-tooltip
-                                                            title="对外分享的MP4视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-35')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -776,7 +776,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="MP4端口"
+                                                        :placeholder="$t('Detail.index.416932-34')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -798,14 +798,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入HLS端口',
+                                                                $t('Detail.index.416932-36'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        HLS端口
+                                                        {{ $t('Detail.index.416932-37') }}
                                                         <a-tooltip
-                                                            title="对外分享的HLS视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-38')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -820,7 +820,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="HLS端口"
+                                                        :placeholder="$t('Detail.index.416932-37')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -842,14 +842,14 @@
                                                         {
                                                             required: true,
                                                             message:
-                                                                '请输入FLV端口',
+                                                                $t('Detail.index.416932-39'),
                                                         },
                                                     ]"
                                                 >
                                                     <template #label>
-                                                        FLV端口
+                                                        {{ $t('Detail.index.416932-40') }}
                                                         <a-tooltip
-                                                            title="对外分享的FLV视频流地址对应端口"
+                                                            :title="$t('Detail.index.416932-41')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -864,7 +864,7 @@
                                                         :min="1"
                                                         :max="65535"
                                                         :precision="0"
-                                                        placeholder="FLV端口"
+                                                        :placeholder="$t('Detail.index.416932-40')"
                                                         v-model:value="
                                                             formData
                                                                 .otherConfiguration
@@ -888,7 +888,7 @@
                                     type="primary"
                                     @click.prevent="onSubmit"
                                     :loading="loading"
-                                >保存</a-button
+                                >{{ $t('Detail.index.416932-46') }}</a-button
                                 >
                             </a-form-item>
                         </a-col>
@@ -906,6 +906,8 @@ import type { FormInstance } from 'ant-design-vue';
 import { omit } from 'lodash-es';
 import { FormDataType } from '../type';
 import { testIpv4_6 } from '@/utils/validate';
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const router = useRouter();
 const route = useRoute();
 const view = route.query.view as string;
@@ -928,7 +930,7 @@ const validateAddress = (_rule: any, value: string): Promise<any> =>
         if (testIpv4_6(value) || Validator.regDomain.test(value)) {
             return resolve('');
         } else {
-            return value ? reject('请输入正确的IP地址或者域名') : resolve('');
+            return value ? reject($t('Detail.index.416932-8')) : resolve('');
         }
     });
 
@@ -1079,7 +1081,7 @@ const onSubmit = async () => {
                 loading.value = false;
             });
     if (response.status === 200) {
-        onlyMessage('操作成功', 'success');
+        onlyMessage($t('Detail.index.416932-47'), 'success');
         router.push('/iot/link/Stream');
     }
 };

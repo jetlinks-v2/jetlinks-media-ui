@@ -6,11 +6,11 @@
         <a-col :span="12">
           <a-form ref="formRef" :model="formData" layout="vertical">
             <a-form-item
-                label="接入方式"
+                :label="$t('Save.index.5349810-0')"
                 name="channel"
                 :rules="{
                                 required: true,
-                                message: '请选择接入方式',
+                                message: $t('Save.index.5349810-1'),
                             }"
             >
               <RadioCard
@@ -37,59 +37,59 @@
                                             required:
                                                 formData.channel ===
                                                 'gb28181-2016',
-                                            message: '请输入ID',
+                                            message: $t('Save.index.5349810-2'),
                                         },
                                         {
                                             max: 64,
-                                            message: '最多输入64个字符',
+                                            message: $t('Save.index.5349810-3'),
                                         },
                                         {
                                             pattern: /^[a-zA-Z0-9_\-]+$/,
                                             message:
-                                                '请输入英文或者数字或者-或者_',
+                                                $t('Save.index.5349810-4'),
                                         },
                                     ]"
                 >
                   <a-input
                       v-model:value="formData.id"
-                      placeholder="请输入ID"
+                      :placeholder="$t('Save.index.5349810-2')"
                       :disabled="!!route.query.id"
                   />
                 </a-form-item>
                 <a-form-item
-                    label="设备名称"
+                    :label="$t('Save.index.5349810-5')"
                     name="name"
                     :rules="[
                                         {
                                             required: true,
-                                            message: '请输入设备名称',
+                                            message: $t('Save.index.5349810-6'),
                                         },
                                         {
                                             max: 64,
-                                            message: '最多可输入64个字符',
+                                            message: $t('Save.index.5349810-7'),
                                         },
                                     ]"
                 >
                   <a-input
                       v-model:value="formData.name"
-                      placeholder="请输入设备名称"
+                      :placeholder="$t('Save.index.5349810-6')"
                   />
                 </a-form-item>
               </a-col>
             </a-row>
             <a-form-item
-                label="所属产品"
+                :label="$t('Save.index.5349810-8')"
                 name="productId"
                 :rules="{
                                 required: true,
-                                message: '请选择所属产品',
+                                message: $t('Save.index.5349810-9'),
                             }"
             >
               <a-row :gutter="[0, 10]">
                 <a-col :span="!!route.query.id ? 24 : 22">
                   <a-select
                       v-model:value="formData.productId"
-                      placeholder="请选择所属产品"
+                      :placeholder="$t('Save.index.5349810-9')"
                       :disabled="!!route.query.id"
                       showSearch
                       @change="handleProductChange"
@@ -116,56 +116,56 @@
               </a-row>
             </a-form-item>
             <a-form-item
-                label="接入密码"
+                :label="$t('Save.index.5349810-10')"
                 :name="['others', 'access_pwd']"
                 :rules="[
                                 {
                                     required: true,
-                                    message: '请输入接入密码',
+                                    message: $t('Save.index.5349810-11'),
                                 },
                                 {
                                     max: 64,
-                                    message: '最多可输入64个字符',
+                                    message: $t('Save.index.5349810-7'),
                                 },
                             ]"
                 v-if="formData.channel === 'gb28181-2016'"
             >
               <a-input-password
                   v-model:value="formData.others.access_pwd"
-                  placeholder="请输入接入密码"
+                  :placeholder="$t('Save.index.5349810-11')"
               />
             </a-form-item>
             <template v-if="formData.channel === 'onvif'">
               <a-form-item
-                  label="接入地址"
+                  :label="$t('Save.index.5349810-12')"
                   :name="['others', 'onvifUrl']"
                   :rules="[
                                     {
                                         required: true,
-                                        message: '请输入接入地址',
+                                        message: $t('Save.index.5349810-13'),
                                     },
                                     {
                                         max: 64,
-                                        message: '最多可输入64个字符',
+                                        message: $t('Save.index.5349810-7'),
                                     },
                                 ]"
               >
                 <a-input
                     v-model:value="formData.others.onvifUrl"
-                    placeholder="请输入接入地址"
+                    :placeholder="$t('Save.index.5349810-13')"
                 ></a-input>
               </a-form-item>
               <a-form-item
-                  label="接入账户"
+                  :label="$t('Save.index.5349810-14')"
                   :name="['others', 'onvifUsername']"
                   :rules="[
                                     {
                                         required: true,
-                                        message: '请输入接入账户',
+                                        message: $t('Save.index.5349810-15'),
                                     },
                                     {
                                         max: 64,
-                                        message: '最多可输入64个字符',
+                                        message: $t('Save.index.5349810-7'),
                                     },
                                 ]"
               >
@@ -173,20 +173,20 @@
                     v-model:value="
                                         formData.others.onvifUsername
                                     "
-                    placeholder="请输入接入账户"
+                    :placeholder="$t('Save.index.5349810-15')"
                 ></a-input>
               </a-form-item>
               <a-form-item
-                  label="接入密码"
+                  :label="$t('Save.index.5349810-10')"
                   :name="['others', 'onvifPassword']"
                   :rules="[
                                     {
                                         required: true,
-                                        message: '请输入接入密码',
+                                        message: $t('Save.index.5349810-11'),
                                     },
                                     {
                                         max: 64,
-                                        message: '最多可输入64个字符',
+                                        message: $t('Save.index.5349810-7'),
                                     },
                                 ]"
               >
@@ -194,7 +194,7 @@
                     v-model:value="
                                         formData.others.onvifPassword
                                     "
-                    placeholder="请输入接入密码"
+                    :placeholder="$t('Save.index.5349810-11')"
                 ></a-input-password>
               </a-form-item>
             </template>
@@ -211,28 +211,28 @@
                                         message: `${
                                             item.type.type === 'enum' ||
                                             'boolean'
-                                                ? '请选择'
-                                                : '请输入'
+                                                ? $t('Save.index.5349810-16')
+                                                : $t('Save.index.5349810-17')
                                         }${item.name}`,
                                     },
                                 ]"
               >
                 <a-input
-                    placeholder="请输入"
+                    :placeholder="$t('Save.index.5349810-17')"
                     v-if="item.type.type === 'string'"
                     v-model:value="
                                         formData.others[item.property]
                                     "
                 ></a-input>
                 <a-input-password
-                    placeholder="请输入"
+                    :placeholder="$t('Save.index.5349810-17')"
                     v-if="item.type.type === 'password'"
                     v-model:value="
                                         formData.others[item.property]
                                     "
                 ></a-input-password>
                 <a-select
-                    placeholder="请选择"
+                    :placeholder="$t('Save.index.5349810-16')"
                     v-if="
                                         item.type.type === 'enum' ||
                                         item.type.type === 'boolean'
@@ -255,18 +255,18 @@
                     v-model:value="
                                         formData.others[item.property]
                                     "
-                    placeholder="请输入"
+                    :placeholder="$t('Save.index.5349810-17')"
                 ></a-input-number>
               </a-form-item>
             </template>
             <template v-if="!!route.query.id">
               <a-form-item
                   v-if="formData.channel === 'gb28181-2016'"
-                  label="流传输模式"
+                  :label="$t('Save.index.5349810-18')"
                   name="streamMode"
                   :rules="{
                                     required: true,
-                                    message: '请选择流传输模式',
+                                    message: $t('Save.index.5349810-19'),
                                 }"
               >
                 <a-radio-group
@@ -277,66 +277,66 @@
                     UDP
                   </a-radio-button>
                   <a-radio-button value="TCP_PASSIVE">
-                    TCP被动
+                    {{ $t('Save.index.5349810-20') }}
                   </a-radio-button>
                 </a-radio-group>
               </a-form-item>
               <a-form-item
-                  label="设备厂商"
+                  :label="$t('Save.index.5349810-21')"
                   name="manufacturer"
                   :rules="[
                                     {
                                         max: 64,
-                                        message: '最多可输入64位字符',
+                                        message: $t('Save.index.5349810-22'),
                                         trigger: 'change',
                                     },
                                 ]"
               >
                 <a-input
                     v-model:value="formData.manufacturer"
-                    placeholder="请输入设备厂商"
+                    :placeholder="$t('Save.index.5349810-23')"
                 />
               </a-form-item>
               <a-form-item
-                  label="设备型号"
+                  :label="$t('Save.index.5349810-24')"
                   name="model"
                   :rules="[
                                     {
                                         max: 64,
-                                        message: '最多可输入64位字符',
+                                        message: $t('Save.index.5349810-22'),
                                         trigger: 'change',
                                     },
                                 ]"
               >
                 <a-input
                     v-model:value="formData.model"
-                    placeholder="请输入设备型号"
+                    :placeholder="$t('Save.index.5349810-25')"
                 />
               </a-form-item>
               <a-form-item
-                  label="固件版本"
+                  :label="$t('Save.index.5349810-26')"
                   name="firmware"
                   :rules="[
                                     {
                                         max: 64,
-                                        message: '最多可输入64位字符',
+                                        message: $t('Save.index.5349810-22'),
                                         trigger: 'change',
                                     },
                                 ]"
               >
                 <a-input
                     v-model:value="formData.firmware"
-                    placeholder="请输入固件版本"
+                    :placeholder="$t('Save.index.5349810-27')"
                 />
               </a-form-item>
             </template>
-            <a-form-item label="说明">
+            <a-form-item :label="$t('Save.index.5349810-28')">
               <a-textarea
                   v-model:value="formData.description"
                   show-count
                   :maxlength="200"
                   :rows="5"
-                  placeholder="请输入说明"
+                  :placeholder="$t('Save.index.5349810-29')"
               />
             </a-form-item>
             <a-form-item>
@@ -345,7 +345,7 @@
                   @click="handleSubmit"
                   :loading="btnLoading"
               >
-                保存
+                {{ $t('Save.index.5349810-30') }}
               </a-button>
             </a-form-item>
           </a-form>
@@ -356,25 +356,25 @@
               class="doc"
               style="height: 800"
           >
-            <h1>1.概述</h1>
+            <h1>{{ $t('Save.index.5349810-31') }}</h1>
             <div>
-              视频设备通过GB/T28181接入平台整体分为2部分，包括平台端配置和设备端配置，不同的设备端配置的路径或页面存在差异，但配置项基本大同小异。
+              {{ $t('Save.index.5349810-32') }}
             </div>
-            <h1>2.配置说明</h1>
-            <h1>平台端配置</h1>
+            <h1>{{ $t('Save.index.5349810-33') }}</h1>
+            <h1>{{ $t('Save.index.5349810-34') }}</h1>
             <h2>1、ID</h2>
-            <div>设备唯一标识，请填写设备端配置的设备编号。</div>
-            <h2>2、所属产品</h2>
+            <div>{{ $t('Save.index.5349810-35') }}</div>
+            <h2>2、{{ $t('Save.index.5349810-8') }}</h2>
             <div>
-              只能选择接入方式为GB/T28281的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择GB/T28181类型的网关完成产品创建
+              {{ $t('Save.index.5349810-37') }}
             </div>
-            <h2>3、接入密码</h2>
+            <h2>3、{{ $t('Save.index.5349810-10') }}</h2>
             <div>
-              配置接入密码，设备端配置的密码需与该密码一致。该字段可在产品-设备接入页面进行统一配置，配置后所有设备将继承产品配置。设备单独修改后将脱离继承关系。
+              {{ $t('Save.index.5349810-39') }}
             </div>
-            <h1>设备端配置</h1>
+            <h1>{{ $t('Save.index.5349810-40') }}</h1>
             <div>
-              各个厂家、不同设备型号的设备端配置页面布局存在差异，但配置项基本大同小异，此处以大华摄像头为例作为接入配置示例
+              {{ $t('Save.index.5349810-41') }}
             </div>
             <div class="image">
               <a-image
@@ -382,10 +382,10 @@
                   :src="deviceImg.doc1"
               />
             </div>
-            <h2>1、SIP服务器编号/SIP域</h2>
+            <h2>{{ $t('Save.index.5349810-42') }}</h2>
             <div>
-              SIP服务器编号填入该设备所属产品-接入方式页面“连接信息”的SIP。
-              SIP域通常为SIP服务器编号的前10位。
+              {{ $t('Save.index.5349810-43') }}
+              {{ $t('Save.index.5349810-44') }}
             </div>
             <div class="image">
               <a-image
@@ -393,9 +393,9 @@
                   :src="deviceImg.doc2"
               />
             </div>
-            <h2>2、SIP服务器IP/端口</h2>
+            <h2>{{ $t('Save.index.5349810-45') }}</h2>
             <div>
-              SIP服务器IP/端口填入该设备所属产品-接入方式页面中“连接信息”的IP/端口。
+              {{ $t('Save.index.5349810-46') }}
             </div>
             <div class="image">
               <a-image
@@ -403,13 +403,13 @@
                   :src="deviceImg.doc3"
               />
             </div>
-            <h2>3、设备编号</h2>
+            <h2>{{ $t('Save.index.5349810-47') }}</h2>
             <div>
-              设备编号为设备唯一性标识，物联网平台的设备接入没有校验该字段，输入任意数字均不影响设备接入平台。
+              {{ $t('Save.index.5349810-48') }}
             </div>
-            <h2>4、注册密码</h2>
+            <h2>{{ $t('Save.index.5349810-49') }}</h2>
             <div>
-              填入该设备所属产品-接入方式页面中“GB28281配置”处的接入密码
+              {{ $t('Save.index.5349810-50') }}
             </div>
             <div class="image">
               <a-image
@@ -417,41 +417,41 @@
                   :src="deviceImg.doc4"
               />
             </div>
-            <h2>5、其他字段</h2>
-            <div>不影响设备接入平台，可保持设备初始化值。</div>
+            <h2>{{ $t('Save.index.5349810-51') }}</h2>
+            <div>{{ $t('Save.index.5349810-52') }}</div>
           </div>
 
           <div v-else-if="formData.channel === 'fixed-media'" class="doc" style="height: 600">
-            <h1>1.概述</h1>
+            <h1>{{ $t('Save.index.5349810-31') }}</h1>
             <div>
-              视频设备通过RTSP、RTMP固定地址接入平台分为2步。
+              {{ $t('Save.index.5349810-53') }}
             </div>
-            <div>1、添加视频设备</div>
-            <div>2、添加视频下的通道地址。</div>
+            <div>{{ $t('Save.index.5349810-54') }}</div>
+            <div>{{ $t('Save.index.5349810-55') }}</div>
             <div>
-              注：当前页面为新增视频设备，新增完成后点击设备的“通道”按钮，添加通道。
+              {{ $t('Save.index.5349810-56') }}
             </div>
-            <h1>2.配置说明</h1>
+            <h1>{{ $t('Save.index.5349810-33') }}</h1>
             <h2>1、ID</h2>
             <div>
-              设备唯一标识，若不填写，系统将自动生成唯一标识。
+              {{ $t('Save.index.5349810-57') }}
             </div>
-            <h2>2、所属产品</h2>
+            <h2>2、{{ $t('Save.index.5349810-8') }}</h2>
             <div>
-              只能选择接入方式为固定地址的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择固定地址类型的网关完成产品创建。
+              {{ $t('Save.index.5349810-58') }}
             </div>
           </div>
           <div v-else-if="formData.channel === 'onvif'" class="doc" style="height: 600">
-            <h1>1.概述</h1>
+            <h1>{{ $t('Save.index.5349810-31') }}</h1>
             <div>
-              JetLinks平台支持通过Onvif方式接入视频设备。分为两个部分，包括平台端配置和设备端配置。本文通过海康摄像头为例将onvif视频接入到平台播放。
+              {{ $t('Save.index.5349810-59') }}
             </div>
-            <h1>2.配置说明</h1>
+            <h1>{{ $t('Save.index.5349810-33') }}</h1>
             <div>
-              设备端配置
+              {{ $t('Save.index.5349810-40') }}
             </div>
             <div>
-              1.本文以海康监控为例演示，登录海康监控设备后台，进入配置>网络>高级配置>集成协议，用户自定义输入用户名和密码，完成用户添加。
+              {{ $t('Save.index.5349810-60') }}>{{ $t('Save.index.5349810-61') }}>{{ $t('Save.index.5349810-62') }}>{{ $t('Save.index.5349810-63') }}
             </div>
             <div class="image">
               <a-image
@@ -459,14 +459,14 @@
                   :src="deviceImg.doc5"
               />
             </div>
-            <div>平台端配置</div>
-            <div>ID：设备唯一标识，若不填写，系统将自动生成唯一标识</div>
-            <div>设备名称：用户自定义输入小于或等于64位字符</div>
+            <div>{{ $t('Save.index.5349810-34') }}</div>
+            <div>{{ $t('Save.index.5349810-64') }}</div>
+            <div>{{ $t('Save.index.5349810-5') }}{{ $t('Save.index.133456-0') }}</div>
             <div>
-              所属产品：选择接入方式为Onvif的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择Onvif类型的网关完成产品创建
+              {{ $t('Save.index.5349810-8') }}{{ $t('Save.index.133456-1') }}
             </div>
             <div>
-              接入地址：不同平台的摄像头接入地址组合方式不一致，请参考对应品牌接入Onvif的地址设置。如海康：http://ip/onvif/device_service。IP地址来自于海康监控设备端后台：配置>网络>基本配置>TCP/IP
+              {{ $t('Save.index.5349810-12') }}{{ $t('Save.index.133456-2') }}>{{ $t('Save.index.5349810-61') }}>{{ $t('Save.index.154832-0') }}>TCP/IP
             </div>
             <div class="image">
               <a-image
@@ -474,30 +474,56 @@
                   :src="deviceImg.doc6"
               />
             </div>
-            <div>接入账户：输入设备端配置时添加的用户名</div>
-            <div>接入密码：输入设备端配置时添加的密码</div>
+            <div>{{ $t('Save.index.5349810-14') }}{{ $t('Save.index.133456-3') }}</div>
+            <div>{{ $t('Save.index.5349810-10') }}{{ $t('Save.index.133456-4') }}</div>
             <div class="image">
               <a-image
                   width="100%"
                   :src="deviceImg.doc7"
               />
             </div>
-            <h1>3.所有配置项填写完成，点击保存。</h1>
+            <h1>{{ $t('Save.index.5349810-70') }}</h1>
           </div>
           <div v-else-if="formData.channel === 'media-plugin'" class="doc" style="height: 600">
-            <h1>1.概述</h1>
+            <h1>{{ $t('Save.index.5349810-31') }}</h1>
             <div>
-              JetLinks平台支持通过调用SDK或API请求将第三方系统视频设备数据接入到平台。
+              {{ $t('Save.index.5349810-71') }}
             </div>
-            <h1>2.配置说明</h1>
-            <div>2.1平台端配置</div>
-            <div>ID：设备唯一标识，若不填写，系统将自动生成唯一标识</div>
-            <div>设备名称：用户自定义输入小于或等于64位字符</div>
+            <h1>{{ $t('Save.index.5349810-33') }}</h1>
+            <div>2.1{{ $t('Save.index.5349810-34') }}</div>
+            <div>{{ $t('Save.index.5349810-64') }}</div>
+            <div>{{ $t('Save.index.5349810-5') }}{{ $t('Save.index.133456-0') }}</div>
             <div>
-              所属产品：选择接入方式为插件视频接入的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择插件类型的网关完成产品创建。
+              {{ $t('Save.index.5349810-8') }}{{ $t('Save.index.133456-5') }}
             </div>
-            <h1>3.所有配置项填写完成，点击保存。</h1>
+            <h1>{{ $t('Save.index.5349810-70') }}</h1>
           </div>
+          <div
+                        v-else-if="formData.channel === 'agent-media-device-gateway'"
+                        class="doc"
+                        style="height: 600"
+                    >
+                        <h1>{{ $t('Save.index.179438-0') }}</h1>
+                        <div>
+                            {{ $t('Save.index.179438-1') }}
+                        </div>
+                        <div class="image">
+                            <a-image
+                                width="100%"
+                                :src="deviceImg.agentDoc"
+                            />
+                        </div>
+                        <h1>{{ $t('Save.index.179438-2') }}</h1>
+                        <div>{{ $t('Save.index.179438-3') }}</div>
+                        <div>
+                            {{ $t('Save.index.179438-4') }}
+                        </div>
+                        <div>{{ $t('Save.index.179438-5') }}</div>
+                        <div>
+                            {{ $t('Save.index.179438-6') }}
+                        </div>
+                        <h1>{{ $t('Save.index.179438-7') }}</h1>
+                    </div>
         </a-col>
       </a-row>
     </a-card>
@@ -524,7 +550,9 @@ import {queryDeviceConfig} from '../../../api/instance';
 import RadioCard from '../../../components/RadioCard/index.vue';
 
 import {deviceImg} from "../../../assets/device/index";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const route = useRoute();
 
 // 表单数据
@@ -532,7 +560,7 @@ const formData = ref<any>({
     id: '',
     name: '',
     channel: 'gb28181-2016',
-    photoUrl: getImage('/device-media.png'),
+    photoUrl: deviceImg.deviceMedia,
     productId: undefined,
     description: '',
     others: {
@@ -740,14 +768,14 @@ const handleSubmit = () => {
                 } else {
                     notification.error({
                         key: 'error',
-                        message: '设备ID已重复',
+                        message: $t('Save.index.5349810-74'),
                     });
                 }
             } else {
                 res = await DeviceApi.update(params);
             }
             if (res?.success) {
-                onlyMessage('保存成功');
+                onlyMessage($t('Save.index.5349810-75'));
                 history.back();
             }
         })

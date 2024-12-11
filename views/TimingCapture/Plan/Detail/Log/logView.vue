@@ -1,6 +1,6 @@
 <template>
     <a-drawer
-        title="执行日志"
+        :title="$t('Log.logView.855189-0')"
         visible
         @close="emit('close')"
         :maskClosable="false"
@@ -18,35 +18,35 @@
         >
             <a-descriptions-item
                 :span="3"
-                label="执行状态"
+                :label="$t('Log.logView.855189-1')"
                 :contentStyle="{
                     color: data.state?.value === 'success' ? '#52C41A' : 'red',
                 }"
             >
                 {{ data.state?.text }}</a-descriptions-item
             >
-            <a-descriptions-item :span="3" label="通道ID">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-2')">{{
                 data.channelId
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="通道名称">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-3')">{{
                 data.channelName
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="通道目录">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-4')">{{
                 data.channelCatalog || '-'
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="设备ID">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-5')">{{
                 data.deviceId
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="设备名称">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-6')">{{
                 data.deviceName
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="安装地址">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-7')">{{
                 data.address
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="厂家">{{
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-8')">{{
                 data.manufacturer
             }}</a-descriptions-item>
-            <a-descriptions-item :span="3" label="日志流水">
+            <a-descriptions-item :span="3" :label="$t('Log.logView.855189-9')">
                 <div style="max-height: 400px; overflow-y: auto">
                     <JsonViewer
                         :value="data"
@@ -61,6 +61,8 @@
 
 <script setup name="logView">
 import JsonViewer from 'vue3-json-viewer';
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const props = defineProps({
     data: {
         type: Object,

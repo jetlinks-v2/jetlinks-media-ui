@@ -2,10 +2,10 @@
 <template>
     <a-modal
         v-model:visible="_vis"
-        :title="!!formData.id ? '编辑' : '新增'"
+        :title="!!formData.id ? $t('Channel.Save.5349812-0') : $t('Channel.Save.5349812-1')"
         width="650px"
-        cancelText="取消"
-        okText="确定"
+        :cancelText="$t('Channel.Save.5349812-2')"
+        :okText="$t('Channel.Save.5349812-3')"
         @ok="handleSubmit"
         @cancel="handleCancel"
         :confirmLoading="loading"
@@ -18,7 +18,7 @@
                         :rules="[
                             {
                                 max: 64,
-                                message: '最多可输入64个字符',
+                                message: $t('Channel.Save.5349812-4'),
                             },
                             {
                                 validator: validateChannelId,
@@ -26,8 +26,8 @@
                         ]"
                     >
                         <template #label>
-                            通道ID
-                            <a-tooltip title="若不填写，系统将自动生成唯一ID">
+                            {{ $t('Channel.Save.5349812-5') }}
+                            <a-tooltip :title="$t('Channel.Save.5349812-6')">
                                 <AIcon
                                     type="QuestionCircleOutlined"
                                     style="margin-left: 2px"
@@ -37,22 +37,22 @@
                         <a-input
                             v-model:value="formData.channelId"
                             :disabled="!!formData.id"
-                            placeholder="请输入通道ID"
+                            :placeholder="$t('Channel.Save.5349812-7')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="12">
                     <a-form-item
                         name="name"
-                        label="通道名称"
+                        :label="$t('Channel.Save.5349812-8')"
                         :rules="[
-                            { required: true, message: '请输入通道名称' },
-                            { max: 64, message: '最多可输入64个字符' },
+                            { required: true, message: $t('Channel.Save.5349812-9') },
+                            { max: 64, message: $t('Channel.Save.5349812-4') },
                         ]"
                     >
                         <a-input
                             v-model:value="formData.name"
-                            placeholder="请输入通道名称"
+                            :placeholder="$t('Channel.Save.5349812-9')"
                         />
                     </a-form-item>
                 </a-col>
@@ -61,16 +61,16 @@
                     v-if="typeOne"
                 >
                     <a-form-item
-                        label="厂商"
+                        :label="$t('Channel.Save.5349812-10')"
                         name="manufacturer"
                         :rules="[
                             { required: false, message: '' },
-                            { max: 64, message: '最多可输入64个字符' },
+                            { max: 64, message: $t('Channel.Save.5349812-4') },
                         ]"
                     >
                         <a-input
                             v-model:value="formData.manufacturer"
-                            placeholder="请输入厂商名称"
+                            :placeholder="$t('Channel.Save.5349812-11')"
                         />
                     </a-form-item>
                 </a-col>
@@ -78,16 +78,16 @@
                     <a-form-item
                         name="media_url"
                         :rules="[
-                            { required: true, message: '请输入视频地址' },
+                            { required: true, message: $t('Channel.Save.5349812-12') },
                             {
                                 validator: validateUrl,
                             },
                         ]"
                     >
                         <template #label>
-                            视频地址
+                            {{ $t('Channel.Save.5349812-13') }}
                             <a-tooltip
-                                title="不同厂家的RTSP固定地址规则不同，请按对应厂家的规则填写"
+                                :title="$t('Channel.Save.5349812-14')"
                             >
                                 <AIcon
                                     type="QuestionCircleOutlined"
@@ -97,63 +97,63 @@
                         </template>
                         <a-input
                             v-model:value="formData.media_url"
-                            placeholder="请输入视频地址"
+                            :placeholder="$t('Channel.Save.5349812-12')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="12" v-if="typeTow">
                     <a-form-item
                         name="media_username"
-                        label="用户名"
-                        :rules="{ max: 64, message: '最多可输入64个字符' }"
+                        :label="$t('Channel.Save.5349812-15')"
+                        :rules="{ max: 64, message: $t('Channel.Save.5349812-4') }"
                     >
                         <a-input
                             v-model:value="formData.media_username"
-                            placeholder="请输入用户名"
+                            :placeholder="$t('Channel.Save.5349812-16')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="12" v-if="typeTow">
                     <a-form-item
                         name="media_password"
-                        label="密码"
-                        :rules="{ max: 64, message: '最多可输入64个字符' }"
+                        :label="$t('Channel.Save.5349812-17')"
+                        :rules="{ max: 64, message: $t('Channel.Save.5349812-4') }"
                     >
                         <a-input-password
                             v-model:value="formData.media_password"
-                            placeholder="请输入密码"
+                            :placeholder="$t('Channel.Save.5349812-18')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="24">
                     <a-form-item
                         name="address"
-                        label="安装地址"
-                        :rules="{ max: 64, message: '最多可输入64个字符' }"
+                        :label="$t('Channel.Save.5349812-19')"
+                        :rules="{ max: 64, message: $t('Channel.Save.5349812-4') }"
                     >
                         <a-input
                             v-model:value="formData.address"
-                            placeholder="请输入安装地址"
+                            :placeholder="$t('Channel.Save.5349812-20')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="24" v-if="typeOne">
-                    <a-form-item label="云台类型" name="ptzType">
+                    <a-form-item :label="$t('Channel.Save.5349812-21')" name="ptzType">
                         <a-select
                             v-model:value="formData.ptzType"
                             :options="[
-                                { label: '未知', value: 0 },
-                                { label: '球体', value: 1 },
-                                { label: '半球体', value: 2 },
-                                { label: '固定枪机', value: 3 },
-                                { label: '遥控枪机', value: 4 },
+                                { label: $t('Channel.Save.5349812-22'), value: 0 },
+                                { label: $t('Channel.Save.5349812-23'), value: 1 },
+                                { label: $t('Channel.Save.5349812-24'), value: 2 },
+                                { label: $t('Channel.Save.5349812-25'), value: 3 },
+                                { label: $t('Channel.Save.5349812-26'), value: 4 },
                             ]"
-                            placeholder="请选择云台类型"
+                            :placeholder="$t('Channel.Save.5349812-27')"
                         />
                     </a-form-item>
                 </a-col>
                 <a-col :span="24">
-                    <a-form-item name="description" label="说明">
+                    <a-form-item name="description" :label="$t('Channel.Save.5349812-28')">
                         <a-textarea
                             v-model:value="formData.description"
                             :rows="4"
@@ -172,7 +172,9 @@ import ChannelApi from '../../../api/channel';
 import { PropType } from 'vue';
 import type { Rule } from 'ant-design-vue/es/form';
 import { onlyMessage } from '@jetlinks-web/utils';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const route = useRoute();
 
 type Emits = {
@@ -264,7 +266,7 @@ const validateChannelId = async (_rule: Rule, value: string) => {
     });
 
     if (!result.passed) {
-        return Promise.reject('该ID已存在');
+        return Promise.reject($t('Channel.Save.5349812-29'));
     } else {
         return Promise.resolve();
     }
@@ -281,7 +283,7 @@ const validateUrl = async (_rule: Rule, value: string) => {
     return new Promise((resolve, reject) => {
         reg.test(value) || !value
             ? resolve('')
-            : reject('请输入正确的视频地址');
+            : reject($t('Channel.Save.5349812-30'));
     });
 };
 
@@ -319,13 +321,13 @@ const handleSubmit = () => {
                       loading.value = false;
                   });
             if (res.success) {
-                onlyMessage('操作成功');
+                onlyMessage($t('Channel.Save.5349812-31'));
                 _vis.value = false;
                 loading.value = false;
                 emit('submit');
             } else {
                 loading.value = false;
-                onlyMessage('操作失败', 'error');
+                onlyMessage($t('Channel.Save.5349812-32'), 'error');
             }
         })
         .catch((err: any) => {

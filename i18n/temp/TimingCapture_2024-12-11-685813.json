@@ -1,0 +1,24 @@
+{
+	"zh": {
+		"Record.index.855180-0": "选择设备及目录查看通道：",
+		"Record.index.855180-1": "当前目录：",
+		"Record.index.855180-2": "通道名称",
+		"Record.index.855180-3": "厂商",
+		"Record.index.855180-4": "安装地址",
+		"Record.index.855180-5": "已拍数量",
+		"Record.index.855180-6": "存储空间",
+		"Record.index.855180-7": "操作",
+		"Record.index.855180-8": "查看"
+	},
+	"en": {
+		"Record.index.855180-0": "Select device and directory viewing channel:",
+		"Record.index.855180-1": "Current directory:",
+		"Record.index.855180-2": "Channel name",
+		"Record.index.855180-3": "manufacturer",
+		"Record.index.855180-4": "Installation address",
+		"Record.index.855180-5": "Number of photos taken",
+		"Record.index.855180-6": "storage space ",
+		"Record.index.855180-7": "operation",
+		"Record.index.855180-8": "see"
+	}
+}

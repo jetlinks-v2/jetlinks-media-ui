@@ -2,9 +2,9 @@
 <template>
   <a-modal
       visible
-      title="绑定通道"
-      cancelText="取消"
-      okText="确定"
+      :title="$t('BindChannel.index.122696-0')"
+      :cancelText="$t('BindChannel.index.122696-1')"
+      :okText="$t('BindChannel.index.122696-2')"
       width="80%"
       @ok="handleSave"
       @cancel="$emit('cancel')"
@@ -47,7 +47,7 @@
             }"
     >
       <template #headerLeftRender>
-        <h3>通道列表</h3>
+        <h3>{{ $t('BindChannel.index.122696-3') }}</h3>
       </template>
       <template #status="slotProps">
         <a-space>
@@ -68,7 +68,9 @@
 <script setup lang="ts">
 import CascadeApi from '../../../../api/cascade';
 import {onlyMessage} from '@jetlinks-web/utils';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const route = useRoute();
 
 type Emits = {
@@ -79,7 +81,7 @@ const emit = defineEmits<Emits>();
 
 const columns = [
   {
-    title: '设备名称',
+    title: $t('BindChannel.index.122696-4'),
     dataIndex: 'deviceName',
     key: 'deviceName',
     ellipsis: true,
@@ -88,7 +90,7 @@ const columns = [
     },
   },
   {
-    title: '通道名称',
+    title: $t('BindChannel.index.122696-5'),
     dataIndex: 'name',
     key: 'name',
     ellipsis: true,
@@ -98,7 +100,7 @@ const columns = [
     },
   },
   {
-    title: '安装地址',
+    title: $t('BindChannel.index.122696-6'),
     dataIndex: 'address',
     key: 'address',
     ellipsis: true,
@@ -107,7 +109,7 @@ const columns = [
     },
   },
   {
-    title: '厂商',
+    title: $t('BindChannel.index.122696-7'),
     dataIndex: 'manufacturer',
     key: 'manufacturer',
     ellipsis: true,
@@ -116,7 +118,7 @@ const columns = [
     },
   },
   {
-    title: '状态',
+    title: $t('BindChannel.index.122696-8'),
     dataIndex: 'status',
     key: 'status',
     scopedSlots: true,
@@ -124,8 +126,8 @@ const columns = [
     search: {
       type: 'select',
       options: [
-        {label: '已连接', value: 'online'},
-        {label: '未连接', value: 'offline'},
+        {label: $t('BindChannel.index.122696-9'), value: 'online'},
+        {label: $t('BindChannel.index.122696-10'), value: 'offline'},
       ],
       handleValue: (v: any) => {
         return v;
@@ -177,7 +179,7 @@ const onAllSelect = (selected: boolean, _: any, keys: any[]) => {
 const loading = ref(false);
 const handleSave = async () => {
   if (!_selectedRowKeys.value.length) {
-    onlyMessage('请勾选数据', 'error');
+    onlyMessage($t('BindChannel.index.122696-11'), 'error');
     return;
   }
   loading.value = true;
@@ -188,10 +190,10 @@ const handleSave = async () => {
     loading.value = false;
   })
   if (resp.success) {
-    onlyMessage('操作成功！');
+    onlyMessage($t('BindChannel.index.122696-12'));
     emit('submit');
   } else {
-    onlyMessage('操作失败！', 'error');
+    onlyMessage($t('BindChannel.index.122696-13'), 'error');
   }
 };
 

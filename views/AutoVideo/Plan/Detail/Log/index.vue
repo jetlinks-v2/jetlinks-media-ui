@@ -53,7 +53,9 @@ import logView from './logView.vue';
 import { useRouteQuery } from '@vueuse/router';
 import { onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const route = useRoute();
 const params = ref();
 const tableRef = ref();
@@ -66,7 +68,7 @@ const loading = ref(false)
 
 const columns = [
     {
-        title: '时间',
+        title: $t('Log.index.312704-0'),
         dataIndex: 'createTime',
         key: 'createTime',
         scopedSlots: true,
@@ -75,7 +77,7 @@ const columns = [
         },
     },
     {
-        title: '通道ID',
+        title: $t('Log.index.312704-1'),
         dataIndex: 'channelId',
         key: 'channelId',
         ellipsis: true,
@@ -84,7 +86,7 @@ const columns = [
         },
     },
     {
-        title: '通道名称',
+        title: $t('Log.index.312704-2'),
         dataIndex: 'channelName',
         key: 'channelName',
         ellipsis: true,
@@ -94,7 +96,7 @@ const columns = [
         },
     },
     {
-        title: '设备ID',
+        title: $t('Log.index.312704-3'),
         dataIndex: 'deviceId',
         key: 'deviceId',
         ellipsis: true,
@@ -104,7 +106,7 @@ const columns = [
         },
     },
     {
-        title: '设备名称',
+        title: $t('Log.index.312704-4'),
         dataIndex: 'deviceName',
         ellipsis: true,
         key: 'deviceName',
@@ -113,7 +115,7 @@ const columns = [
         },
     },
     {
-        title: '执行状态',
+        title: $t('Log.index.312704-5'),
         dataIndex: 'state',
         key: 'state',
         scopedSlots: true,
@@ -121,13 +123,13 @@ const columns = [
         search: {
             type: 'select',
             options: [
-                { label: '正常', value: 'success' },
-                { label: '失败', value: 'fail' },
+                { label: $t('Log.index.312704-6'), value: 'success' },
+                { label: $t('Log.index.312704-7'), value: 'fail' },
             ],
         },
     },
     {
-        title: '操作',
+        title: $t('Log.index.312704-8'),
         key: 'action',
         width: 100,
         scopedSlots: true,
@@ -149,9 +151,9 @@ const getActions = (data) => {
     const actions = [
         {
             key: 'view',
-            text: '查看',
+            text: $t('Log.index.312704-9'),
             tooltip: {
-                title: '查看',
+                title: $t('Log.index.312704-9'),
             },
             icon: 'EyeOutlined',
             onClick: () => {

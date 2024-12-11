@@ -1,0 +1,26 @@
+{
+	"zh": {
+		"Log.logView.855189-0": "执行日志",
+		"Log.logView.855189-1": "执行状态",
+		"Log.logView.855189-2": "通道ID",
+		"Log.logView.855189-3": "通道名称",
+		"Log.logView.855189-4": "通道目录",
+		"Log.logView.855189-5": "设备ID",
+		"Log.logView.855189-6": "设备名称",
+		"Log.logView.855189-7": "安装地址",
+		"Log.logView.855189-8": "厂家",
+		"Log.logView.855189-9": "日志流水"
+	},
+	"en": {
+		"Log.logView.855189-0": "Execution log",
+		"Log.logView.855189-1": "Execution status",
+		"Log.logView.855189-2": "Channel ID",
+		"Log.logView.855189-3": "Channel name",
+		"Log.logView.855189-4": "Channel directory",
+		"Log.logView.855189-5": "Device ID",
+		"Log.logView.855189-6": "Equipment name",
+		"Log.logView.855189-7": "Installation address",
+		"Log.logView.855189-8": "manufactor",
+		"Log.logView.855189-9": "Log flow"
+	}
+}

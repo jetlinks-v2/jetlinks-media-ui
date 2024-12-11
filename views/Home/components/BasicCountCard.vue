@@ -1,19 +1,19 @@
 <template>
   <div class="device-count-container">
     <h5 class="title">
-      <span>基础统计</span>
+      <span>{{ $t('components.BasicCountCard.010852-0') }}</span>
       <a style="font-size: 12px;" @click="jumpPage">
-        详情
+        {{ $t('components.BasicCountCard.010852-1') }}
       </a>
     </h5>
     <div class="box-list">
       <div class="box-item">
-        <div class="label">设备数量</div>
+        <div class="label">{{ $t('components.BasicCountCard.010852-2') }}</div>
         <div class="value">{{ deviceCount }}</div>
         <img :src="homeImg.top1" alt=""/>
       </div>
       <div class="box-item">
-        <div class="label">通道数量</div>
+        <div class="label">{{ $t('components.BasicCountCard.010852-3') }}</div>
         <div class="value">{{ channelCount }}</div>
         <img :src="homeImg.product" alt=""/>
       </div>
@@ -25,7 +25,8 @@
 import homeApi from '../../../api/home';
 import {useMenuStore} from '@/store/menu';
 import {homeImg} from "../../../assets/home/index";
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const menuStory = useMenuStore();
 
 const channelCount = ref(0);

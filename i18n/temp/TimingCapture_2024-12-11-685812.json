@@ -1,0 +1,24 @@
+{
+	"zh": {
+		"Rule.index.855183-0": "计划状态：",
+		"Rule.index.855183-1": "正常",
+		"Rule.index.855183-2": "禁用",
+		"Rule.index.855183-3": "保存周期（天）",
+		"Rule.index.855183-4": "请输入抓拍文件保存天数",
+		"Rule.index.855183-5": "超出保存周期的抓拍文件将被自动删除",
+		"Rule.index.855183-6": "保存",
+		"Rule.index.855183-7": "请输入保存周期",
+		"Rule.index.855183-8": "操作成功"
+	},
+	"en": {
+		"Rule.index.855183-0": "Plan status:",
+		"Rule.index.855183-1": "normal",
+		"Rule.index.855183-2": "Disable",
+		"Rule.index.855183-3": "Storage period (days)",
+		"Rule.index.855183-4": "Please enter the number of days to save the captured file",
+		"Rule.index.855183-5": "Captured files that exceed the storage period will be automatically deleted",
+		"Rule.index.855183-6": "preservation",
+		"Rule.index.855183-7": "Please enter the storage period",
+		"Rule.index.855183-8": "Operation successful"
+	}
+}

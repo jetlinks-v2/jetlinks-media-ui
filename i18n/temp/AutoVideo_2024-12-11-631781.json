@@ -1,0 +1,24 @@
+{
+	"zh": {
+		"Record.index.312702-0": "选择设备及目录查看通道：",
+		"Record.index.312702-1": "当前目录：",
+		"Record.index.312702-2": "通道名称",
+		"Record.index.312702-3": "厂商",
+		"Record.index.312702-4": "安装地址",
+		"Record.index.312702-5": "已录时长",
+		"Record.index.312702-6": "存储空间",
+		"Record.index.312702-7": "操作",
+		"Record.index.312702-8": "回放"
+	},
+	"en": {
+		"Record.index.312702-0": "Select device and directory viewing channel:",
+		"Record.index.312702-1": "Current directory:",
+		"Record.index.312702-2": "Channel name",
+		"Record.index.312702-3": "manufacturer",
+		"Record.index.312702-4": "Installation address",
+		"Record.index.312702-5": "Recorded duration",
+		"Record.index.312702-6": "storage space ",
+		"Record.index.312702-7": "operation",
+		"Record.index.312702-8": "playback"
+	}
+}

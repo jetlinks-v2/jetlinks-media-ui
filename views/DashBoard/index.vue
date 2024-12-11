@@ -3,7 +3,7 @@
     <a-row :gutter="24">
       <a-col :span="6">
         <TopCard
-            title="设备数量"
+            :title="$t('DashBoard.index.240761-0')"
             :img="dashboard.dashboard1"
             :footer="deviceFooter"
             :value="deviceTotal"
@@ -11,7 +11,7 @@
       </a-col>
       <a-col :span="6">
         <TopCard
-            title="通道数量"
+            :title="$t('DashBoard.index.240761-1')"
             :img="dashboard.dashboard2"
             :footer="channelFooter"
             :value="channelTotal"
@@ -19,7 +19,7 @@
       </a-col>
       <a-col :span="6">
         <TopCard
-            title="录像数量"
+            :title="$t('DashBoard.index.240761-2')"
             :img="dashboard.dashboard3"
             :footer="aggFooter"
             :value="aggTotal"
@@ -27,8 +27,8 @@
       </a-col>
       <a-col :span="6">
         <TopCard
-            title="播放中数量"
-            tooltip="当前正在播放的通道数量之和"
+            :title="$t('DashBoard.index.240761-3')"
+            :tooltip="$t('DashBoard.index.240761-4')"
             :img="dashboard.dashboard4"
             :footer="aggPlayingFooter"
             :value="aggPlayingTotal"
@@ -37,7 +37,7 @@
       <a-col :span="24" class="dash-board-bottom">
         <full-page>
           <Card
-              title="播放数量(人次)"
+              :title="$t('DashBoard.index.240761-5')+`(${$t('DashBoard.index.240761-6')})`"
               :chartData="chartData"
               @change="getPlayCount"
           />
@@ -57,7 +57,9 @@ import {encodeQuery} from '@/utils/encodeQuery';
 import {timestampFormat} from '../../utils/utils';
 import dayjs from 'dayjs';
 import {dashboard} from "../../assets/dashboard/index";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 // 设备
 const deviceFooter = ref<Footer[]>([]);
 const deviceTotal = ref(0);
@@ -70,7 +72,7 @@ const getDeviceData = () => {
       .deviceCount(encodeQuery({terms: {state: 'online'}}))
       .then((res) => {
         deviceFooter.value[0] = {
-          title: '在线',
+          title: $t('DashBoard.index.240761-7'),
           value: res.result,
           status: 'success',
         };
@@ -79,7 +81,7 @@ const getDeviceData = () => {
       .deviceCount(encodeQuery({terms: {state: 'offline'}}))
       .then((res) => {
         deviceFooter.value[1] = {
-          title: '离线',
+          title: $t('DashBoard.index.240761-8'),
           value: res.result,
           status: 'error',
         };
@@ -98,7 +100,7 @@ const getChannelData = () => {
       .channelCount({terms: [{column: 'status', value: 'online'}]})
       .then((res) => {
         channelFooter.value[0] = {
-          title: '在线',
+          title: $t('DashBoard.index.240761-7'),
           value: res.result,
           status: 'success',
         };
@@ -107,7 +109,7 @@ const getChannelData = () => {
       .channelCount({terms: [{column: 'status$not', value: 'online'}]})
       .then((res) => {
         channelFooter.value[1] = {
-          title: '离线',
+          title: $t('DashBoard.index.240761-8'),
           value: res.result,
           status: 'error',
         };
@@ -123,7 +125,7 @@ const getAggData = () => {
     aggTotal.value = res.result.total;
     aggFooter.value = [
       {
-        title: '总时长',
+        title: $t('DashBoard.index.240761-9'),
         value: timestampFormat(res.result.duration),
         status: '',
       },
@@ -140,7 +142,7 @@ const getAggPlayingData = () => {
     aggPlayingTotal.value = res.result.playingTotal;
     aggPlayingFooter.value = [
       {
-        title: '播放人数',
+        title: $t('DashBoard.index.240761-10'),
         value: res.result.playerTotal,
         status: '',
       },
@@ -168,11 +170,11 @@ const getPlayCount = async (params: any) => {
   } else if (dt > day && dt < year) {
     _limit = Math.abs(Math.ceil(dt / day));
     _time = '1d';
-    format = 'M月dd日'
+    format = $t('DashBoard.index.240761-11')
   } else if (dt >= year) {
     _limit = Math.abs(Math.floor(dt / month));
     _time = '1M';
-    format = 'YYYY年-MM月'
+    format = $t('DashBoard.index.240761-12')
   }
   dashboardApi
       .getPlayCount([

@@ -1,0 +1,40 @@
+{
+	"zh": {
+		"Save.SaveProduct.534989-0": "快速添加",
+		"Save.SaveProduct.534989-1": "取消",
+		"Save.SaveProduct.534989-2": "确定",
+		"Save.SaveProduct.534989-3": "产品类型",
+		"Save.SaveProduct.534989-4": "请选择产品类型",
+		"Save.SaveProduct.534989-5": "产品名称",
+		"Save.SaveProduct.534989-6": "请输入产品名称",
+		"Save.SaveProduct.534989-7": "最多输入64个字符",
+		"Save.SaveProduct.534989-8": "请输入名称",
+		"Save.SaveProduct.534989-9": "接入网关",
+		"Save.SaveProduct.534989-10": "请选择接入网关",
+		"Save.SaveProduct.534989-11": "暂无数据, 请联系管理员",
+		"Save.SaveProduct.534989-12": "暂无数据，请先",
+		"Save.SaveProduct.534989-13": "添加",
+		"Save.SaveProduct.534989-14": "请选择{0}",
+		"Save.SaveProduct.534989-15": "请输入{0}",
+		"Save.SaveProduct.534989-16": "操作成功"
+	},
+	"en": {
+		"Save.SaveProduct.534989-0": "Quick Add",
+		"Save.SaveProduct.534989-1": "cancel",
+		"Save.SaveProduct.534989-2": "determine",
+		"Save.SaveProduct.534989-3": "product type",
+		"Save.SaveProduct.534989-4": "Please select product type",
+		"Save.SaveProduct.534989-5": "Product Name",
+		"Save.SaveProduct.534989-6": "Please enter the product name",
+		"Save.SaveProduct.534989-7": "Enter a maximum of 64 characters",
+		"Save.SaveProduct.534989-8": "Please enter a name",
+		"Save.SaveProduct.534989-9": "Access gateway",
+		"Save.SaveProduct.534989-10": "Please select the access gateway",
+		"Save.SaveProduct.534989-11": "No data available, please contact the administrator",
+		"Save.SaveProduct.534989-12": "No data available at the moment, please proceed first",
+		"Save.SaveProduct.534989-13": "add to",
+		"Save.SaveProduct.534989-14": "Please select {0}",
+		"Save.SaveProduct.534989-15": "Please enter {0}",
+		"Save.SaveProduct.534989-16": "Operation successful"
+	}
+}

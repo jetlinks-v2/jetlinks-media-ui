@@ -2,7 +2,7 @@
 <template>
     <a-modal
         v-model:visible="_vis"
-        title="播放"
+        :title="$t('Live.index.5349821-0')"
         :width="type === 'share' ? '100%' : _type ? 1200 : 900"
         :class="{ share: type === 'share' }"
         :maskClosable="false"
@@ -31,14 +31,14 @@
                                 trigger="click"
                                 @click="showToolLock = true"
                             >
-                                <div>开始录像</div>
+                                <div>{{ $t('Live.index.5349821-1') }}</div>
                                 <template #overlay>
                                     <a-menu @click="recordStart">
                                         <a-menu-item key="true" v-if="_type && route.query.type !== 'onvif'">
                                             <span style="padding-right: 12px"
-                                                >本地存储</span
+                                                >{{ $t('Live.index.5349821-2') }}</span
                                             >
-                                            <a-tooltip title="存储在设备本地">
+                                            <a-tooltip :title="$t('Live.index.5349821-3')">
                                                 <a-icon
                                                     type="QuestionCircleOutlined"
                                                 />
@@ -46,9 +46,9 @@
                                         </a-menu-item>
                                         <a-menu-item key="false">
                                             <span style="padding-right: 12px"
-                                                >云端存储</span
+                                                >{{ $t('Live.index.5349821-4') }}</span
                                             >
-                                            <a-tooltip title="存储在服务器中">
+                                            <a-tooltip :title="$t('Live.index.5349821-5')">
                                                 <a-icon
                                                     type="QuestionCircleOutlined"
                                                 />
@@ -58,21 +58,21 @@
                                 </template>
                             </a-dropdown>
                         </template>
-                        <div v-else-if="isRecord === 1">请求录像中</div>
+                        <div v-else-if="isRecord === 1">{{ $t('Live.index.5349821-6') }}</div>
                         <div
                             v-else-if="isRecord === 2"
                             @click.stop="recordStop"
                         >
-                            停止录像
+                            {{ $t('Live.index.5349821-7') }}
                         </div>
                     </div>
 
                     <div class="tool-item" @click.stop="handleRefresh">
-                        刷新
+                        {{ $t('Live.index.5349821-8') }}
                     </div>
-                    <ConfirmModal title="重置将断开直播, 可能会影响其他播放者" :onConfirm="handleReset">
+                    <ConfirmModal :title="$t('Live.index.5349821-9')" :onConfirm="handleReset">
                         <div class="tool-item">
-                            重置
+                            {{ $t('Live.index.5349821-10') }}
                         </div></ConfirmModal
                     >
                 </div>
@@ -87,7 +87,7 @@
             <div class="media-live-actions" v-if="_type && showActions">
                 <template v-if="(data.ptzType.value === 0 || data.ptzType.value === 1) && route.query.type !== 'onvif'">
                     <div class="title">
-                        预置点位
+                        {{ $t('Live.index.5349821-11') }}
                     </div>
                     <div class="media-preset">
                         <Preset
@@ -97,7 +97,7 @@
                     </div>
                 </template>
                 <div class="title">
-                    视频格式
+                    {{ $t('Live.index.5349821-12') }}
                 </div>
                 <div class="media-live-tool">
                     <RadioButton
@@ -114,7 +114,7 @@
 
                 </div>
                 <div class="title">
-                    转速控制
+                    {{ $t('Live.index.5349821-13') }}
                 </div>
                 <div class="media-live-tool">
                     <RadioButton
@@ -135,7 +135,7 @@
                             >
                                 <div class="center-volume" :style="{ height: `${volume}%`}"> </div>
                                 <AIcon :type=" showAudio ? 'AudioOutlined' : 'AudioMutedOutlined' "/>
-                                <!--                                <div>转速控制</div>-->
+                                <!--                                <div>{{ $t('Live.index.5349821-13') }}</div>-->
                                 <!--                                <j-dropdown>-->
                                 <!--                                    <span-->
                                 <!--                                        >{{ _speed }}<AIcon type="DownOutlined"-->
@@ -160,8 +160,8 @@
         </div>
         <template #footer>
             <a-space v-if="type !== 'share'">
-                <a-button @click="_vis = false">取消</a-button>
-                <a-button @click="_vis = false" type="primary">确定</a-button>
+                <a-button @click="_vis = false">{{ $t('Live.index.5349821-14') }}</a-button>
+                <a-button @click="_vis = false" type="primary">{{ $t('Live.index.5349821-15') }}</a-button>
             </a-space>
         </template>
     </a-modal>
@@ -181,7 +181,9 @@ import { mediaConfigMap } from '../data';
 import { onlyMessage } from '@jetlinks-web/utils';
 import {closeAudio, openAudio, rtcStream} from "./audio";
 import {closeVideo, openVideo} from "./video";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 
 type Emits = {
     (e: 'update:visible', data: boolean): void;
@@ -239,9 +241,9 @@ const showActions = computed(() => {
 });
 
 const speedList = [
-    { label: '高', value: 180 },
-    { label: '中', value: 90 },
-    { label: '低', value: 45 },
+    { label: $t('Live.index.5349821-16'), value: 180 },
+    { label: $t('Live.index.5349821-17'), value: 90 },
+    { label: $t('Live.index.5349821-18'), value: 45 },
 ];
 const speed = ref(90);
 const local = ref();
@@ -376,7 +378,7 @@ const handleReset =  () => {
     const resp = channelApi.mediaStop(props.data.deviceId, props.data.channelId);
     resp.then((res)=>{
         if(res.success){
-            onlyMessage('操作成功！')
+            onlyMessage($t('Live.index.5349821-19'))
         }
     })
     return resp

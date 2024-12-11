@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="rule-item">
-            <span>计划状态：</span>
+            <span>{{ $t('Rule.index.855183-0') }}</span>
             <a-switch
                 v-if="editType"
                 v-model:checked="_state"
@@ -14,7 +14,7 @@
                         detail?.state?.value === 'enabled' ? 'success' : 'error'
                     "
                 />
-                {{ detail?.state?.value === 'enabled' ? '正常' : '禁用' }}
+                {{ detail?.state?.value === 'enabled' ? $t('Rule.index.855183-1') : $t('Rule.index.855183-2') }}
                 <j-permission-button
                     type="link"
                     :hasPermission="true"
@@ -25,19 +25,19 @@
             </div>
         </div>
         <div class="rule-item">
-            <div>保存周期（天）<span style="color: red">*</span></div>
+            <div>{{ $t('Rule.index.855183-3') }}<span style="color: red">*</span></div>
             <a-input-number
                 v-if="editType"
                 :precision="0"
                 :min="1"
                 :max="99999"
-                placeholder="请输入抓拍文件保存天数"
+                :placeholder="$t('Rule.index.855183-4')"
                 v-model:value="detail.saveDays"
                 style="width: 200px"
             ></a-input-number>
             <div v-else style="margin-left: 10px">{{ detail.saveDays }}</div>
             <div class="retentionCycleTip">
-                超出保存周期的抓拍文件将被自动删除
+                {{ $t('Rule.index.855183-5') }}
             </div>
         </div>
 
@@ -55,7 +55,7 @@
             style="margin-top: 20px"
             type="primary"
             @click="handleSave"
-            >保存</a-button
+            >{{ $t('Rule.index.855183-6') }}</a-button
         >
     </div>
 </template>
@@ -66,7 +66,8 @@ import { inject, onMounted, reactive, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { updatePlan } from '../../../../../api/auto';
 import { onlyMessage } from '@jetlinks-web/utils';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 
 const props = defineProps({
     first: {
@@ -109,12 +110,12 @@ const handleSave = async () => {
         });
     }
     if (!detail.value.saveDays) {
-        onlyMessage('请输入保存周期', 'error');
+        onlyMessage($t('Rule.index.855183-7'), 'error');
         return;
     }
     const res = await updatePlan(detail.value);
     if (res.success) {
-        onlyMessage('操作成功');
+        onlyMessage($t('Rule.index.855183-8'));
         editType.value = false;
     }
 };

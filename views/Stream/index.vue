@@ -30,7 +30,7 @@
                 <AIcon type="PlusOutlined"
                 />
               </template>
-              新增
+              {{ $t('Stream.index.416931-0') }}
             </j-permission-button>
           </template>
           <template #card="slotProps">
@@ -76,7 +76,7 @@
                         class="card-item-content-text"
                     >
                       <div class="card-item-content-text">
-                        服务商
+                        {{ $t('Stream.index.416931-1') }}
                       </div>
                       <div class="card-item-content-text">
                         <a-tooltip>
@@ -159,14 +159,15 @@ import {query, remove, disable, enalbe} from '../../api/stream';
 import {onlyMessage} from '@jetlinks-web/utils';
 import {useMenuStore} from '@/store/menu';
 import {streamImg} from "../../assets/stream/index";
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const menuStory = useMenuStore();
 const tableRef = ref<Record<string, any>>({});
 const params = ref<Record<string, any>>({});
 
 const columns = [
   {
-    title: '名称',
+    title: $t('Stream.index.416931-2'),
     dataIndex: 'name',
     key: 'name',
     search: {
@@ -175,18 +176,18 @@ const columns = [
     scopedSlots: true,
   },
   {
-    title: '状态',
+    title: $t('Stream.index.416931-3'),
     dataIndex: 'state',
     key: 'state',
     search: {
       type: 'select',
       options: [
         {
-          label: '禁用',
+          label: $t('Stream.index.416931-4'),
           value: 'disabled',
         },
         {
-          label: '正常',
+          label: $t('Stream.index.416931-5'),
           value: 'enabled',
         },
       ],
@@ -198,13 +199,13 @@ const columns = [
 const getActions = (data: Partial<Record<string, any>>): any => {
   if (!data) return [];
   const state = data.state.value;
-  const stateText = state === 'enabled' ? '禁用' : '启用';
+  const stateText = state === 'enabled' ? $t('Stream.index.416931-4') : $t('Stream.index.416931-6');
   const actions = [
     {
       key: 'update',
-      text: '编辑',
+      text: $t('Stream.index.416931-7'),
       tooltip: {
-        title: '编辑',
+        title: $t('Stream.index.416931-7'),
       },
       icon: 'EditOutlined',
       onClick: () => {
@@ -219,7 +220,7 @@ const getActions = (data: Partial<Record<string, any>>): any => {
       },
       icon: state === 'enabled' ? 'StopOutlined' : 'CheckCircleOutlined',
       popConfirm: {
-        title: `确认${stateText}?`,
+        title: $t('Stream.index.416931-8', [stateText]),
         onConfirm: () => {
           let response =
               state === 'enabled'
@@ -227,7 +228,7 @@ const getActions = (data: Partial<Record<string, any>>): any => {
                   : enalbe(data.id);
           response.then((res) => {
             if (res.success) {
-              onlyMessage('操作成功', 'success');
+              onlyMessage($t('Stream.index.416931-9'), 'success');
               tableRef.value?.reload();
             }
           });
@@ -237,18 +238,18 @@ const getActions = (data: Partial<Record<string, any>>): any => {
     },
     {
       key: 'delete',
-      text: '删除',
+      text: $t('Stream.index.416931-10'),
       disabled: state === 'enabled',
       tooltip: {
-        title: state === 'enabled' ? '正常的流媒体不能删除' : '删除',
+        title: state === 'enabled' ? $t('Stream.index.416931-11') : $t('Stream.index.416931-10'),
       },
       popConfirm: {
-        title: '确认删除?',
+        title: $t('Stream.index.416931-12'),
         onConfirm: () => {
           const response = remove(data.id);
           response.then((res) => {
             if (res.success) {
-              onlyMessage('操作成功', 'success');
+              onlyMessage($t('Stream.index.416931-9'), 'success');
               tableRef.value.reload();
             }
           });

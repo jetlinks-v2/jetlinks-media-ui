@@ -1,0 +1,38 @@
+{
+	"zh": {
+		"Live.shareLive.5349823-0": "分享视频",
+		"Live.shareLive.5349823-1": "开始录像",
+		"Live.shareLive.5349823-2": "本地存储",
+		"Live.shareLive.5349823-3": "存储在设备本地",
+		"Live.shareLive.5349823-4": "云端存储",
+		"Live.shareLive.5349823-5": "存储在服务器中",
+		"Live.shareLive.5349823-6": "请求录像中",
+		"Live.shareLive.5349823-7": "停止录像",
+		"Live.shareLive.5349823-8": "刷新",
+		"Live.shareLive.5349823-9": "重置将断开直播, 可能会影响其他播放者",
+		"Live.shareLive.5349823-10": "重置",
+		"Live.shareLive.5349823-11": "转速控制",
+		"Live.shareLive.5349823-12": "高",
+		"Live.shareLive.5349823-13": "中",
+		"Live.shareLive.5349823-14": "低",
+		"Live.shareLive.5349823-15": "操作成功!"
+	},
+	"en": {
+		"Live.shareLive.5349823-0": "Share video",
+		"Live.shareLive.5349823-1": "Start recording",
+		"Live.shareLive.5349823-2": "Local storage",
+		"Live.shareLive.5349823-3": "Store locally on the device",
+		"Live.shareLive.5349823-4": "cloud storage ",
+		"Live.shareLive.5349823-5": "Stored on the server",
+		"Live.shareLive.5349823-6": "Request video recording",
+		"Live.shareLive.5349823-7": "Stop recording",
+		"Live.shareLive.5349823-8": "Refresh",
+		"Live.shareLive.5349823-9": "Resetting will disconnect the live stream, which may affect other players",
+		"Live.shareLive.5349823-10": "Reset",
+		"Live.shareLive.5349823-11": "speed control ",
+		"Live.shareLive.5349823-12": "high",
+		"Live.shareLive.5349823-13": "in",
+		"Live.shareLive.5349823-14": "low",
+		"Live.shareLive.5349823-15": "Operation successful!"
+	}
+}

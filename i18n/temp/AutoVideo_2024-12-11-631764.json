@@ -1,0 +1,28 @@
+{
+	"zh": {
+		"Channel.Bind.3127010-0": "绑定通道",
+		"Channel.Bind.3127010-1": "选择设备及目录查看已绑定的通道：",
+		"Channel.Bind.3127010-2": "当前目录：",
+		"Channel.Bind.3127010-3": "名称",
+		"Channel.Bind.3127010-4": "厂商",
+		"Channel.Bind.3127010-5": "安装地址",
+		"Channel.Bind.3127010-6": "状态",
+		"Channel.Bind.3127010-7": "已连接",
+		"Channel.Bind.3127010-8": "未连接",
+		"Channel.Bind.3127010-9": "操作",
+		"Channel.Bind.3127010-10": "播放"
+	},
+	"en": {
+		"Channel.Bind.3127010-0": "Bind channel",
+		"Channel.Bind.3127010-1": "Select device and directory to view the bound channels:",
+		"Channel.Bind.3127010-2": "Current directory:",
+		"Channel.Bind.3127010-3": "name",
+		"Channel.Bind.3127010-4": "manufacturer",
+		"Channel.Bind.3127010-5": "Installation address",
+		"Channel.Bind.3127010-6": "state",
+		"Channel.Bind.3127010-7": "Connected already",
+		"Channel.Bind.3127010-8": "Not connected",
+		"Channel.Bind.3127010-9": "operation",
+		"Channel.Bind.3127010-10": "play"
+	}
+}

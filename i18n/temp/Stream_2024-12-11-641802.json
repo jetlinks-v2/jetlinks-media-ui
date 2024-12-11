@@ -1,0 +1,32 @@
+{
+	"zh": {
+		"Stream.index.416931-0": "新增",
+		"Stream.index.416931-1": "服务商",
+		"Stream.index.416931-2": "名称",
+		"Stream.index.416931-3": "状态",
+		"Stream.index.416931-4": "禁用",
+		"Stream.index.416931-5": "正常",
+		"Stream.index.416931-6": "启用",
+		"Stream.index.416931-7": "编辑",
+		"Stream.index.416931-8": "确认{0}?",
+		"Stream.index.416931-9": "操作成功",
+		"Stream.index.416931-10": "删除",
+		"Stream.index.416931-11": "正常的流媒体不能删除",
+		"Stream.index.416931-12": "确认删除?"
+	},
+	"en": {
+		"Stream.index.416931-0": "newly added",
+		"Stream.index.416931-1": "Service provider",
+		"Stream.index.416931-2": "name",
+		"Stream.index.416931-3": "state",
+		"Stream.index.416931-4": "Disable",
+		"Stream.index.416931-5": "normal",
+		"Stream.index.416931-6": "Enable",
+		"Stream.index.416931-7": "edit",
+		"Stream.index.416931-8": "Confirm {0}?",
+		"Stream.index.416931-9": "Operation successful",
+		"Stream.index.416931-10": "delete",
+		"Stream.index.416931-11": "Normal streaming media cannot be deleted",
+		"Stream.index.416931-12": "Are you sure to delete?"
+	}
+}

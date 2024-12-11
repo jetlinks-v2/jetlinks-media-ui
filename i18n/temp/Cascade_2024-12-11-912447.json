@@ -1,0 +1,24 @@
+{
+	"zh": {
+		"Publish.index.122692-0": "推送",
+		"Publish.index.122692-1": "取消",
+		"Publish.index.122692-2": "确定",
+		"Publish.index.122692-3": "成功：",
+		"Publish.index.122692-4": "失败：",
+		"Publish.index.122692-5": "-推送失败",
+		"Publish.index.122692-6": "下载",
+		"Publish.index.122692-7": "推送通道数量：",
+		"Publish.index.122692-8": "已推送通道数量："
+	},
+	"en": {
+		"Publish.index.122692-0": "Push notifications",
+		"Publish.index.122692-1": "cancel",
+		"Publish.index.122692-2": "determine",
+		"Publish.index.122692-3": "success:",
+		"Publish.index.122692-4": "Failed:",
+		"Publish.index.122692-5": "-Push failed",
+		"Publish.index.122692-6": "download",
+		"Publish.index.122692-7": "Number of push channels:",
+		"Publish.index.122692-8": "Number of pushed channels:"
+	}
+}

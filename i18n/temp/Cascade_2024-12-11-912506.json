@@ -1,0 +1,34 @@
+{
+	"zh": {
+		"BindChannel.index.122696-0": "绑定通道",
+		"BindChannel.index.122696-1": "取消",
+		"BindChannel.index.122696-2": "确定",
+		"BindChannel.index.122696-3": "通道列表",
+		"BindChannel.index.122696-4": "设备名称",
+		"BindChannel.index.122696-5": "通道名称",
+		"BindChannel.index.122696-6": "安装地址",
+		"BindChannel.index.122696-7": "厂商",
+		"BindChannel.index.122696-8": "状态",
+		"BindChannel.index.122696-9": "已连接",
+		"BindChannel.index.122696-10": "未连接",
+		"BindChannel.index.122696-11": "请勾选数据",
+		"BindChannel.index.122696-12": "操作成功！",
+		"BindChannel.index.122696-13": "操作失败！"
+	},
+	"en": {
+		"BindChannel.index.122696-0": "Bind channel",
+		"BindChannel.index.122696-1": "cancel",
+		"BindChannel.index.122696-2": "determine",
+		"BindChannel.index.122696-3": "Channel List",
+		"BindChannel.index.122696-4": "Equipment name",
+		"BindChannel.index.122696-5": "Channel name",
+		"BindChannel.index.122696-6": "Installation address",
+		"BindChannel.index.122696-7": "manufacturer",
+		"BindChannel.index.122696-8": "state",
+		"BindChannel.index.122696-9": "Connected already",
+		"BindChannel.index.122696-10": "Not connected",
+		"BindChannel.index.122696-11": "Please check the data",
+		"BindChannel.index.122696-12": "Operation successful!",
+		"BindChannel.index.122696-13": "Operation failed!"
+	}
+}

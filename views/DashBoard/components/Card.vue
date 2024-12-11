@@ -8,10 +8,10 @@
                         v-model:value="dimension"
                         button-style="solid"
                     >
-                        <a-radio-button value="today">今日</a-radio-button>
-                        <a-radio-button value="week">近一周</a-radio-button>
-                        <a-radio-button value="month">近一月</a-radio-button>
-                        <a-radio-button value="year">近一年</a-radio-button>
+                        <a-radio-button value="today">{{ $t('components.Card.240764-0') }}</a-radio-button>
+                        <a-radio-button value="week">{{ $t('components.Card.240764-1') }}</a-radio-button>
+                        <a-radio-button value="month">{{ $t('components.Card.240764-2') }}</a-radio-button>
+                        <a-radio-button value="year">{{ $t('components.Card.240764-3') }}</a-radio-button>
                     </a-radio-group>
                     <a-range-picker
                         format="YYYY-MM-DD HH:mm:ss"
@@ -23,14 +23,16 @@
             </div>
         </div>
         <div v-if="chartData.length" class="chart" ref="chartRef"></div>
-        <a-empty v-else class="no-data" description="暂无数据" ></a-empty>
+        <a-empty v-else class="no-data" :description="$t('components.Card.240764-4')" ></a-empty>
     </div>
 </template>
 
 <script setup lang="ts">
 import * as echarts from 'echarts';
 import dayjs from 'dayjs';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 // const { proxy } = <any>getCurrentInstance();
 type Emits = {
     (e: 'change', data: any): void;

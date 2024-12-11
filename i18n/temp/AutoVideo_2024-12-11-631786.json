@@ -1,0 +1,22 @@
+{
+	"zh": {
+		"Calendar.index.3127118-0": "录像时段",
+		"Calendar.index.3127118-1": "抓拍时间",
+		"Calendar.index.3127118-2": "按周",
+		"Calendar.index.3127118-3": "自定义日历",
+		"Calendar.index.3127118-4": "执行一次",
+		"Calendar.index.3127118-5": "设置",
+		"Calendar.index.3127118-6": "{0} - {1}周期执行",
+		"Calendar.index.3127118-7": "请检查配置项"
+	},
+	"en": {
+		"Calendar.index.3127118-0": "Video recording period",
+		"Calendar.index.3127118-1": "Capture time",
+		"Calendar.index.3127118-2": "By week",
+		"Calendar.index.3127118-3": "Customize Calendar",
+		"Calendar.index.3127118-4": "Execute once",
+		"Calendar.index.3127118-5": "set up",
+		"Calendar.index.3127118-6": "{0} - {1} cycle execution",
+		"Calendar.index.3127118-7": "Please check the configuration items"
+	}
+}

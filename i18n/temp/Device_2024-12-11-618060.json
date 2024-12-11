@@ -1,0 +1,22 @@
+{
+	"zh": {
+		"Save.index.179438-0": "1.概述",
+		"Save.index.179438-1": "JetLinks平台支持通过Agent代理，将具有视频能力的边缘网关接入到平台。边缘网关下的视频设备可将其视频通道统一推送至云平台。用户在平台中即可在该网关下直接查看和管理所有已接入的视频通道。",
+		"Save.index.179438-2": "2.配置说明",
+		"Save.index.179438-3": "2.1平台端配置",
+		"Save.index.179438-4": "ID：设备唯一标识，若不填写，系统将自动生成唯一标识",
+		"Save.index.179438-5": "设备名称：用户自定义输入小于或等于64位字符",
+		"Save.index.179438-6": "所属产品：选择接入方式为Agent视频设备接入的产品，若当前无对应产品，可点击右侧快速添加按钮，填写产品名称和选择Agent视频设备接入类型的网关完成产品创建。",
+		"Save.index.179438-7": "3.所有配置项填写完成，点击保存。"
+	},
+	"en": {
+		"Save.index.179438-0": "1. Overview",
+		"Save.index.179438-1": "The JetLinks platform supports the use of Agent agents to connect edge gateways with video capabilities to the platform. Video devices under the edge gateway can push their video channels uniformly to the cloud platform. Users can directly view and manage all connected video channels under this gateway on the platform.",
+		"Save.index.179438-2": "2. Configuration Description",
+		"Save.index.179438-3": "2.1 Platform configuration",
+		"Save.index.179438-4": "ID： Unique identifier of the device, if not filled in, the system will automatically generate a unique identifier",
+		"Save.index.179438-5": "Device Name: User defined input less than or equal to 64 characters",
+		"Save.index.179438-6": "Product: Select the product with Agent video device access as the access method. If there is currently no corresponding product, click the quick add button on the right, fill in the product name, and select the gateway for Agent video device access type to complete the product creation.",
+		"Save.index.179438-7": "3. Complete all configuration items and click save."
+	}
+}

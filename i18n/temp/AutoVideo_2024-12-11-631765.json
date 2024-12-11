@@ -1,0 +1,20 @@
+{
+	"zh": {
+		"components.utils.3127011-0": "星期一",
+		"components.utils.3127011-1": "星期二",
+		"components.utils.3127011-2": "星期三",
+		"components.utils.3127011-3": "星期四",
+		"components.utils.3127011-4": "星期五",
+		"components.utils.3127011-5": "星期六",
+		"components.utils.3127011-6": "星期天"
+	},
+	"en": {
+		"components.utils.3127011-0": "Monday",
+		"components.utils.3127011-1": "Tuesday",
+		"components.utils.3127011-2": "Wednesday",
+		"components.utils.3127011-3": "Thursday",
+		"components.utils.3127011-4": "Friday",
+		"components.utils.3127011-5": "Saturday",
+		"components.utils.3127011-6": "Sunday"
+	}
+}

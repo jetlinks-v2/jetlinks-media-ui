@@ -3,7 +3,7 @@
         :maskClosable="false"
         width="750px"
         :visible="true"
-        title="设置"
+        :title="$t('Calendar.Setting.3127120-0')"
         @ok="handleSave"
         @cancel="handleCancel"
     >
@@ -15,7 +15,7 @@
                     style="width: 80px"
                     @change="onCheckAllChange"
                 >
-                    全部
+                    {{ $t('Calendar.Setting.3127120-1') }}
                 </a-checkbox>
                 <a-checkbox-group
                     v-model:value="checkRef.checkedList"
@@ -33,7 +33,9 @@
 <script setup lang="ts" name="Setting">
 import { onMounted, reactive, ref, watch } from 'vue';
 import Time from './Time.vue';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     data: {
         type: Object,

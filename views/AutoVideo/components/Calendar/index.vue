@@ -1,14 +1,14 @@
 <template>
     <div class="calendar">
         <div class="header" v-if="!view">
-            <span>{{ type === 'auto' ? '录像时段' : '抓拍时间' }}: </span>
+            <span>{{ type === 'auto' ? $t('Calendar.index.3127118-0') : $t('Calendar.index.3127118-1') }}: </span>
             <a-radio-group
                 v-model:value="trigger"
                 :disabled="disabled"
                 @change="onChangeTirgger"
             >
-                <a-radio value="week">按周</a-radio>
-                <a-radio value="calender">自定义日历</a-radio>
+                <a-radio value="week">{{ $t('Calendar.index.3127118-2') }}</a-radio>
+                <a-radio value="calender">{{ $t('Calendar.index.3127118-3') }}</a-radio>
             </a-radio-group>
         </div>
         <div class="content">
@@ -41,7 +41,7 @@
                                             i.once.time,
                                         )"
                                     >
-                                        {{ p }}执行一次
+                                        {{ p }}{{ $t('Calendar.index.3127118-4') }}
                                     </div>
                                 </template>
                                 <!-- <a-badge status="processing" /> -->
@@ -84,7 +84,7 @@
                 </div>
                 <div class="item-setting" v-if="!disabled">
                     <a-button @click="handleSetting(item)" size="small"
-                        >设置</a-button
+                        >{{ $t('Calendar.index.3127118-5') }}</a-button
                     >
                 </div>
             </div>
@@ -110,7 +110,9 @@ import { queryTags } from '../../../../api/auto';
 import { cloneDeep } from 'lodash-es';
 import { formatTime } from '../../../../utils/utils';
 import { autoVideoImg } from '../../../../assets'
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     value: {
         type: Array,
@@ -266,9 +268,9 @@ const handleRangeTooltip = (arr, obj) => {
         );
     });
     // console.log('_obj====', item, _arr);
-    return `${formatTime(item.start * 1000)} - ${formatTime(
+    return $t('Calendar.index.3127118-6', [formatTime(item.start * 1000),formatTime(
         item.end * 1000,
-    )}周期执行`;
+    )]);
 };
 
 const initList = async (trigger) => {
@@ -326,7 +328,7 @@ const onSave = (records, when) => {
         changList(records, when, points);
         visible.value = false;
     } else {
-        onlyMessage('请检查配置项', 'warning');
+        onlyMessage($t('Calendar.index.3127118-7'), 'warning');
     }
 };
 

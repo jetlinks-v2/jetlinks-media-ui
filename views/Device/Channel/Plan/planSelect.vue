@@ -9,13 +9,15 @@
         show-search
         :filter-option="filterOption"
         @change="(value, option) => onChange(value, option)"
-        placeholder="请选择计划"
+        :placeholder="$t('Plan.planSelect.5349814-0')"
     />
 </template>
 
 <script setup lang="ts" name="planSelect">
 import { computed, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     options: {
         type: Array,

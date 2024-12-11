@@ -1,0 +1,24 @@
+{
+	"zh": {
+		"Rule.index.312706-0": "计划状态：",
+		"Rule.index.312706-1": "正常",
+		"Rule.index.312706-2": "禁用",
+		"Rule.index.312706-3": "保存周期（天）",
+		"Rule.index.312706-4": "请输入录像文件保存天数",
+		"Rule.index.312706-5": "超出保存周期的录像文件将被自动删除",
+		"Rule.index.312706-6": "保存",
+		"Rule.index.312706-7": "操作成功",
+		"Rule.index.312706-8": "请输入保存周期"
+	},
+	"en": {
+		"Rule.index.312706-0": "Plan status:",
+		"Rule.index.312706-1": "normal",
+		"Rule.index.312706-2": "Disable",
+		"Rule.index.312706-3": "Storage period (days)",
+		"Rule.index.312706-4": "Please enter the number of days to save the video file",
+		"Rule.index.312706-5": "Video files that exceed the storage period will be automatically deleted",
+		"Rule.index.312706-6": "preservation",
+		"Rule.index.312706-7": "Operation successful",
+		"Rule.index.312706-8": "Please enter the storage period"
+	}
+}

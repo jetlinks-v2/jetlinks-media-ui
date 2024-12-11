@@ -1,3 +1,5 @@
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 type BaseItem = {
     id: string;
     name: string;
@@ -92,9 +94,9 @@ export type gatewayType = {
 
 export const PROVIDER_OPTIONS = [
     { label: 'GB/T28181', value: 'gb28181-2016' },
-    { label: '固定地址', value: 'fixed-media' },
+    { label: $t('Device.typings.534984-0'), value: 'fixed-media' },
     { label: 'Onvif', value: 'onvif'},
-    { label: '插件', value: 'media-plugin'}
+    { label: $t('Device.typings.534984-1'), value: 'media-plugin'}
 ]
 
 export type ProductItem = {

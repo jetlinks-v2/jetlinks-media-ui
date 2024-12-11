@@ -49,11 +49,11 @@
           <a-spin :spinning="loading">
             <a-tooltip placement="topLeft">
               <template #title>
-                <div>云端：存储在服务器中</div>
-                <div>本地：存储在设备本地</div>
+                <div>{{ $t('Playback.index.534981-0') }}</div>
+                <div>{{ $t('Playback.index.534981-1') }}</div>
               </template>
               <div>
-                类型:
+                {{ $t('Playback.index.534981-2') }}
                 <AIcon type="QuestionCircleOutlined"/>
               </div>
             </a-tooltip>
@@ -61,19 +61,19 @@
                 layout="horizontal"
                 :options="deviceType !== 'onvif' ?[
                                 {
-                                    label: '云端',
+                                    label: $t('Playback.index.534981-3'),
                                     value: 'cloud',
                                     logo: deviceImg.cloud,
                                 },
                                 {
-                                    label: '本地',
+                                    label: $t('Playback.index.534981-4'),
                                     value: 'local',
                                     logo: deviceImg.local,
                                     disabled: deviceType === 'fixed-media',
                                 },
                             ]:
                             [{
-                                label: '云端',
+                                label: $t('Playback.index.534981-3'),
                                 value: 'cloud',
                                 logo: deviceImg.cloud,
                             }]"
@@ -96,7 +96,7 @@
             >
               <a-empty
                   v-if="!historyList.length"
-                  description="暂无数据"
+                  :description="$t('Playback.index.534981-5')"
               />
               <a-list
                   v-else
@@ -114,8 +114,8 @@
                                                         item.mediaStartTime) ===
                                                         playNowTime &&
                                                     playStatus === 1
-                                                        ? '暂停'
-                                                        : '播放'
+                                                        ? $t('Playback.index.534981-6')
+                                                        : $t('Playback.index.534981-7')
                                                 "
                       >
                         <a
@@ -184,7 +184,9 @@ import dayjs from 'dayjs';
 import type {Dayjs} from 'dayjs';
 import {deviceImg} from "../../../assets/device/index";
 import RadioCard from '../../../components/RadioCard/index.vue'
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const route = useRoute();
 
 const url = ref('');

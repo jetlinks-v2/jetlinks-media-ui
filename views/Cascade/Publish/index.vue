@@ -2,35 +2,35 @@
 <template>
   <a-modal
       v-model:visible="_vis"
-      title="推送"
-      cancelText="取消"
-      okText="确定"
+      :title="$t('Publish.index.122692-0')"
+      :cancelText="$t('Publish.index.122692-1')"
+      :okText="$t('Publish.index.122692-2')"
       width="900px"
       @ok="_vis = false"
       @cancel="_vis = false"
   >
     <a-row :gutter="20">
       <a-col :span="8">
-        <p>成功：{{ successCount }}</p>
+        <p>{{ $t('Publish.index.122692-3') }}{{ successCount }}</p>
         <a-space>
-          <p>失败：{{ failCount }}</p>
+          <p>{{ $t('Publish.index.122692-4') }}{{ failCount }}</p>
           <a
               v-if="errMessage.length"
               @click="
                             downloadJson(
                                 errMessage || '',
-                                data.name + '-推送失败',
+                                data.name + $t('Publish.index.122692-5'),
                             )
                         "
-          >下载</a
+          >{{ $t('Publish.index.122692-6') }}</a
           >
         </a-space>
       </a-col>
       <a-col :span="8">
-        <p>推送通道数量：{{ data.count }}</p>
+        <p>{{ $t('Publish.index.122692-7') }}{{ data.count }}</p>
       </a-col>
       <a-col :span="8">
-        <p>已推送通道数量：{{ successCount + failCount }}</p>
+        <p>{{ $t('Publish.index.122692-8') }}{{ successCount + failCount }}</p>
       </a-col>
     </a-row>
     <div v-if="flag">
@@ -46,7 +46,9 @@ import {BASE_API} from '@jetlinks-web/constants';
 import {EventSourcePolyfill} from 'event-source-polyfill';
 import {PropType} from 'vue';
 import {downloadJson} from "@/utils"
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 type Emits = {
   (e: 'update:visible', data: boolean): void;
 };

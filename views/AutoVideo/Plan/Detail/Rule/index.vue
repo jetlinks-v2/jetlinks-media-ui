@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="rule-item">
-            <span>计划状态：</span>
+            <span>{{ $t('Rule.index.312706-0') }}</span>
             <a-switch
                 v-if="editType"
                 v-model:checked="_state"
@@ -14,7 +14,7 @@
                         detail.state?.value === 'enabled' ? 'success' : 'error'
                     "
                 />
-                {{ detail.state?.value === 'enabled' ? '正常' : '禁用' }}
+                {{ detail.state?.value === 'enabled' ? $t('Rule.index.312706-1') : $t('Rule.index.312706-2') }}
                 <j-permission-button
                     type="link"
                     hasPermission="device/Instance:action"
@@ -26,7 +26,7 @@
         </div>
         <div class="rule-item">
             <div>
-                保存周期（天）<span style="color: red; margin-right: 10px"
+                {{ $t('Rule.index.312706-3') }}<span style="color: red; margin-right: 10px"
                     >*</span
                 >
             </div>
@@ -35,13 +35,13 @@
                 :precision="0"
                 :min="1"
                 :max="99999"
-                placeholder="请输入录像文件保存天数"
+                :placeholder="$t('Rule.index.312706-4')"
                 style="width: 200px"
                 v-model:value="detail.saveDays"
             ></a-input-number>
             <div v-else>{{ detail.saveDays }}</div>
             <div class="retentionCycleTip">
-                超出保存周期的录像文件将被自动删除
+                {{ $t('Rule.index.312706-5') }}
             </div>
         </div>
 
@@ -54,7 +54,7 @@
             type="primary"
             :loading="loading"
             @click="save"
-            >保存</a-button
+            >{{ $t('Rule.index.312706-6') }}</a-button
         >
     </div>
 </template>
@@ -65,7 +65,9 @@ import { useRequest } from '@jetlinks-web/hooks';
 import { updatePlan } from '../../../../../api/auto';
 import { usePlanDetail } from '../utils';
 import { onlyMessage } from '@jetlinks-web/utils';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     first: {
         type: Boolean,
@@ -82,7 +84,7 @@ const _state = ref();
 const { run, loading } = useRequest(updatePlan, {
     immediate: false,
     onSuccess() {
-        onlyMessage('操作成功');
+        onlyMessage($t('Rule.index.312706-7'));
         editType.value = false;
     },
 });
@@ -124,7 +126,7 @@ const save = () => {
     detail.value.state.value = _state.value;
     detail.value.schedules = [obj]
     if (!detail.value.saveDays) {
-        onlyMessage('请输入保存周期', 'error');
+        onlyMessage($t('Rule.index.312706-8'), 'error');
         return;
     }
     run(detail.value)

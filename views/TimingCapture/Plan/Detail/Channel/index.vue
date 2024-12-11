@@ -2,10 +2,10 @@
     <div>
         <a-spin :spinning="spinning">
             <div class="channelControl">
-                <div class="bind">已绑定通道数：{{ bindCount }}</div>
+                <div class="bind">{{ $t('Channel.index.855184-0') }}{{ bindCount }}</div>
                 <a-space v-if="editType">
-                    <a-button @click="clearBind">清空通道</a-button>
-                    <a-button @click="showBind">绑定通道</a-button>
+                    <a-button @click="clearBind">{{ $t('Channel.index.855184-1') }}</a-button>
+                    <a-button @click="showBind">{{ $t('Channel.index.855184-2') }}</a-button>
                 </a-space>
                 <div v-else>
                     <j-permission-button
@@ -19,7 +19,7 @@
             </div>
             <div class="bound">
                 <div class="bound_device">
-                    <div v-if="showBody">选择设备及目录查看已绑定的通道：</div>
+                    <div v-if="showBody">{{ $t('Channel.index.855184-3') }}</div>
                     <ChannelTree
                         ref="treeRef"
                         :height="700"
@@ -32,7 +32,7 @@
                 </div>
                 <div v-if="showBody" class="bound_channel">
                     <div style="padding: 12px 24px 0; display: flex">
-                        <div class="catalogue">当前目录：</div>
+                        <div class="catalogue">{{ $t('Channel.index.855184-4') }}</div>
                         <a-breadcrumb>
                             <a-breadcrumb-item v-for="name in pathsName">{{
                                 name
@@ -76,7 +76,7 @@
                                         type="link"
                                         style="padding: 0px"
                                         key="play"
-                                        :tooltip="{ title: '播放' }"
+                                        :tooltip="{ title: $t('Channel.index.855184-5') }"
                                         @click="
                                             () => {
                                                 onPlay(slotProps);
@@ -89,11 +89,11 @@
                                         type="link"
                                         key="unbind"
                                         style="padding: 0px"
-                                        :tooltip="{ title: '解绑' }"
+                                        :tooltip="{ title: $t('Channel.index.855184-6') }"
                                         :popConfirm="{
-                                            title: '确认解绑吗？',
-                                            okText: '确定',
-                                            cancelText: '取消',
+                                            title: $t('Channel.index.855184-7'),
+                                            okText: $t('Channel.index.855184-8'),
+                                            cancelText: $t('Channel.index.855184-9'),
                                             onConfirm: () => {
                                                 unBind(slotProps);
                                             },
@@ -107,7 +107,7 @@
                                         type="link"
                                         key="picture"
                                         style="padding: 0px"
-                                        :tooltip="{ title: '抓拍' }"
+                                        :tooltip="{ title: $t('Channel.index.855184-10') }"
                                         @click="
                                             () => {
                                                 onPicture(slotProps);
@@ -120,7 +120,7 @@
                                         type="link"
                                         style="padding: 0px"
                                         key="logs"
-                                        :tooltip="{ title: '日志' }"
+                                        :tooltip="{ title: $t('Channel.index.855184-11') }"
                                         @click="
                                             () => {
                                                 onLogs(slotProps);
@@ -140,10 +140,10 @@
                     type="primary"
                     :loading="saveLoading"
                     @click="saveChannel"
-                    >保存</a-button
+                    >{{ $t('Channel.index.855184-12') }}</a-button
                 >
             </div>
-            <div v-if="!showBody" class="video-unbind-tip">请先绑定通道</div>
+            <div v-if="!showBody" class="video-unbind-tip">{{ $t('Channel.index.855184-13') }}</div>
         </a-spin>
 
         <Bind
@@ -182,7 +182,8 @@ import {
 import { Modal } from 'ant-design-vue';
 import { cloneDeep } from 'lodash-es';
 import { onlyMessage } from '@jetlinks-web/utils';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 // import Logs from '@/views/media/AutoVideo/components/Logs/index.vue';
 const bindCount = ref(0);
 const tableRef = ref();
@@ -228,7 +229,7 @@ const columns = [
         },
     },
     {
-        title: '名称',
+        title: $t('Channel.index.855184-14'),
         dataIndex: 'name',
         key: 'name',
         ellipsis: true,
@@ -238,13 +239,13 @@ const columns = [
         },
     },
     {
-        title: '厂商',
+        title: $t('Channel.index.855184-15'),
         dataIndex: 'manufacturer',
         key: 'manufacturer',
         ellipsis: true,
     },
     {
-        title: '安装地址',
+        title: $t('Channel.index.855184-16'),
         dataIndex: 'address',
         ellipsis: true,
         key: 'address',
@@ -253,7 +254,7 @@ const columns = [
         },
     },
     {
-        title: '状态',
+        title: $t('Channel.index.855184-17'),
         dataIndex: 'status',
         key: 'status',
         scopedSlots: true,
@@ -261,13 +262,13 @@ const columns = [
         search: {
             type: 'select',
             options: [
-                { label: '已连接', value: 'online' },
-                { label: '未连接', value: 'offline' },
+                { label: $t('Channel.index.855184-18'), value: 'online' },
+                { label: $t('Channel.index.855184-19'), value: 'offline' },
             ],
         },
     },
     {
-        title: '操作',
+        title: $t('Channel.index.855184-20'),
         key: 'action',
         width: 100,
         scopedSlots: true,
@@ -322,7 +323,7 @@ const handleSearch = (e) => {
 };
 const clearBind = () => {
     Modal.confirm({
-        title: '清空操作不可撤销，确认清空所有通道？',
+        title: $t('Channel.index.855184-21'),
         onOk() {
             run(route.params.id);
             cacheDeviceIds.value = {};
@@ -435,7 +436,7 @@ const saveChannel = async () => {
     }
     treeRef.value.getDeviceList();
     await getBindTotal();
-    onlyMessage('操作成功');
+    onlyMessage($t('Channel.index.855184-22'));
     editType.value = false;
 };
 

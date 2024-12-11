@@ -3,7 +3,7 @@
         <div class="left-content" :class="{ active: show }">
             <div class="channel-tree">
                 <div class="channel-tree-query">
-                    <a-input @change="queryTree" placeholder="请输入目录名称">
+                    <a-input @change="queryTree" :placeholder="$t('Tree.index.5349815-0')">
                         <template #suffix>
                             <AIcon type="SearchOutlined" />
                         </template>
@@ -44,7 +44,9 @@
 <script setup lang="ts">
 import { debounce } from 'lodash-es';
 import ChannelApi from '../../../../api/channel';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 interface TreeProps {
     onSelect: (id: string) => void;
     onTreeLoad: (type: boolean) => void;

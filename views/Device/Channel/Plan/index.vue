@@ -1,6 +1,6 @@
 <template>
     <a-drawer
-        :title="type === 'video' ? '录像计划' : '抓拍计划'"
+        :title="type === 'video' ? $t('Plan.index.973218-0') : $t('Plan.index.973218-1')"
         visible
         @close="emit('close')"
         :maskClosable="false"
@@ -12,7 +12,7 @@
                 <div v-for="(item, index) in list" class="item">
                     <div class="header">
                         <div>
-                            <span>计划{{ index + 1 }}: </span>
+                            <span>{{ $t('Plan.index.973218-2') }}{{ index + 1 }}: </span>
                             <planSelect
                                 v-model:value="item.id"
                                 :options="options"
@@ -24,7 +24,7 @@
                         <j-permission-button
                             shape="circle"
                             :tooltip="{
-                                title: '删除',
+                                title: $t('Plan.index.973218-3'),
                             }"
                             danger
                             @click="onDel(item)"
@@ -34,13 +34,13 @@
                     </div>
                     <div v-if="item?.times" class="header-detail">
                         <span
-                            >计划详情:
+                            >{{ $t('Plan.index.973218-4') }}
                             {{
-                                item.trigger === 'week' ? '按周' : '自定义日历'
+                                item.trigger === 'week' ? $t('Plan.index.973218-5') : $t('Plan.index.973218-6')
                             }}
                         </span>
                         <span
-                            >计划状态：
+                            >{{ $t('Plan.index.973218-7') }}
                             <a-badge
                                 :status="
                                     item?.state?.value === 'enabled'
@@ -50,7 +50,7 @@
                                 :text="item?.state?.text"
                             />
                         </span>
-                        <span>保存周期：{{ item.saveDays }}天</span>
+                        <span>{{ $t('Plan.index.973218-8') }}{{ item.saveDays }}{{ $t('Plan.index.973218-9') }}</span>
                     </div>
                     <div v-if="item?.times" class="calendar">
                         <Calendar
@@ -66,7 +66,7 @@
                     v-if="editState"
                     @click="onAdd(list.length)"
                     class="add-btn"
-                    >+ 添加计划</a-button
+                    >{{ $t('Plan.index.973218-10') }}</a-button
                 >
             </div>
             <div v-else class="empty">
@@ -78,19 +78,19 @@
                     "
                 />
                 <div class="noPlanTip">
-                    还没有关联的{{ type === 'video' ? '录像' : '抓拍' }}计划
+                    {{ $t('Plan.index.973218-11') }}{{ type === 'video' ? $t('Plan.index.973218-12') : $t('Plan.index.973218-13') }}{{ $t('Plan.index.973218-2') }}
                 </div>
                 <div>
-                    你可以点击关联{{
-                        type === 'video' ? '录像' : '抓拍'
-                    }}计划按钮来关联计划
+                    {{ $t('Plan.index.973218-14') }}{{
+                        type === 'video' ? $t('Plan.index.973218-12') : $t('Plan.index.973218-13')
+                    }}{{ $t('Plan.index.973218-15') }}
                 </div>
                 <div class="addPlan">
                     <a-button shape="round" @click="onAdd(0)">
                         {{
                             type === 'video'
-                                ? '点击关联录像计划'
-                                : '点击关联抓拍计划'
+                                ? $t('Plan.index.973218-16')
+                                : $t('Plan.index.973218-17')
                         }}
                     </a-button>
                 </div>
@@ -98,7 +98,7 @@
         </div >
         <template #footer>
             <a-button v-if="editState" type="primary" @click="onSave"
-                >保存</a-button
+                >{{ $t('Plan.index.973218-18') }}</a-button
             >
         </template>
     </a-drawer>
@@ -111,7 +111,9 @@ import { queryListNoPaging, bindChannelAll } from '../../../../api/auto';
 import planSelect from './planSelect.vue';
 import { onlyMessage } from '@jetlinks-web/utils';
 import { deviceImg } from "../../../../assets";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const emit = defineEmits(['close']);
 
 const props = defineProps({
@@ -168,7 +170,7 @@ const onSave = async () => {
         items,
     );
     if (res.success) {
-        onlyMessage('操作成功');
+        onlyMessage($t('Plan.index.973218-19'));
         emit('close');
     }
 };

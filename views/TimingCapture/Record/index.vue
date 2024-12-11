@@ -3,7 +3,7 @@
         <FullPage>
             <div class="bound">
                 <div class="bound_device">
-                    <div>选择设备及目录查看通道：</div>
+                    <div>{{ $t('Record.index.855180-0') }}</div>
                     <ChannelTree
                         :height="700"
                         type="unbind"
@@ -14,7 +14,7 @@
                 </div>
                 <div v-if="deviceId" class="bound_channel">
                     <div style="padding: 12px 24px 0;display: flex">
-                        <div class="catalogue">当前目录：</div>
+                        <div class="catalogue">{{ $t('Record.index.855180-1') }}</div>
                         <a-breadcrumb>
                             <a-breadcrumb-item v-for="name in pathsName">{{
                                 name
@@ -83,7 +83,8 @@ import { cloneDeep } from 'lodash-es';
 import ChannelTree from '../../AutoVideo/components/ChannelTree/index.vue';
 import RecordPicture from '../components/RecordPicture/index.vue';
 import { queryRecord } from '../../../api/auto';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const pictureData = ref();
 const pictureVisible = ref(false);
 const params = ref();
@@ -102,7 +103,7 @@ const columns = [
         },
     },
     {
-        title: '通道名称',
+        title: $t('Record.index.855180-2'),
         dataIndex: 'name',
         key: 'name',
         ellipsis: true,
@@ -112,13 +113,13 @@ const columns = [
         },
     },
     {
-        title: '厂商',
+        title: $t('Record.index.855180-3'),
         dataIndex: 'manufacturer',
         key: 'manufacturer',
         ellipsis: true,
     },
     {
-        title: '安装地址',
+        title: $t('Record.index.855180-4'),
         dataIndex: 'address',
         ellipsis: true,
         key: 'address',
@@ -127,17 +128,17 @@ const columns = [
         },
     },
     {
-        title: '已拍数量',
+        title: $t('Record.index.855180-5'),
         dataIndex:'fileCount',
     },
     {
-        title: '存储空间',
+        title: $t('Record.index.855180-6'),
         scopedSlots: true,
         key:'fileSize',
         dataIndex:'fileSize',
     },
     {
-        title: '操作',
+        title: $t('Record.index.855180-7'),
         key: 'action',
         width: 100,
         scopedSlots: true,
@@ -157,9 +158,9 @@ const getActions = (data, type) => {
     const actions = [
         {
             key: 'picture',
-            text: '查看',
+            text: $t('Record.index.855180-8'),
             tooltip: {
-                title: '查看',
+                title: $t('Record.index.855180-8'),
             },
             icon: 'EyeOutlined',
             onClick: () => {

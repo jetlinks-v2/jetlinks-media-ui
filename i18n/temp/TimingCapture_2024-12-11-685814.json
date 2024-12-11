@@ -1,0 +1,38 @@
+{
+	"zh": {
+		"Plan.index.855181-0": "新增计划",
+		"Plan.index.855181-1": "正常",
+		"Plan.index.855181-2": "禁用",
+		"Plan.index.855181-3": "计划ID",
+		"Plan.index.855181-4": "创建时间",
+		"Plan.index.855181-5": "抓拍保存周期（天）",
+		"Plan.index.855181-6": "名称",
+		"Plan.index.855181-7": "状态",
+		"Plan.index.855181-8": "编辑",
+		"Plan.index.855181-9": "启用",
+		"Plan.index.855181-10": "确认{0}?",
+		"Plan.index.855181-11": "操作成功！",
+		"Plan.index.855181-12": "操作失败！",
+		"Plan.index.855181-13": "删除",
+		"Plan.index.855181-14": "正常计划无法删除",
+		"Plan.index.855181-15": "确认删除?"
+	},
+	"en": {
+		"Plan.index.855181-0": "New plan",
+		"Plan.index.855181-1": "normal",
+		"Plan.index.855181-2": "Disable",
+		"Plan.index.855181-3": "Plan ID",
+		"Plan.index.855181-4": "Creation time",
+		"Plan.index.855181-5": "Capture and save period (days)",
+		"Plan.index.855181-6": "name",
+		"Plan.index.855181-7": "state",
+		"Plan.index.855181-8": "edit",
+		"Plan.index.855181-9": "Enable",
+		"Plan.index.855181-10": "Confirm {0}?",
+		"Plan.index.855181-11": "Operation successful!",
+		"Plan.index.855181-12": "Operation failed!",
+		"Plan.index.855181-13": "delete",
+		"Plan.index.855181-14": "Normal plan cannot be deleted",
+		"Plan.index.855181-15": "Are you sure to delete?"
+	}
+}

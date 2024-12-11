@@ -1,29 +1,29 @@
 <template>
     <a-modal
         visible
-        title="新增计划"
+        :title="$t('Add.index.855182-0')"
         @ok="submitData"
          :maskClosable="false"
         @cancel="emit('closeModal')"
     >
         <a-form ref="formRef" layout="vertical" :model="formData">
             <a-form-item
-                label="计划名称"
+                :label="$t('Add.index.855182-1')"
                 name="name"
                 :rules="[
                     {
                         required: true,
-                        message: '请输入计划名称',
+                        message: $t('Add.index.855182-2'),
                     },
                     {
                         max: 64,
-                        message: '最多可输入64个字符',
+                        message: $t('Add.index.855182-3'),
                     },
                 ]"
             >
                 <a-input
                     v-model:value="formData.name"
-                    placeholder="请输入计划名称"
+                    :placeholder="$t('Add.index.855182-2')"
                 ></a-input>
             </a-form-item>
         </a-form>
@@ -33,6 +33,8 @@
 <script setup>
 import { savePlan } from '../../../../api/auto';
 import { onlyMessage } from "@jetlinks-web/utils"
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const emit = defineEmits(['closeModal']);
 const formRef = ref();
 const formData = reactive({
@@ -46,7 +48,7 @@ const submitData =async () => {
             type:'screenshot'
         });
         if (resp.status === 200) {
-            onlyMessage('操作成功!');
+            onlyMessage($t('Add.index.855182-4'));
             emit('closeModal',resp.result.id);
         }
     }

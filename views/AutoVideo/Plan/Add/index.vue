@@ -1,7 +1,7 @@
 <template>
     <a-modal
         visible
-        title="新增-录像计划"
+        :title="$t('Add.index.312707-0')"
         :confirmLoading="loading"
         :maskClosable="false"
         @ok="submitData"
@@ -9,16 +9,16 @@
     >
         <a-form ref="formRef" layout="vertical" :model="formData">
             <a-form-item
-                label="计划名称"
+                :label="$t('Add.index.312707-1')"
                 name="name"
                 :rules="[
                     {
                         required: true,
-                        message: '请输入计划名称',
+                        message: $t('Add.index.312707-2'),
                     },
                     {
                         max: 64,
-                        message: '最多可输入64个字符',
+                        message: $t('Add.index.312707-3'),
                     },
                 ]"
             >
@@ -33,7 +33,9 @@ import {savePlan} from '../../../../api/auto';
 import {onlyMessage} from '@jetlinks-web/utils';
 import {useMenuStore} from '@/store/menu';
 import {useRequest} from '@jetlinks-web/hooks'
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const emit = defineEmits(['closeModal']);
 const formRef = ref();
 const formData = ref({
@@ -45,7 +47,7 @@ const menuStory = useMenuStore();
 const {loading, run} = useRequest(savePlan, {
     immediate: false,
     onSuccess(res) {
-        onlyMessage('操作成功');
+        onlyMessage($t('Add.index.312707-4'));
         menuStory.jumpPage(
             'media/AutoVideo/Plan/Detail',
             {

@@ -1,9 +1,11 @@
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 export const weeks = [
-    {label:'星期一',value:1},
-    {label:'星期二',value:2},
-    {label:'星期三',value:3},
-    {label:'星期四',value:4},
-    {label:'星期五',value:5},
-    {label:'星期六',value:6},
-    {label:'星期天',value:7},
+    {label:$t('components.utils.3127011-0'),value:1},
+    {label:$t('components.utils.3127011-1'),value:2},
+    {label:$t('components.utils.3127011-2'),value:3},
+    {label:$t('components.utils.3127011-3'),value:4},
+    {label:$t('components.utils.3127011-4'),value:5},
+    {label:$t('components.utils.3127011-5'),value:6},
+    {label:$t('components.utils.3127011-6'),value:7},
 ]

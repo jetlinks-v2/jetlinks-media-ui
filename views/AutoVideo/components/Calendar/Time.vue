@@ -2,7 +2,7 @@
     <div>
         <div v-if="type === 'auto'">
             <div v-for="(item, index) in dataSource" class="auto-items">
-                <div class="label">录像时间段{{ index + 1 }}</div>
+                <div class="label">{{ $t('Calendar.Time.3127119-0') }}{{ index + 1 }}</div>
                 <a-time-range-picker
                     :value="[item.from, item.to]"
                     valueFormat="HH:mm:ss"
@@ -18,15 +18,15 @@
         </div>
         <div v-else>
             <div v-for="(item, index) in dataSource" class="timing-items">
-                <div>抓拍时间段{{ index + 1 }}</div>
+                <div>{{ $t('Calendar.Time.3127119-1') }}{{ index + 1 }}</div>
                 <a-radio-group
                     v-model:value="item.mod"
                     option-type="button"
                     button-style="solid"
                     style="margin: 0 12px"
                     :options="[
-                        { label: '周期执行', value: 'period' },
-                        { label: '执行一次', value: 'once' },
+                        { label: $t('Calendar.Time.3127119-2'), value: 'period' },
+                        { label: $t('Calendar.Time.3127119-3'), value: 'once' },
                     ]"
                     @change="onChange"
                 />
@@ -43,7 +43,7 @@
                             }
                         "
                     />
-                    <span> 每 </span>
+                    <span> {{ $t('Calendar.Time.3127119-4') }} </span>
                     <a-input-number
                         style="width: 120px"
                         :precision="0"
@@ -55,15 +55,15 @@
                             <a-select
                                 v-model:value="item.period.unit"
                                 :options="[
-                                    { label: '秒', value: 'seconds' },
-                                    { label: '分', value: 'minutes' },
-                                    { label: '小时', value: 'hours' },
+                                    { label: $t('Calendar.Time.3127119-5'), value: 'seconds' },
+                                    { label: $t('Calendar.Time.3127119-6'), value: 'minutes' },
+                                    { label: $t('Calendar.Time.3127119-7'), value: 'hours' },
                                 ]"
                                 @select="onChange"
                             />
                         </template>
                     </a-input-number>
-                    <span> 执行一次</span>
+                    <span> {{ $t('Calendar.Time.3127119-3') }}</span>
                 </div>
                 <div v-else>
                     <a-time-picker
@@ -73,7 +73,7 @@
                         style="width: 200px"
                         @change="onChange"
                     />
-                    <span> 执行一次</span>
+                    <span> {{ $t('Calendar.Time.3127119-3') }}</span>
                 </div>
             </div>
         </div>
@@ -83,7 +83,9 @@
 <script setup lang="ts" name="Time">
 import { onMounted, reactive, ref, watch } from 'vue';
 import { cloneDeep } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     value: {
         type: Array,

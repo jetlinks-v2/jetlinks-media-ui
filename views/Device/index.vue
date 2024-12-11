@@ -24,7 +24,7 @@
             <template #icon>
               <AIcon type="PlusOutlined"/>
             </template>
-            新增
+            {{ $t('Device.index.534980-0') }}
           </j-permission-button>
         </template>
         <template #card="slotProps">
@@ -55,7 +55,7 @@
               <a-row>
                 <a-col :span="12">
                   <div class="card-item-content-text">
-                    厂商
+                    {{ $t('Device.index.534980-1') }}
                   </div>
                   <j-ellipsis style="width: calc(100% - 20px)">
                     <div>{{ slotProps.manufacturer }}</div>
@@ -63,13 +63,13 @@
                 </a-col>
                 <a-col :span="12">
                   <div class="card-item-content-text">
-                    通道数量
+                    {{ $t('Device.index.534980-2') }}
                   </div>
                   <div>{{ slotProps.channelNumber }}</div>
                 </a-col>
                 <a-col :span="12">
                   <div class="card-item-content-text">
-                    型号
+                    {{ $t('Device.index.534980-3') }}
                   </div>
                   <j-ellipsis
                       style="width: calc(100% - 20px)"
@@ -79,7 +79,7 @@
                 </a-col>
                 <a-col :span="12">
                   <div class="card-item-content-text">
-                    接入方式
+                    {{ $t('Device.index.534980-4') }}
                   </div>
                   <div>
                     {{ providerType[slotProps.provider] }}
@@ -182,7 +182,9 @@ import {encodeQuery} from '@/utils/encodeQuery';
 import {useMenuStore} from '@/store/menu';
 import Summary from './Summary/index.vue';
 import {deviceImg} from "../../assets/device/index";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const menuStory = useMenuStore();
 
 const listRef = ref<Record<string, any>>({});
@@ -202,7 +204,7 @@ const columns = [
     ellipsis: true,
   },
   {
-    title: '名称',
+    title: $t('Device.index.534980-5'),
     dataIndex: 'name',
     key: 'name',
     search: {
@@ -212,7 +214,7 @@ const columns = [
     ellipsis: true,
   },
   {
-    title: '接入方式',
+    title: $t('Device.index.534980-4'),
     dataIndex: 'provider',
     key: 'provider',
     scopedSlots: true,
@@ -226,20 +228,20 @@ const columns = [
     },
   },
   {
-    title: '通道数量',
+    title: $t('Device.index.534980-2'),
     dataIndex: 'channelNumber',
     key: 'channelNumber',
     scopedSlots: true,
     width: 100,
   },
   {
-    title: '厂商',
+    title: $t('Device.index.534980-1'),
     dataIndex: 'manufacturer',
     key: 'manufacturer',
     ellipsis: true,
   },
   {
-    title: '产品名称',
+    title: $t('Device.index.534980-6'),
     dataIndex: 'productId',
     key: 'productId',
     scopedSlots: true,
@@ -255,7 +257,7 @@ const columns = [
     },
   },
   {
-    title: '状态',
+    title: $t('Device.index.534980-7'),
     dataIndex: 'state',
     key: 'state',
     scopedSlots: true,
@@ -263,9 +265,9 @@ const columns = [
     search: {
       type: 'select',
       options: [
-        {label: '禁用', value: 'notActive'},
-        {label: '离线', value: 'offline'},
-        {label: '在线', value: 'online'},
+        {label: $t('Device.index.534980-8'), value: 'notActive'},
+        {label: $t('Device.index.534980-9'), value: 'offline'},
+        {label: $t('Device.index.534980-10'), value: 'online'},
       ],
       handleValue: (v: any) => {
         return v;
@@ -273,7 +275,7 @@ const columns = [
     },
   },
   {
-    title: '操作',
+    title: $t('Device.index.534980-11'),
     key: 'action',
     fixed: 'right',
     width: 200,
@@ -305,9 +307,9 @@ const getActions = (
   const actions = [
     {
       key: 'update',
-      text: '编辑',
+      text: $t('Device.index.534980-12'),
       tooltip: {
-        title: '编辑',
+        title: $t('Device.index.534980-12'),
       },
       icon: 'EditOutlined',
       onClick: () => {
@@ -319,9 +321,9 @@ const getActions = (
     },
     {
       key: 'view',
-      text: '查看通道',
+      text: $t('Device.index.534980-13'),
       tooltip: {
-        title: '查看通道',
+        title: $t('Device.index.534980-13'),
       },
       icon: 'PartitionOutlined',
       onClick: () => {
@@ -341,9 +343,9 @@ const getActions = (
     },
     {
       key: 'viewDevice',
-      text: '查看',
+      text: $t('Device.index.534980-14'),
       tooltip: {
-        title: '查看',
+        title: $t('Device.index.534980-14'),
       },
       icon: 'EyeOutlined',
       onClick: () => {
@@ -352,22 +354,22 @@ const getActions = (
     },
     {
       key: 'delete',
-      text: '删除',
+      text: $t('Device.index.534980-15'),
       tooltip: {
         title:
-            data.state.value === 'online' ? '在线设备无法删除' : '删除',
+            data.state.value === 'online' ? $t('Device.index.534980-16') : $t('Device.index.534980-15'),
       },
       disabled: data.state.value === 'online',
       popConfirm: {
-        title: '确认删除?',
+        title: $t('Device.index.534980-17'),
         onConfirm: () => {
           const response = DeviceApi.del(data.id);
           response.then((resp) => {
             if (resp.status === 200) {
-              onlyMessage('操作成功！');
+              onlyMessage($t('Device.index.534980-18'));
               listRef.value?.reload();
             } else {
-              onlyMessage('操作失败！', 'error');
+              onlyMessage($t('Device.index.534980-19'), 'error');
             }
           });
           return response

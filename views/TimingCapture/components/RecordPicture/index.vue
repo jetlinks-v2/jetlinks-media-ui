@@ -1,7 +1,7 @@
 <template>
-    <a-modal visible  :footer="null" :width="800"  @cancel="emit('close')" :maskClosable="false" title="抓拍文件">
+    <a-modal visible  :footer="null" :width="800"  @cancel="emit('close')" :maskClosable="false" :title="$t('RecordPicture.index.855188-0')">
         <div class="datePicker">
-            <span>选择日期：</span>
+            <span>{{ $t('RecordPicture.index.855188-1') }}</span>
             <a-range-picker v-model:value="rangeDate" valueFormat="YYYY-MM-DD HH:mm:ss" show-time />
         </div>
         <div v-if="pictures.length">
@@ -26,9 +26,7 @@
                         (num) => {
                             const minSize = pageIndex * pageSize + 1;
                             const MaxSize = (pageIndex + 1) * pageSize;
-                            return `第 ${minSize} - ${
-                                MaxSize > num ? num : MaxSize
-                            } 条/总共 ${total} 条`;
+                            return $t('RecordPicture.index.855188-2', [minSize,total]);
                         }
                     "
                     @change="onChange"
@@ -47,7 +45,8 @@
 <script setup>
 import Preview from './Preview.vue';
 import { queryFiles } from '../../../../api/auto';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const emit = defineEmits(['close']);
 const props = defineProps({
     data: {

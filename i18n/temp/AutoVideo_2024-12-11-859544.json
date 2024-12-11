@@ -1,0 +1,26 @@
+{
+	"zh": {
+		"Detail.index.594355-0": "取消",
+		"Detail.index.594355-1": "确认",
+		"Detail.index.594355-2": "计划ID",
+		"Detail.index.594355-3": "创建人",
+		"Detail.index.594355-4": "创建时间",
+		"Detail.index.594355-5": "录制规则",
+		"Detail.index.594355-6": "关联通道",
+		"Detail.index.594355-7": "执行日志",
+		"Detail.index.594355-8": "计划名称不能为空",
+		"Detail.index.594355-9": "最多可输入64位字符"
+	},
+	"en": {
+		"Detail.index.594355-0": "cancel",
+		"Detail.index.594355-1": "confirm",
+		"Detail.index.594355-2": "Plan ID",
+		"Detail.index.594355-3": "Creator",
+		"Detail.index.594355-4": "Creation time",
+		"Detail.index.594355-5": "Recording rules",
+		"Detail.index.594355-6": "Associated channel",
+		"Detail.index.594355-7": "Execution log",
+		"Detail.index.594355-8": "The plan name cannot be empty",
+		"Detail.index.594355-9": "Up to 64 characters can be input"
+	}
+}

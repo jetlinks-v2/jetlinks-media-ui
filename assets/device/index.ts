@@ -10,6 +10,7 @@ import cloud from './cloud.png';
 import local from './local.png';
 import capturePlan from './capturePlan.png';
 import videoPlan from './videoPlan.png';
+import agentDoc from './agent_doc.png'
 
 export const deviceImg = {
     deviceMedia,
@@ -23,5 +24,6 @@ export const deviceImg = {
     cloud,
     local,
     capturePlan,
-    videoPlan
+    videoPlan,
+    agentDoc
 }

@@ -8,21 +8,21 @@
         </div>
         <div class="imgInfo">
             <div class="info-item">
-                <div>抓拍时间:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-0') }}</div>
                 <div>
                     {{ dayjs(record.createTime).format('YYYY-MM-DD HH:mm:ss') }}
                 </div>
             </div>
             <div class="info-item">
-                <div>通道ID:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-1') }}</div>
                 <Ellipsis :getPopupContainer="getPopupContainer">{{ channel.channelId }}</Ellipsis>
             </div>
             <div class="info-item">
-                <div>通道名称:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-2') }}</div>
                 <div>{{ channel.name || '-' }}</div>
             </div>
             <div class="info-item">
-                <div>通道目录:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-3') }}</div>
                 <a-breadcrumb>
                     <a-breadcrumb-item v-for="name in channel?.pathsName">{{
                         name
@@ -30,19 +30,19 @@
                 </a-breadcrumb>
             </div>
             <div class="info-item">
-                <div>安装地址:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-4') }}</div>
                 <div>{{ channel.address }}</div>
             </div>
             <div class="info-item">
-                <div>厂家:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-5') }}</div>
                 <div>{{ channel.manufacturer }}</div>
             </div>
             <div class="info-item">
-                <div>设备ID:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-6') }}</div>
                 <div>{{ channel.deviceId }}</div>
             </div>
             <div class="info-item">
-                <div>设备名称:</div>
+                <div>{{ $t('RecordPicture.Preview.855187-7') }}</div>
                 <div>{{ channel.deviceName }}</div>
             </div>
         </div>
@@ -51,7 +51,8 @@
 
 <script setup>
 import dayjs from 'dayjs';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const props = defineProps({
     record: {
         type: Object,

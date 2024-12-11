@@ -32,7 +32,7 @@
                         hasPermission="media/AutoVideo/Plan:add"
                     >
                         <template #icon><AIcon type="PlusOutlined" /></template>
-                        新增计划
+                        {{ $t('Plan.index.312701-0') }}
                     </j-permission-button>
                 </template>
                 <template #card="slotProps">
@@ -45,8 +45,8 @@
                         :status="slotProps.state.value"
                         :statusText="
                             slotProps.state?.value === 'enabled'
-                                ? '正常'
-                                : '禁用'
+                                ? $t('Plan.index.312701-1')
+                                : $t('Plan.index.312701-2')
                         "
                         :statusNames="{
                             enabled: 'processing',
@@ -67,7 +67,7 @@
                             <a-row>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
-                                        计划ID
+                                        {{ $t('Plan.index.312701-3') }}
                                     </div>
                                     <Ellipsis style="width: calc(100% - 20px)">
                                         <div>{{ slotProps.id }}</div>
@@ -75,7 +75,7 @@
                                 </a-col>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
-                                        创建时间
+                                        {{ $t('Plan.index.312701-4') }}
                                     </div>
                                     <div>
                                         {{
@@ -87,7 +87,7 @@
                                 </a-col>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
-                                        录像保存周期（天）
+                                        {{ $t('Plan.index.312701-5') }}
                                     </div>
                                     <Ellipsis
                                         style="width: calc(100% - 20px)"
@@ -96,13 +96,13 @@
                                 </a-col>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
-                                        录制时段类型
+                                        {{ $t('Plan.index.312701-6') }}
                                     </div>
                                     <div>
                                         {{
                                             slotProps.others?.trigger === 'week'
-                                                ? '按周'
-                                                : '自定义日历'
+                                                ? $t('Plan.index.312701-7')
+                                                : $t('Plan.index.312701-8')
                                         }}
                                     </div>
                                 </a-col>
@@ -143,7 +143,9 @@ import AddPlan from './Add/index.vue';
 import dayjs from 'dayjs';
 import { queryList, controlPlan, deletePlan } from '../../../api/auto';
 import { deviceImg } from "@/modules/jetlinks-media-ui/assets";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const addVisible = ref(false);
 const params = ref();
 const menuStory = useMenuStore();
@@ -162,7 +164,7 @@ const columns = [
         ellipsis: true,
     },
     {
-        title: '名称',
+        title: $t('Plan.index.312701-9'),
         dataIndex: 'name',
         key: 'name',
         search: {
@@ -172,15 +174,15 @@ const columns = [
         ellipsis: true,
     },
     {
-        title: '状态',
+        title: $t('Plan.index.312701-10'),
         dataIndex: 'state',
         key: 'state',
         width: 100,
         search: {
             type: 'select',
             options: [
-                { label: '正常', value: 'enabled' },
-                { label: '禁用', value: 'disabled' },
+                { label: $t('Plan.index.312701-1'), value: 'enabled' },
+                { label: $t('Plan.index.312701-2'), value: 'disabled' },
             ],
         },
     },
@@ -191,35 +193,37 @@ const getActions = (data, type) => {
     const actions = [
         {
             key: 'update',
-            text: '编辑',
+            text: $t('Plan.index.312701-11'),
             tooltip: {
-                title: '编辑',
+                title: $t('Plan.index.312701-11'),
             },
             icon: 'EditOutlined',
             onClick: () => {
                 menuStory.jumpPage(
                     'media/AutoVideo/Plan/Detail',
-                    {
+                  {
+                    params:{
                         id: data.id,
                     },
-                    {
+                    query:{
                         type: 'edit',
                     },
+                  }
                 );
             },
         },
         {
             key: 'action',
-            text: data.state.value === 'enabled' ? '禁用' : '启用',
+            text: data.state.value === 'enabled' ? $t('Plan.index.312701-2') : $t('Plan.index.312701-12'),
             tooltip: {
-                title: data.state.value === 'enabled' ? '禁用' : '启用',
+                title: data.state.value === 'enabled' ? $t('Plan.index.312701-2') : $t('Plan.index.312701-12'),
             },
             icon:
                 data.state.value === 'enabled'
                     ? 'StopOutlined'
                     : 'CheckCircleOutlined',
             popConfirm: {
-                title: `确认${data.state.value === 'enabled' ? '禁用' : '启用'}?`,
+                title: $t('Plan.index.359377-0', [data.state.value === 'enabled' ? $t('Plan.index.312701-2') : $t('Plan.index.312701-12')]),
                 onConfirm: async () => {
                     const params = {
                         state:
@@ -229,7 +233,7 @@ const getActions = (data, type) => {
                     };
                     const res = await controlPlan(data.id, params);
                     if (res.success) {
-                        onlyMessage('操作成功');
+                        onlyMessage($t('Plan.index.312701-14'));
                         tableRef.value?.reload();
                     }
                 },
@@ -237,22 +241,22 @@ const getActions = (data, type) => {
         },
         {
             key: 'delete',
-            text: '删除',
+            text: $t('Plan.index.312701-15'),
             tooltip: {
                 title:
-                    data.state.value === 'enabled' ? '正常计划无法删除' : '删除',
+                    data.state.value === 'enabled' ? $t('Plan.index.312701-16') : $t('Plan.index.312701-15'),
             },
             disabled: data.state.value === 'enabled',
             popConfirm: {
-                title: '确认删除?',
+                title: $t('Plan.index.312701-17'),
                 onConfirm: () => {
                     const response = deletePlan(data.id);
                     response.then((resp) => {
                         if (resp.status === 200) {
-                            onlyMessage('操作成功！');
+                            onlyMessage($t('Plan.index.312701-18'));
                             tableRef.value?.reload();
                         } else {
-                            onlyMessage('操作失败！', 'error');
+                            onlyMessage($t('Plan.index.312701-19'), 'error');
                         }
                     });
                     return response;

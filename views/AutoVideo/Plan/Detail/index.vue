@@ -32,11 +32,11 @@
                                     {{ nameTips }}
                                 </div>
                             </div>
-                            <a-button @click="cancel">取消</a-button>
+                            <a-button @click="cancel">{{ $t('Detail.index.594355-0') }}</a-button>
                             <j-permission-button
                                 type="primary"
                                 @click="onSave(!isEdit)"
-                                >确认</j-permission-button
+                                >{{ $t('Detail.index.594355-1') }}</j-permission-button
                             >
                         </a-space>
                     </div>
@@ -45,13 +45,13 @@
         </template>
         <template #content>
             <a-descriptions size="small" :column="4">
-                <a-descriptions-item label="计划ID">{{
+                <a-descriptions-item :label="$t('Detail.index.594355-2')">{{
                     detail?.id
                 }}</a-descriptions-item>
-                <a-descriptions-item label="创建人">{{
+                <a-descriptions-item :label="$t('Detail.index.594355-3')">{{
                     detail.creatorName
                 }}</a-descriptions-item>
-                <a-descriptions-item label="创建时间">
+                <a-descriptions-item :label="$t('Detail.index.594355-4')">
                     {{
                         detail?.createTime
                             ? dayjs(detail.createTime).format(
@@ -79,7 +79,9 @@ import { onMounted, ref, watch, provide } from 'vue';
 import { useRoute } from 'vue-router';
 import { updatePlan, queryList } from '../../../../api/auto';
 import { usePlanDetailContent } from './utils';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const isEdit = ref(false);
 const route = useRoute();
 const _value = ref();
@@ -107,15 +109,15 @@ provide('video-tags', {
 const list = [
     {
         key: 'Rule',
-        tab: '录制规则',
+        tab: $t('Detail.index.594355-5'),
     },
     {
         key: 'Channel',
-        tab: '关联通道',
+        tab: $t('Detail.index.594355-6'),
     },
     {
         key: 'Log',
-        tab: '执行日志',
+        tab: $t('Detail.index.594355-7'),
     },
 ];
 
@@ -180,9 +182,9 @@ const onSave = async (val) => {
 
 const validateName = () => {
     if (!_value.value) {
-        nameTips.value = '计划名称不能为空';
+        nameTips.value = $t('Detail.index.594355-8');
     } else if (_value.value.length > 64) {
-        nameTips.value = '最多可输入64位字符';
+        nameTips.value = $t('Detail.index.594355-9');
     } else {
         nameTips.value = '';
     }

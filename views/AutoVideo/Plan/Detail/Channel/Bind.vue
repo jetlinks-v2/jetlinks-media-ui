@@ -1,14 +1,14 @@
 <template>
     <a-modal
         visible
-        title="绑定通道"
+        :title="$t('Channel.Bind.3127010-0')"
         :width="1200"
         @cancel="emit('closeBind')"
         @ok="submit"
     >
         <div class="bindControl">
             <div class="bind_left">
-                <div>选择设备及目录查看已绑定的通道：</div>
+                <div>{{ $t('Channel.Bind.3127010-1') }}</div>
                 <ChannelTree
                     type="unBind"
                     v-model:deviceId="deviceId"
@@ -18,7 +18,7 @@
             </div>
             <div class="bind_right">
                 <div style="padding: 12px 24px 0;display: flex;">
-                    <div class="catalogue">当前目录：</div>
+                    <div class="catalogue">{{ $t('Channel.Bind.3127010-2') }}</div>
                     <a-breadcrumb>
                         <a-breadcrumb-item v-for="name in pathsName">{{
                             name
@@ -91,7 +91,9 @@ import ChannelTree from '../../../components/ChannelTree/index.vue';
 import Live from '../../../../Device/Channel/Live/index.vue';
 import { queryBoundChannel } from '../../../../../api/auto';
 import { cloneDeep, omit } from 'lodash-es';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const emit = defineEmits(['closeBind', 'submit']);
 
 const props = defineProps({
@@ -132,7 +134,7 @@ const columns = [
         },
     },
     {
-        title: '名称',
+        title: $t('Channel.Bind.3127010-3'),
         dataIndex: 'name',
         key: 'name',
         ellipsis: true,
@@ -142,13 +144,13 @@ const columns = [
         },
     },
     {
-        title: '厂商',
+        title: $t('Channel.Bind.3127010-4'),
         dataIndex: 'manufacturer',
         key: 'manufacturer',
         ellipsis: true,
     },
     {
-        title: '安装地址',
+        title: $t('Channel.Bind.3127010-5'),
         dataIndex: 'address',
         ellipsis: true,
         key: 'address',
@@ -157,7 +159,7 @@ const columns = [
         },
     },
     {
-        title: '状态',
+        title: $t('Channel.Bind.3127010-6'),
         dataIndex: 'status',
         key: 'status',
         scopedSlots: true,
@@ -165,13 +167,13 @@ const columns = [
         search: {
             type: 'select',
             options: [
-                { label: '已连接', value: 'online' },
-                { label: '未连接', value: 'offline' },
+                { label: $t('Channel.Bind.3127010-7'), value: 'online' },
+                { label: $t('Channel.Bind.3127010-8'), value: 'offline' },
             ],
         },
     },
     {
-        title: '操作',
+        title: $t('Channel.Bind.3127010-9'),
         key: 'action',
         width: 80,
         scopedSlots: true,
@@ -182,9 +184,9 @@ const getActions = (data, type) => {
     return [
         {
             key: 'view',
-            text: '播放',
+            text: $t('Channel.Bind.3127010-10'),
             tooltip: {
-                title: '播放',
+                title: $t('Channel.Bind.3127010-10'),
             },
             icon: 'PlayCircleOutlined',
             onClick: () => {

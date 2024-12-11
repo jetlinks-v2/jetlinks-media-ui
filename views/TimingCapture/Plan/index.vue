@@ -27,7 +27,7 @@
                         hasPermission="media/TimingCapture/Plan:add"
                     >
                         <template #icon><AIcon type="PlusOutlined" /></template>
-                        新增计划
+                        {{ $t('Plan.index.855181-0') }}
                     </j-permission-button>
                 </template>
                 <template #card="slotProps">
@@ -40,8 +40,8 @@
                         :status="slotProps.state.value"
                         :statusText="
                             slotProps.state.value === 'enabled'
-                                ? '正常'
-                                : '禁用'
+                                ? $t('Plan.index.855181-1')
+                                : $t('Plan.index.855181-2')
                         "
                         :statusNames="{
                             enabled: 'processing',
@@ -63,7 +63,7 @@
                             <a-row :gutter="16" style="margin-top: 10px;">
                                 <a-col :span="8">
                                     <div class="card-item-content-text">
-                                        计划ID
+                                        {{ $t('Plan.index.855181-3') }}
                                     </div>
                                     <Ellipsis style="width: calc(100% - 20px)">
                                         <div>{{ slotProps.id }}</div>
@@ -71,7 +71,7 @@
                                 </a-col>
                                 <a-col :span="8">
                                     <div class="card-item-content-text">
-                                        创建时间
+                                        {{ $t('Plan.index.855181-4') }}
                                     </div>
                                     <span>{{
                                         dayjs(slotProps?.createTime).format(
@@ -81,7 +81,7 @@
                                 </a-col>
                                 <a-col :span="8">
                                     <div class="card-item-content-text">
-                                        抓拍保存周期（天）
+                                        {{ $t('Plan.index.855181-5') }}
                                     </div>
                                     <Ellipsis
                                         style="width: calc(100% - 20px)"
@@ -127,7 +127,8 @@ import AddPlan from './Add/index.vue';
 import { queryList ,controlPlan,deletePlan} from '../../../api/auto';
 import dayjs from 'dayjs';
 import { deviceImg } from "../../../assets";
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const addVisible = ref(false);
 const params = ref();
 const menuStory = useMenuStore();
@@ -146,7 +147,7 @@ const columns = [
         ellipsis: true,
     },
     {
-        title: '名称',
+        title: $t('Plan.index.855181-6'),
         dataIndex: 'name',
         key: 'name',
         search: {
@@ -156,15 +157,15 @@ const columns = [
         ellipsis: true,
     },
     {
-        title: '状态',
+        title: $t('Plan.index.855181-7'),
         dataIndex: 'state',
         key: 'state',
         width: 100,
         search: {
             type: 'select',
             options: [
-                { label: '正常', value: 'enabled' },
-                { label: '禁用', value: 'disabled' },
+                { label: $t('Plan.index.855181-1'), value: 'enabled' },
+                { label: $t('Plan.index.855181-2'), value: 'disabled' },
             ],
         },
     },
@@ -175,9 +176,9 @@ const getActions = (data, type) => {
     const actions = [
         {
             key: 'update',
-            text: '编辑',
+            text: $t('Plan.index.855181-8'),
             tooltip: {
-                title: '编辑',
+                title: $t('Plan.index.855181-8'),
             },
             icon: 'EditOutlined',
             onClick: () => {
@@ -188,13 +189,13 @@ const getActions = (data, type) => {
         },
         {
             key: 'action',
-            text: data.state.value === 'enabled' ? '禁用' : '启用',
+            text: data.state.value === 'enabled' ? $t('Plan.index.855181-2') : $t('Plan.index.855181-9'),
             tooltip: {
-                title: data.state.value === 'enabled' ? '禁用' : '启用',
+                title: data.state.value === 'enabled' ? $t('Plan.index.855181-2') : $t('Plan.index.855181-9'),
             },
             icon: data.state.value === 'enabled' ? 'StopOutlined' : 'CheckCircleOutlined',
             popConfirm: {
-                title: `确认${data.state.value === 'enabled' ? '禁用' : '启用'}?`,
+                title: $t('Plan.index.987266-0', [data.state.value === 'enabled' ? $t('Plan.index.855181-2') : $t('Plan.index.855181-9')]),
                 onConfirm: () => {
                     let response = undefined;
                     if (data.state.value === 'enabled') {
@@ -208,10 +209,10 @@ const getActions = (data, type) => {
                     }
                     response.then((res) => {
                         if (res && res.status === 200) {
-                            onlyMessage('操作成功！');
+                            onlyMessage($t('Plan.index.855181-11'));
                             tableRef.value?.reload();
                         } else {
-                            onlyMessage('操作失败！', 'error');
+                            onlyMessage($t('Plan.index.855181-12'), 'error');
                         }
                     });
                     return response;
@@ -220,22 +221,22 @@ const getActions = (data, type) => {
         },
         {
             key: 'delete',
-            text: '删除',
+            text: $t('Plan.index.855181-13'),
             tooltip: {
                 title:
-                    data.state.value === 'enabled' ? '正常计划无法删除' : '删除',
+                    data.state.value === 'enabled' ? $t('Plan.index.855181-14') : $t('Plan.index.855181-13'),
             },
             disabled: data.state.value === 'enabled',
             popConfirm: {
-                title: '确认删除?',
+                title: $t('Plan.index.855181-15'),
                 onConfirm: () => {
                     const response = deletePlan(data.id);
                     response.then((resp) => {
                         if (resp.status === 200) {
-                            onlyMessage('操作成功！');
+                            onlyMessage($t('Plan.index.855181-11'));
                             tableRef.value?.reload();
                         } else {
-                            onlyMessage('操作失败！', 'error');
+                            onlyMessage($t('Plan.index.855181-12'), 'error');
                         }
                     });
                     return response;

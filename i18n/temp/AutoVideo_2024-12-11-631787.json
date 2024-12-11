@@ -1,0 +1,14 @@
+{
+	"zh": {
+		"Playback.iconNode.3127015-0": "下载录像文件",
+		"Playback.iconNode.3127015-1": "查看",
+		"Playback.iconNode.3127015-2": "下载到云端",
+		"Playback.iconNode.3127015-3": "操作成功。上传云端需要一定时间，请稍后查看云端数据"
+	},
+	"en": {
+		"Playback.iconNode.3127015-0": "Download video files",
+		"Playback.iconNode.3127015-1": "see",
+		"Playback.iconNode.3127015-2": "Download to the cloud",
+		"Playback.iconNode.3127015-3": "The operation was successful. Uploading to the cloud takes some time, please check the cloud data later"
+	}
+}

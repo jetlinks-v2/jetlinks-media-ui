@@ -13,7 +13,7 @@
       <div class="media-live-share" v-if="type !== 'share'">
         <a-button type="link" @click="onShare">
           <AIcon type="ShareAltOutlined"/>
-          分享视频
+          {{ $t('Live.shareLive.5349823-0') }}
         </a-button>
       </div>
     </div>
@@ -31,14 +31,14 @@
                   @visibleChange="visibleChange"
                   @click="showToolLock = true"
               >
-                <div>开始录像</div>
+                <div>{{ $t('Live.shareLive.5349823-1') }}</div>
                 <template #overlay>
                   <a-menu @click="recordStart">
                     <a-menu-item key="true" v-if="_type">
                                             <span style="padding-right: 12px"
-                                            >本地存储</span
+                                            >{{ $t('Live.shareLive.5349823-2') }}</span
                                             >
-                      <a-tooltip title="存储在设备本地">
+                      <a-tooltip :title="$t('Live.shareLive.5349823-3')">
                         <a-icon
                             type="QuestionCircleOutlined"
                         />
@@ -46,9 +46,9 @@
                     </a-menu-item>
                     <a-menu-item key="false">
                                             <span style="padding-right: 12px"
-                                            >云端存储</span
+                                            >{{ $t('Live.shareLive.5349823-4') }}</span
                                             >
-                      <a-tooltip title="存储在服务器中">
+                      <a-tooltip :title="$t('Live.shareLive.5349823-5')">
                         <a-icon
                             type="QuestionCircleOutlined"
                         />
@@ -58,23 +58,23 @@
                 </template>
               </a-dropdown>
             </template>
-            <div v-else-if="isRecord === 1">请求录像中</div>
+            <div v-else-if="isRecord === 1">{{ $t('Live.shareLive.5349823-6') }}</div>
             <div
                 v-else-if="isRecord === 2"
                 @click.stop="recordStop"
             >
-              停止录像
+              {{ $t('Live.shareLive.5349823-7') }}
             </div>
           </div>
 
           <div class="tool-item" @click.stop="handleRefresh">
-            刷新
+            {{ $t('Live.shareLive.5349823-8') }}
           </div>
           <ConfirmModal
-              title="重置将断开直播, 可能会影响其他播放者"
+              :title="$t('Live.shareLive.5349823-9')"
               :onConfirm="handleReset"
           >
-            <div class="tool-item">重置</div>
+            <div class="tool-item">{{ $t('Live.shareLive.5349823-10') }}</div>
           </ConfirmModal
           >
         </div>
@@ -94,7 +94,7 @@
           >
             <template #center>
               <div class="center">
-                <div>转速控制</div>
+                <div>{{ $t('Live.shareLive.5349823-11') }}</div>
                 <a-dropdown>
                                     <span
                                     >{{ _speed }}<AIcon type="DownOutlined"
@@ -129,7 +129,9 @@ import MediaTool from '@/components/Player/mediaTool.vue';
 import channelApi from '../../../../api/channel';
 import Preset from './Preset.vue';
 import {onlyMessage} from '@jetlinks-web/utils';
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 type Emits = {
   (e: 'update:visible', data: boolean): void;
   (e: 'refresh'): void;
@@ -175,9 +177,9 @@ const _type = computed(() => {
 });
 
 const speedList = [
-  {label: '高', value: 180},
-  {label: '中', value: 90},
-  {label: '低', value: 45},
+  {label: $t('Live.shareLive.5349823-12'), value: 180},
+  {label: $t('Live.shareLive.5349823-13'), value: 90},
+  {label: $t('Live.shareLive.5349823-14'), value: 45},
 ];
 const speed = ref(90);
 
@@ -282,7 +284,7 @@ const handleRefresh = () => {
 const handleReset = () => {
   const response = channelApi.mediaStop(props.data.deviceId, props.data.channelId);
   response.then((res) => {
-    onlyMessage('操作成功!')
+    onlyMessage($t('Live.shareLive.5349823-15'))
   })
   return response
 };

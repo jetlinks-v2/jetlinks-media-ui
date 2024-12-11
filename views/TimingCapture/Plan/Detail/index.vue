@@ -24,11 +24,11 @@
                             <a-input v-model:value="_value" @change="validateName" />
                             <div v-if="nameTips" class="tips">{{ nameTips }}</div>
                         </div>
-                        <a-button @click="cancel">取消</a-button>
+                        <a-button @click="cancel">{{ $t('Detail.index.855186-0') }}</a-button>
                         <j-permission-button
                             type="primary"
                             @click="onSave(false)"
-                            >确认</j-permission-button
+                            >{{ $t('Detail.index.855186-1') }}</j-permission-button
                         >
                     </a-space>
                 </div>
@@ -36,13 +36,13 @@
         </template>
         <template #content>
             <a-descriptions size="small" :column="4">
-                <a-descriptions-item label="计划ID">{{
+                <a-descriptions-item :label="$t('Detail.index.855186-2')">{{
                     detail?.id
                 }}</a-descriptions-item>
-                <a-descriptions-item label="创建人">{{
+                <a-descriptions-item :label="$t('Detail.index.855186-3')">{{
                     detail.creatorName
                 }}</a-descriptions-item>
-                <a-descriptions-item label="创建时间">
+                <a-descriptions-item :label="$t('Detail.index.855186-4')">
                     {{
                         detail?.createTime
                             ? dayjs(detail.createTime).format(
@@ -69,7 +69,8 @@ import dayjs from 'dayjs';
 import { provide, ref } from 'vue';
 import { updatePlan, queryList } from '../../../../api/auto';
 import { useRoute } from 'vue-router';
-
+import i18n from '@/locales/index'
+const $t = i18n.global.t
 const isEdit = ref(false);
 const tabActiveKey = ref('Rule');
 const first = ref(true)
@@ -94,15 +95,15 @@ provide('video-tags', {
 const list = [
     {
         key: 'Rule',
-        tab: '抓拍规则',
+        tab: $t('Detail.index.855186-5'),
     },
     {
         key: 'Channel',
-        tab: '关联通道',
+        tab: $t('Detail.index.855186-6'),
     },
     {
         key: 'Log',
-        tab: '执行日志',
+        tab: $t('Detail.index.855186-7'),
     },
 ];
 
@@ -168,9 +169,9 @@ const refresh = async () => {
 
 const validateName = () =>{
     if(!_value.value){
-        nameTips.value = '计划名称不能为空'
+        nameTips.value = $t('Detail.index.855186-8')
     }else if(_value.value.length > 64){
-        nameTips.value = '最多可输入64位字符'
+        nameTips.value = $t('Detail.index.855186-9')
     }else{
         nameTips.value = ''
     }

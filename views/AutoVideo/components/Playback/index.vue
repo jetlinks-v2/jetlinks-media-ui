@@ -1,8 +1,8 @@
 <!-- 回放 -->
 <template>
-    <a-modal title="录像回放" visible   style="top: 40px" :width="1400" @cancel="emits('close')" >
+    <a-modal :title="$t('Playback.index.3127012-0')" visible   style="top: 40px" :width="1400" @cancel="emits('close')" >
         <template #footer>
-            <a-button type="primary" @click="emits('close')">取消</a-button>
+            <a-button type="primary" @click="emits('close')">{{ $t('Playback.index.3127012-1') }}</a-button>
         </template>
         <div class="playback-warp">
             <!-- 播放器/进度条 -->
@@ -51,10 +51,10 @@
                 <a-spin :spinning="loading">
                     <a-tooltip placement="topLeft">
                         <template #title>
-                            <div>云端：存储在服务器中</div>
-                            <div>本地：存储在设备本地</div>
+                            <div>{{ $t('Playback.index.3127012-2') }}</div>
+                            <div>{{ $t('Playback.index.3127012-3') }}</div>
                         </template>
-                        <div>类型: <AIcon type="QuestionCircleOutlined" /></div>
+                        <div>{{ $t('Playback.index.3127012-4') }} <AIcon type="QuestionCircleOutlined" /></div>
                     </a-tooltip>
                     <RadioCard
                         layout="horizontal"
@@ -62,12 +62,12 @@
                             deviceType !== 'onvif'
                                 ? [
                                       {
-                                          label: '云端',
+                                          label: $t('Playback.index.3127012-5'),
                                           value: 'cloud',
                                           logo: deviceImg.cloud,
                                       },
                                       {
-                                          label: '本地',
+                                          label: $t('Playback.index.3127012-6'),
                                           value: 'local',
                                           logo: deviceImg.local,
                                           disabled:
@@ -76,7 +76,7 @@
                                   ]
                                 : [
                                       {
-                                          label: '云端',
+                                          label: $t('Playback.index.3127012-5'),
                                           value: 'cloud',
                                           logo: deviceImg.cloud,
                                       },
@@ -101,7 +101,7 @@
                     >
                         <a-empty
                             v-if="!historyList.length"
-                            description="暂无数据"
+                            :description="$t('Playback.index.3127012-7')"
                         />
                         <a-list
                             v-else
@@ -119,8 +119,8 @@
                                                     item.mediaStartTime) ===
                                                     playNowTime &&
                                                 playStatus === 1
-                                                    ? '暂停'
-                                                    : '播放'
+                                                    ? $t('Playback.index.3127012-8')
+                                                    : $t('Playback.index.3127012-9')
                                             "
                                         >
                                             <a
@@ -188,7 +188,9 @@ import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import { ref, computed, watch, onMounted } from 'vue';
 import { deviceImg } from "../../../../assets";
+import { useI18n } from 'vue-i18n';
 
+const { t: $t } = useI18n();
 const props = defineProps({
     data:{
         type:Object,
