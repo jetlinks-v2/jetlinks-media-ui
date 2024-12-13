@@ -142,7 +142,7 @@ import { useMenuStore } from '@/store/menu';
 import AddPlan from './Add/index.vue';
 import dayjs from 'dayjs';
 import { queryList, controlPlan, deletePlan } from '../../../api/auto';
-import { deviceImg } from "@/modules/jetlinks-media-ui/assets";
+import { deviceImg } from "../../../assets";
 import { useI18n } from 'vue-i18n';
 
 const { t: $t } = useI18n();
