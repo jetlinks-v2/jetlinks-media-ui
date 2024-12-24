@@ -135,7 +135,7 @@
           />
         </template>
         <template #action="slotProps">
-          <a-space :size="16">
+          <a-space>
             <template
                 v-for="i in getActions(slotProps, 'table')"
                 :key="i.key"
@@ -349,7 +349,7 @@ const getActions = (
       },
       icon: 'EyeOutlined',
       onClick: () => {
-        menuStory.jumpPage('device/Instance/Detail', {id: data.id});
+        menuStory.jumpPage('device/Instance/Detail', {params: {id: data.id}});
       },
     },
     {
