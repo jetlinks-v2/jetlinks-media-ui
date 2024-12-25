@@ -1,8 +1,0 @@
-{
-	"zh": {
-		"Cascade.index.254643-0": "确认${\r\n            data.status?.value === 'enabled' ? $t('Cascade.index.122691-8') : $t('Cascade.index.122691-17')\r\n        }?"
-	},
-	"en": {
-		"Cascade.index.254643-0": ""
-	}
-}
