@@ -615,11 +615,11 @@
 	"Dashboard.index.537937-7": "In the past week",
 	"Dashboard.index.537937-8": "In the past month",
 	"Dashboard.index.537937-9": "In the past year",
-	"Dashboard.index.537937-10": "MM month dd day HH: mm:ss",
-	"Dashboard.index.537937-11": "Y year M month d day",
-	"Dashboard.index.537937-12": "Y year M month",
-	"Dashboard.index.537937-13": "MM month dd day HH: mm",
-	"Dashboard.index.537937-14": "M month dd day",
+	"Dashboard.index.537937-10": "MM-dd HH: mm:ss",
+	"Dashboard.index.537937-11": "Y-M-d",
+	"Dashboard.index.537937-12": "Y-M",
+	"Dashboard.index.537937-13": "MM-dd HH: mm",
+	"Dashboard.index.537937-14": "M-dd",
 	"Dashboard.index.537937-15": "YYYY-M month",
 	"Home.index.662663-0": "IoT card guidance",
 	"Home.index.662663-1": "Basic Statistics",
@@ -634,7 +634,7 @@
 	"Home.index.662663-10": "not active",
 	"Home.index.662663-11": "Stop using",
 	"Home.index.662663-12": "No permission at the moment, please contact the administrator",
-	"Home.index.662663-13": "M month dd day",
+	"Home.index.662663-13": "M-dd",
 	"Home.index.662663-14": "Traffic consumption",
 	"Detail.index.838702-0": "details",
 	"Detail.index.838702-1": "Platform type",
@@ -1741,5 +1741,6 @@
 	"Detail.index.594355-7": "Execution log",
 	"Detail.index.594355-8": "The plan name cannot be empty",
 	"Detail.index.594355-9": "Up to 64 characters can be input",
-	"Plan.index.987266-0": "Confirm {0}?"
+	"Plan.index.987266-0": "Confirm {0}?",
+	"Plan.index.987266-1": "hhHmmMssS"
 }

@@ -1,8 +1,9 @@
+import i18n from "@/locales";
 export const timestampFormat = (time: number) => {
     let hour = 0;
     let minute = 0;
     let second = 0;
-    const timeStr = 'hh小时mm分钟ss秒';
+    const timeStr = i18n.global.t('Plan.index.987266-1');
 
     if (time) {
         if (time >= 60 * 60 * 1000) {
