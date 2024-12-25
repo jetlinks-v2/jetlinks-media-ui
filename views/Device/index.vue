@@ -1,25 +1,25 @@
 <template>
   <j-page-container>
     <pro-search
-        :columns="columns"
-        target="notice-config"
-        @search="handleSearch"
+      :columns="columns"
+      target="notice-config"
+      @search="handleSearch"
     />
     <FullPage>
       <JProTable
-          ref="listRef"
-          :columns="columns"
-          :request="DeviceApi.list"
-          :defaultParams="{
-                    sorts: [{ name: 'createTime', order: 'desc' }],
-                }"
-          :params="params"
+        ref="listRef"
+        :columns="columns"
+        :request="DeviceApi.list"
+        :defaultParams="{
+          sorts: [{ name: 'createTime', order: 'desc' }],
+        }"
+        :params="params"
       >
         <template #headerLeftRender>
           <j-permission-button
-              type="primary"
-              @click="handleAdd"
-              hasPermission="media/Device:add"
+            type="primary"
+            @click="handleAdd"
+            hasPermission="media/Device:add"
           >
             <template #icon>
               <AIcon type="PlusOutlined"/>
@@ -29,17 +29,17 @@
         </template>
         <template #card="slotProps">
           <CardBox
-              @click="() => showSummary(slotProps)"
-              :value="slotProps"
-              :actions="getActions(slotProps, 'card')"
-              v-bind="slotProps"
-              :showStatus="true"
-              :status="slotProps.state.value"
-              :statusText="slotProps.state.text"
-              :statusNames="{
-                            online: 'processing',
-                            offline: 'error',
-                        }"
+            @click="() => showSummary(slotProps)"
+            :value="slotProps"
+            :actions="getActions(slotProps, 'card')"
+            v-bind="slotProps"
+            :showStatus="true"
+            :status="slotProps.state.value"
+            :statusText="slotProps.state.text"
+            :statusNames="{
+              online: 'processing',
+              offline: 'error',
+            }"
           >
             <template #img>
               <slot name="img">
@@ -72,7 +72,7 @@
                     {{ $t('Device.index.534980-3') }}
                   </div>
                   <j-ellipsis
-                      style="width: calc(100% - 20px)"
+                    style="width: calc(100% - 20px)"
                   >{{ slotProps.model }}
                   </j-ellipsis
                   >
@@ -89,13 +89,13 @@
             </template>
             <template #actions="item">
               <j-permission-button
-                  :disabled="item.disabled"
-                  :popConfirm="item.popConfirm"
-                  :tooltip="{
+                :disabled="item.disabled"
+                :popConfirm="item.popConfirm"
+                :tooltip="{
                                     ...item.tooltip,
                                 }"
-                  @click="item.onClick"
-                  :hasPermission="
+                @click="item.onClick"
+                :hasPermission="
                                     'media/Device:' +
                                     (item.key !== 'updateChannel'
                                         ? item.key
@@ -103,8 +103,8 @@
                                 "
               >
                 <AIcon
-                    type="DeleteOutlined"
-                    v-if="item.key === 'delete'"
+                  type="DeleteOutlined"
+                  v-if="item.key === 'delete'"
                 />
                 <template v-else>
                   <AIcon :type="item.icon"/>
@@ -126,37 +126,37 @@
         </template>
         <template #state="slotProps">
           <a-badge
-              :text="slotProps.state?.text"
-              :status="
-                            slotProps.state?.value === 'online'
-                                ? 'success'
-                                : 'error'
-                        "
+            :text="slotProps.state?.text"
+            :status="
+              slotProps.state?.value === 'online'
+                ? 'success'
+                : 'error'
+            "
           />
         </template>
         <template #action="slotProps">
           <a-space>
             <template
-                v-for="i in getActions(slotProps, 'table')"
-                :key="i.key"
+              v-for="i in getActions(slotProps, 'table')"
+              :key="i.key"
             >
               <j-permission-button
-                  :danger="i.key === 'delete'"
-                  :disabled="i.disabled"
-                  :popConfirm="i.popConfirm"
-                  :tooltip="{
-                                    ...i.tooltip,
-                                }"
-                  @click="i.onClick"
-                  type="link"
-                  style="padding: 0px"
-                  :hasPermission="
-                                    'media/Device:' +
-                                    (i.key !== 'updateChannel' &&
-                                    i.key !== 'viewDevice'
-                                        ? i.key
-                                        : 'update')
-                                "
+                :danger="i.key === 'delete'"
+                :disabled="i.disabled"
+                :popConfirm="i.popConfirm"
+                :tooltip="{
+                  ...i.tooltip,
+                }"
+                @click="i.onClick"
+                type="link"
+                style="padding: 0px"
+                :hasPermission="
+                  'media/Device:' +
+                  (i.key !== 'updateChannel' &&
+                  i.key !== 'viewDevice'
+                    ? i.key
+                    : 'update')
+                "
               >
                 <template #icon
                 >
@@ -175,16 +175,16 @@
 
 <script setup lang="ts">
 import DeviceApi from '../../api/device';
-import { onlyMessage } from '@jetlinks-web/utils';
+import {onlyMessage} from '@jetlinks-web/utils';
 import {PROVIDER_OPTIONS} from './const';
 import {providerType} from './const';
 import {encodeQuery} from '@/utils/encodeQuery';
 import {useMenuStore} from '@/store/menu';
 import Summary from './Summary/index.vue';
 import {deviceImg} from "../../assets/device/index";
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
 
-const { t: $t } = useI18n();
+const {t: $t} = useI18n();
 const menuStory = useMenuStore();
 
 const listRef = ref<Record<string, any>>({});
@@ -300,8 +300,8 @@ const handleAdd = () => {
 };
 
 const getActions = (
-    data: Partial<Record<string, any>>,
-    type: 'card' | 'table',
+  data: Partial<Record<string, any>>,
+  type: 'card' | 'table',
 ): any => {
   if (!data) return [];
   const actions = [
@@ -314,8 +314,8 @@ const getActions = (
       icon: 'EditOutlined',
       onClick: () => {
         menuStory.jumpPage(
-            'media/Device/Save',
-            {params: {id: data.id}, query: {id: data.id}}
+          'media/Device/Save',
+          {params: {id: data.id}, query: {id: data.id}}
         );
       },
     },
@@ -328,16 +328,16 @@ const getActions = (
       icon: 'PartitionOutlined',
       onClick: () => {
         menuStory.jumpPage(
-            'media/Device/Channel',
-            {
-              params: {
-                id: data.id,
-                type: data.provider,
-              }, query: {
-                id: data.id,
-                type: data.provider,
-              }
+          'media/Device/Channel',
+          {
+            params: {
+              id: data.id,
+              type: data.provider,
+            }, query: {
+              id: data.id,
+              type: data.provider,
             }
+          }
         );
       },
     },
@@ -357,7 +357,7 @@ const getActions = (
       text: $t('Device.index.534980-15'),
       tooltip: {
         title:
-            data.state.value === 'online' ? $t('Device.index.534980-16') : $t('Device.index.534980-15'),
+          data.state.value === 'online' ? $t('Device.index.534980-16') : $t('Device.index.534980-15'),
       },
       disabled: data.state.value === 'online',
       popConfirm: {
@@ -384,14 +384,14 @@ const getActions = (
     // 卡片不展示查看按钮
     const tempActs = actions.filter((f: any) => f.key !== 'viewDevice');
     acts =
-        data.provider === 'fixed-media'
-            ? tempActs.filter((f: any) => f.key !== 'updateChannel')
-            : tempActs;
+      data.provider === 'fixed-media'
+        ? tempActs.filter((f: any) => f.key !== 'updateChannel')
+        : tempActs;
   } else {
     acts =
-        data.provider === 'fixed-media'
-            ? actions.filter((f: any) => f.key !== 'updateChannel')
-            : actions;
+      data.provider === 'fixed-media'
+        ? actions.filter((f: any) => f.key !== 'updateChannel')
+        : actions;
   }
   return acts;
 };
@@ -399,16 +399,16 @@ const getActions = (
 const productList = ref<any[]>([]);
 const getProductList = () => {
   DeviceApi.getProductList(
-      encodeQuery({
-        terms: {
-          messageProtocol$in: [
-            'gb28181-2016',
-            'fixed-media',
-            'onvif',
-            'media-plugin',
-          ],
-        },
-      }),
+    encodeQuery({
+      terms: {
+        messageProtocol$in: [
+          'gb28181-2016',
+          'fixed-media',
+          'onvif',
+          'media-plugin',
+        ],
+      },
+    }),
   ).then((resp: any) => {
     productList.value = resp.result.map((pItem: any) => ({
       label: pItem.name,

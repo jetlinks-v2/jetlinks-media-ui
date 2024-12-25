@@ -96,7 +96,7 @@ const showPassword = computed(() => {
     }
 });
 const jumpDetail = (data) => {
-    menuStory.jumpPage('device/Instance/Detail', { id: props.deviceId });
+    menuStory.jumpPage('device/Instance/Detail', { params: {id: props.deviceId} });
 };
 const getProductList = async () => {
     const params = {
