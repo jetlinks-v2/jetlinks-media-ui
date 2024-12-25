@@ -49,7 +49,7 @@
                 {{ $t('Channel.index.5349818-1') }}
               </j-permission-button>
             </template>
-            <template #rightExtraRender>
+            <template #headerRightRender>
               <j-permission-button
                   type="text"
                   :tooltip="{
@@ -71,14 +71,12 @@
                                 "
                   @click="refreshChanel"
               >
-                <template #icon
-                >
+                <template #icon>
                   <AIcon
                       type="SyncOutlined"
                   />
-                  {{ $t('Channel.index.5349818-5') }}
-                </template
-                >
+                </template>
+                {{ $t('Channel.index.5349818-5') }}
               </j-permission-button
               >
             </template>
