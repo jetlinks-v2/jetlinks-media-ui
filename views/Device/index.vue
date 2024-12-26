@@ -10,6 +10,7 @@
         ref="listRef"
         :columns="columns"
         :request="DeviceApi.list"
+        modeValue="CARD"
         :defaultParams="{
           sorts: [{ name: 'createTime', order: 'desc' }],
         }"
@@ -218,6 +219,7 @@ const columns = [
     dataIndex: 'provider',
     key: 'provider',
     scopedSlots: true,
+    ellipsis: true,
     width: 120,
     search: {
       type: 'select',
@@ -232,6 +234,7 @@ const columns = [
     dataIndex: 'channelNumber',
     key: 'channelNumber',
     scopedSlots: true,
+    ellipsis: true,
     width: 100,
   },
   {

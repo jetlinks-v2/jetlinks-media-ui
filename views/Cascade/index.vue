@@ -11,8 +11,9 @@
           :columns="columns"
           :request="(e:any) => lastValueFrom(e)"
           :defaultParams="{
-                    sorts: [{ name: 'createTime', order: 'desc' }],
-                }"
+            sorts: [{ name: 'createTime', order: 'desc' }],
+          }"
+          modeValue="CARD"
           :params="params"
           :gridColumns=[2,2,2]
       >
@@ -200,6 +201,7 @@ const columns = [
     dataIndex: 'count',
     key: 'count',
     scopedSlots: true,
+    ellipsis: true,
     width: 100,
   },
   {
@@ -208,6 +210,7 @@ const columns = [
     key: 'status',
     scopedSlots: true,
     width: 100,
+    ellipsis: true,
     search: {
       type: 'select',
       options: [
@@ -224,6 +227,7 @@ const columns = [
     dataIndex: 'onlineStatus',
     key: 'onlineStatus',
     scopedSlots: true,
+    ellipsis: true,
     width: 100,
     search: {
       type: 'select',
