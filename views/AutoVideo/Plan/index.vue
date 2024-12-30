@@ -59,19 +59,19 @@
                             </slot>
                         </template>
                         <template #content>
-                            <Ellipsis style="width: calc(100% - 100px)">
+                            <j-ellipsis style="width: calc(100% - 100px)">
                                 <span style="font-size: 16px; font-weight: 700">
                                     {{ slotProps.name }}
                                 </span>
-                            </Ellipsis>
+                            </j-ellipsis>
                             <a-row>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
                                         {{ $t('Plan.index.312701-3') }}
                                     </div>
-                                    <Ellipsis style="width: calc(100% - 20px)">
+                                    <j-ellipsis style="width: calc(100% - 20px)">
                                         <div>{{ slotProps.id }}</div>
-                                    </Ellipsis>
+                                    </j-ellipsis>
                                 </a-col>
                                 <a-col :span="6">
                                     <div class="card-item-content-text">
@@ -89,9 +89,9 @@
                                     <div class="card-item-content-text">
                                         {{ $t('Plan.index.312701-5') }}
                                     </div>
-                                    <Ellipsis
+                                    <j-ellipsis
                                         style="width: calc(100% - 20px)"
-                                        >{{ slotProps.saveDays}}</Ellipsis
+                                        >{{ slotProps.saveDays}}</j-ellipsis
                                     >
                                 </a-col>
                                 <a-col :span="6">

@@ -49,7 +49,7 @@
                     }"
                 >
                     <template #status="slotProps">
-                        <BadgeStatus
+                        <JBadgeStatus
                             :text="slotProps.status.text"
                             :status="slotProps.status.value"
                             :statusNames="{

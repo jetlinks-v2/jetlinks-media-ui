@@ -55,19 +55,19 @@
                             </slot>
                         </template>
                         <template #content>
-                            <Ellipsis style="width: calc(100% - 100px)">
+                            <j-ellipsis style="width: calc(100% - 100px)">
                                 <span style="font-size: 16px; font-weight: 700">
                                     {{ slotProps.name }}
                                 </span>
-                            </Ellipsis>
+                            </j-ellipsis>
                             <a-row :gutter="16" style="margin-top: 10px;">
                                 <a-col :span="8">
                                     <div class="card-item-content-text">
                                         {{ $t('Plan.index.855181-3') }}
                                     </div>
-                                    <Ellipsis style="width: calc(100% - 20px)">
+                                    <j-ellipsis style="width: calc(100% - 20px)">
                                         <div>{{ slotProps.id }}</div>
-                                    </Ellipsis>
+                                    </j-ellipsis>
                                 </a-col>
                                 <a-col :span="8">
                                     <div class="card-item-content-text">
@@ -83,11 +83,11 @@
                                     <div class="card-item-content-text">
                                         {{ $t('Plan.index.855181-5') }}
                                     </div>
-                                    <Ellipsis
+                                    <j-ellipsis
                                         style="width: calc(100% - 20px)"
                                         >{{
                                             slotProps?.saveDays
-                                        }}</Ellipsis
+                                        }}</j-ellipsis
                                     >
                                 </a-col>
                             </a-row>

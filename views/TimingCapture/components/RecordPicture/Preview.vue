@@ -15,7 +15,7 @@
             </div>
             <div class="info-item">
                 <div>{{ $t('RecordPicture.Preview.855187-1') }}</div>
-                <Ellipsis :getPopupContainer="getPopupContainer">{{ channel.channelId }}</Ellipsis>
+                <j-ellipsis :getPopupContainer="getPopupContainer">{{ channel.channelId }}</j-ellipsis>
             </div>
             <div class="info-item">
                 <div>{{ $t('RecordPicture.Preview.855187-2') }}</div>
