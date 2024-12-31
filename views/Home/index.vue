@@ -177,6 +177,7 @@ const columns = [
     dataIndex: 'channelNumber',
     key: 'channelNumber',
     width: 100,
+    ellipsis: true,
     scopedSlots: true,
   },
   {
@@ -195,7 +196,7 @@ const columns = [
         return v;
       },
     },
-    width: 80
+    width: 100
   },
 ];
 const params = ref<Record<string, any>>({});
