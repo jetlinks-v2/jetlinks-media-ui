@@ -2,6 +2,12 @@ export default [
     {
         code: 'iot',
         name: '物联网',
+        i18nMessages: {
+            name: {
+                zh_CN: '物联网',
+                en_US: 'IoT',
+            }
+        },
         owner: 'iot',
         id: '9c21f88182e7cc75cbdfa8e4b7844272',
         url: '/iot',
@@ -12,6 +18,12 @@ export default [
             {
                 code: 'link',
                 name: '运维管理',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '运维管理',
+                        en_US: 'Link',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '1',
                 id: 'bd55cdc9d0c1700afe628f572f91c22e',
@@ -23,6 +35,12 @@ export default [
                     {
                         code: 'media/Stream',
                         name: '流媒体服务',
+                        i18nMessages: {
+                            name: {
+                                zh_CN: '流媒体服务',
+                                en_US: 'Stream',
+                            }
+                        },
                         owner: 'iot',
                         //parentId: '1-4',
                         id: '82fd382e97bc132aa1a6cc926d804d48',
@@ -35,6 +53,10 @@ export default [
                             {
                                 id: 'view',
                                 name: '查看',
+                                i18nMessages: {
+                                    zh_CN: '查看',
+                                    en_US: 'View',
+                                },
                                 permissions: [
                                     {
                                         permission: 'media-server',
@@ -45,6 +67,10 @@ export default [
                             {
                                 id: 'delete',
                                 name: '删除',
+                                i18nMessages: {
+                                    zh_CN: '删除',
+                                    en_US: 'Delete',
+                                },
                                 permissions: [
                                     {
                                         permission: 'media-server',
@@ -55,6 +81,10 @@ export default [
                             {
                                 id: 'update',
                                 name: '编辑',
+                                i18nMessages: {
+                                    zh_CN: '编辑',
+                                    en_US: 'Edit',
+                                },
                                 permissions: [
                                     {
                                         permission: 'media-server',
@@ -65,6 +95,10 @@ export default [
                             {
                                 id: 'action',
                                 name: '启/禁用',
+                                i18nMessages: {
+                                    zh_CN: '启/禁用',
+                                    en_US: 'Enable/Disable',
+                                },
                                 permissions: [
                                     {
                                         permission: 'media-server',
@@ -75,6 +109,10 @@ export default [
                             {
                                 id: 'add',
                                 name: '新增',
+                                i18nMessages: {
+                                    zh_CN: '新增',
+                                    en_US: 'Add',
+                                },
                                 permissions: [
                                     {
                                         permission: 'media-server',
@@ -93,6 +131,12 @@ export default [
     {
         code: 'media',
         name: '视频中心',
+        i18nMessages: {
+            name: {
+                zh_CN: '视频中心',
+                en_US: 'Media',
+            }
+        },
         owner: 'iot',
         id: 'a0ca3cb1035b1484e04344f85a688d71',
         url: '/media',
@@ -104,6 +148,12 @@ export default [
             {
                 code: 'media/Home',
                 name: '首页',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '首页',
+                        en_US: 'Home',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '2',
                 id: 'a7693e3ccb4144fc66c4b6b7a716576b',
@@ -119,6 +169,12 @@ export default [
             {
                 code: 'media/DashBoard',
                 name: '仪表盘',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '仪表盘',
+                        en_US: 'Dashboard',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '2',
                 id: 'cc989fbfa0cd7f70f6a1154c89f2b9a4',
@@ -139,6 +195,12 @@ export default [
             {
                 code: 'media/Device',
                 name: '视频设备',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '视频设备',
+                        en_US: 'Video Device',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '2',
                 id: 'c4d640af0a00ce619a429e7d1c2d2bb8',
@@ -184,6 +246,10 @@ export default [
                     {
                         id: 'view',
                         name: '查看',
+                        i18nMessages: {
+                            zh_CN: '查看',
+                            en_US: 'View',
+                        },
                         permissions: [
                             {
                                 permission: 'media-device',
@@ -194,6 +260,10 @@ export default [
                     {
                         id: 'delete',
                         name: '删除',
+                        i18nMessages: {
+                            zh_CN: '删除',
+                            en_US: 'Delete',
+                        },
                         permissions: [
                             {
                                 permission: 'media-device',
@@ -204,6 +274,10 @@ export default [
                     {
                         id: 'update',
                         name: '编辑',
+                        i18nMessages: {
+                            zh_CN: '编辑',
+                            en_US: 'Edit',
+                        },
                         permissions: [
                             {
                                 permission: 'file',
@@ -234,6 +308,10 @@ export default [
                     {
                         id: 'add',
                         name: '新增',
+                        i18nMessages: {
+                            zh_CN: '新增',
+                            en_US: 'Add',
+                        },
                         description: '',
                         permissions: [
                             {
@@ -262,6 +340,12 @@ export default [
             {
                 code: 'media/SplitScreen',
                 name: '分屏展示',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '分屏展示',
+                        en_US: 'Split Screen',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '2',
                 id: '33ad7bae1dcb991bfe434d62fb2c72ba',
@@ -283,6 +367,10 @@ export default [
                     {
                         id: 'view',
                         name: '查看',
+                        i18nMessages: {
+                            zh_CN: '查看',
+                            en_US: 'View',
+                        },
                         description: '',
                         permissions: [
                             {
@@ -299,6 +387,12 @@ export default [
             {
                 code: 'media/Cascade',
                 name: '国标级联',
+                i18nMessages: {
+                    name: {
+                        zh_CN: '国标级联',
+                        en_US: 'Cascade',
+                    }
+                },
                 owner: 'iot',
                 //parentId: '2',
                 id: '1e00baa93418f820671f24ed45db59ae',
@@ -316,6 +410,10 @@ export default [
                     {
                         id: 'view',
                         name: '查看',
+                        i18nMessages: {
+                            zh_CN: '查看',
+                            en_US: 'View',
+                        },
                         permissions: [
                             {
                                 permission: 'gb28181-cascade',
@@ -326,6 +424,10 @@ export default [
                     {
                         id: 'action',
                         name: '启/禁用',
+                        i18nMessages: {
+                            zh_CN: '启/禁用',
+                            en_US: 'Enable/Disable',
+                        },
                         permissions: [
                             {
                                 permission: 'gb28181-cascade',
@@ -336,6 +438,10 @@ export default [
                     {
                         id: 'push',
                         name: '推送',
+                        i18nMessages: {
+                            zh_CN: '推送',
+                            en_US: 'Push',
+                        },
                         permissions: [
                             {
                                 permission: 'media-channel',
@@ -350,6 +456,10 @@ export default [
                     {
                         id: 'channel',
                         name: '选择通道',
+                        i18nMessages: {
+                            zh_CN: '选择通道',
+                            en_US: 'Select Channel',
+                        },
                         permissions: [
                             {
                                 permission: 'media-device',
@@ -368,6 +478,10 @@ export default [
                     {
                         id: 'delete',
                         name: '删除',
+                        i18nMessages: {
+                            zh_CN: '删除',
+                            en_US: 'Delete',
+                        },
                         permissions: [
                             {
                                 permission: 'gb28181-cascade',
@@ -382,6 +496,10 @@ export default [
                     {
                         id: 'update',
                         name: '编辑',
+                        i18nMessages: {
+                            zh_CN: '编辑',
+                            en_US: 'Edit',
+                        },
                         permissions: [
                             {
                                 permission: 'gb28181-cascade',
@@ -396,6 +514,10 @@ export default [
                     {
                         id: 'add',
                         name: '新增',
+                        i18nMessages: {
+                            zh_CN: '新增',
+                            en_US: 'Add',
+                        },
                         permissions: [
                             {
                                 permission: 'gb28181-cascade',
@@ -415,6 +537,12 @@ export default [
                 "level": 2,
                 "owner": "iot",
                 "name": "自动录像",
+                i18nMessages: {
+                    name: {
+                        zh_CN: '自动录像',
+                        en_US: 'AutoVideo',
+                    }
+                },
                 "code": "media/AutoVideo",
                 "describe": "",
                 "url": "/media/AutoVideo",
@@ -437,6 +565,12 @@ export default [
                         "level": 3,
                         "owner": "iot",
                         "name": "录像计划",
+                        i18nMessages: {
+                            name: {
+                                zh_CN: '录像计划',
+                                en_US: 'Plan',
+                            }
+                        },
                         "code": "media/AutoVideo/Plan",
                         "describe": "",
                         "url": "/media/AutoVideo/Plan",
@@ -453,6 +587,10 @@ export default [
                             {
                                 "id": "view",
                                 "name": "查询",
+                                i18nMessages: {
+                                    zh_CN: '查询',
+                                    en_US: 'View',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -486,6 +624,10 @@ export default [
                             {
                                 "id": "add",
                                 "name": "添加",
+                                i18nMessages: {
+                                    zh_CN: '添加',
+                                    en_US: 'Add',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -526,6 +668,10 @@ export default [
                             {
                                 "id": "delete",
                                 "name": "删除",
+                                i18nMessages: {
+                                    zh_CN: '删除',
+                                    en_US: 'Delete',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -549,6 +695,10 @@ export default [
                             {
                                 "id": "update",
                                 "name": "编辑",
+                                i18nMessages: {
+                                    zh_CN: '编辑',
+                                    en_US: 'Edit',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -574,6 +724,10 @@ export default [
                             {
                                 "id": "action",
                                 "name": "启/禁用",
+                                i18nMessages: {
+                                    zh_CN: '启/禁用',
+                                    en_US: 'Enable/Disable',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -612,6 +766,12 @@ export default [
                         "level": 3,
                         "owner": "iot",
                         "name": "录像记录",
+                        i18nMessages: {
+                            name: {
+                                zh_CN: '录像记录',
+                                en_US: 'Record',
+                            }
+                        },
                         "code": "media/AutoVideo/Record",
                         "describe": "",
                         "url": "/media/AutoVideo/Record",
@@ -629,6 +789,10 @@ export default [
                             {
                                 "id": "view",
                                 "name": "查询",
+                                i18nMessages: {
+                                    zh_CN: '查询',
+                                    en_US: 'Query',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -666,6 +830,12 @@ export default [
                 "level": 2,
                 "owner": "iot",
                 "name": "定时抓拍",
+                i18nMessages: {
+                    name: {
+                        zh_CN: '定时抓拍',
+                        en_US: 'Timing Capture',
+                    }
+                },
                 "code": "media/TimingCapture",
                 "describe": "",
                 "url": "/media/TimingCapture",
@@ -688,6 +858,12 @@ export default [
                         "level": 3,
                         "owner": "iot",
                         "name": "抓拍计划",
+                        i18nMessages: {
+                            name: {
+                                zh_CN: '抓拍计划',
+                                en_US: 'Capture Plan',
+                            }
+                        },
                         "code": "media/TimingCapture/Plan",
                         "describe": "",
                         "url": "/media/TimingCapture/Plan",
@@ -705,6 +881,10 @@ export default [
                             {
                                 "id": "view",
                                 "name": "查看",
+                                i18nMessages: {
+                                    zh_CN: '查看',
+                                    en_US: 'View',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -745,6 +925,10 @@ export default [
                             {
                                 "id": "add",
                                 "name": "新增",
+                                i18nMessages: {
+                                    zh_CN: '新增',
+                                    en_US: 'Add',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -782,6 +966,10 @@ export default [
                             {
                                 "id": "delete",
                                 "name": "删除",
+                                i18nMessages: {
+                                    zh_CN: '删除',
+                                    en_US: 'Delete',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -806,6 +994,10 @@ export default [
                             {
                                 "id": "update",
                                 "name": "编辑",
+                                i18nMessages: {
+                                    zh_CN: '编辑',
+                                    en_US: 'Edit',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -831,6 +1023,10 @@ export default [
                             {
                                 "id": "action",
                                 "name": "启/禁用",
+                                i18nMessages: {
+                                    zh_CN: '启/禁用',
+                                    en_US: 'Enable/Disable',
+                                },
                                 "description": "",
                                 "permissions": [
                                     {
@@ -868,6 +1064,12 @@ export default [
                         "level": 3,
                         "owner": "iot",
                         "name": "抓拍记录",
+                        i18nMessages: {
+                            name: {
+                                zh_CN: '抓拍记录',
+                                en_US: 'Capture Record',
+                            }
+                        },
                         "code": "media/TimingCapture/Record",
                         "describe": "",
                         "url": "/media/TimingCapture/Record",
