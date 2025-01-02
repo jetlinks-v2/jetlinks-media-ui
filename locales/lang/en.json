@@ -1742,5 +1742,8 @@
 	"Detail.index.594355-8": "The plan name cannot be empty",
 	"Detail.index.594355-9": "Up to 64 characters can be input",
 	"Plan.index.987266-0": "Confirm {0}?",
-	"Plan.index.987266-1": "hhHmmMssS"
+	"Plan.index.987266-1": "hhHmmMssS",
+	"jetlinks-media-ui.index.422038-0": "Details",
+	"jetlinks-media-ui.index.422038-1": "Channel",
+	"jetlinks-media-ui.index.422038-2": "Playback"
 }

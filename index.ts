@@ -1,4 +1,5 @@
 const routerModules = import.meta.glob('./views/**/index.vue')
+import i18n from "@/locales";
 
 const MODULE_CODE = 'media'
 
@@ -29,19 +30,19 @@ const getExtraRoutesMap = () => {
             children: [
                 {
                     code: 'Save',
-                    name: '详情',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
                     url: '/save:id',
                     component: () => import('./views/Device/Save/index.vue')
                 },
                 {
                     code: 'Channel',
-                    name: '通道',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
                     url: '/channel:id',
                     component: () => import('./views/Device/Channel/index.vue')
                 },
                 {
                     code: 'Playback',
-                    name: '回放',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-2'),
                     url: '/playback:id',
                     component: () => import('./views/Device/Playback/index.vue')
                 }
@@ -51,13 +52,13 @@ const getExtraRoutesMap = () => {
             children: [
                 {
                     code: 'Save',
-                    name: '详情',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
                     url: '/save:id',
                     component: () => import('./views/Cascade/Save/index.vue')
                 },
                 {
                     code: 'Channel',
-                    name: '通道',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
                     url: '/channel:id',
                     component: () => import('./views/Cascade/Channel/index.vue')
                 }
@@ -67,13 +68,13 @@ const getExtraRoutesMap = () => {
             children: [
                 {
                     code: 'Detail',
-                    name: '详情',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
                     url: '/detail/:id',
                     component: () => import('./views/AutoVideo/Plan/Detail/index.vue')
                 },
                 {
                     code: 'Channel',
-                    name: '通道',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
                     url: '/channel:id',
                     component: () => import('./views/Cascade/Channel/index.vue')
                 }
@@ -83,7 +84,7 @@ const getExtraRoutesMap = () => {
             children: [
                 {
                     code: 'Detail',
-                    name: '详情',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
                     url: '/detail/:id',
                     component: () => import('./views/Stream/Detail/index.vue')
                 },

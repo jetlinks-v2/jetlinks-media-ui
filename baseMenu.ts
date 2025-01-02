@@ -6,6 +6,7 @@ export default [
             name: {
                 zh_CN: '物联网',
                 en_US: 'IoT',
+                en: 'IoT'
             }
         },
         owner: 'iot',
@@ -22,6 +23,7 @@ export default [
                     name: {
                         zh_CN: '运维管理',
                         en_US: 'Link',
+                        en: 'Link',
                     }
                 },
                 owner: 'iot',
@@ -39,6 +41,7 @@ export default [
                             name: {
                                 zh_CN: '流媒体服务',
                                 en_US: 'Stream',
+                                en: 'Stream',
                             }
                         },
                         owner: 'iot',
@@ -56,6 +59,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '查看',
                                     en_US: 'View',
+                                    en: 'View',
                                 },
                                 permissions: [
                                     {
@@ -70,6 +74,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '删除',
                                     en_US: 'Delete',
+                                    en: 'Delete',
                                 },
                                 permissions: [
                                     {
@@ -84,6 +89,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '编辑',
                                     en_US: 'Edit',
+                                    en: 'Edit',
                                 },
                                 permissions: [
                                     {
@@ -98,6 +104,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '启/禁用',
                                     en_US: 'Enable/Disable',
+                                    en: 'Enable/Disable',
                                 },
                                 permissions: [
                                     {
@@ -112,6 +119,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '新增',
                                     en_US: 'Add',
+                                    en: 'Add',
                                 },
                                 permissions: [
                                     {
@@ -135,6 +143,7 @@ export default [
             name: {
                 zh_CN: '视频中心',
                 en_US: 'Media',
+                en: 'Media',
             }
         },
         owner: 'iot',
@@ -152,6 +161,7 @@ export default [
                     name: {
                         zh_CN: '首页',
                         en_US: 'Home',
+                        en: 'Home',
                     }
                 },
                 owner: 'iot',
@@ -173,6 +183,7 @@ export default [
                     name: {
                         zh_CN: '仪表盘',
                         en_US: 'Dashboard',
+                        en: 'Dashboard',
                     }
                 },
                 owner: 'iot',
@@ -199,6 +210,7 @@ export default [
                     name: {
                         zh_CN: '视频设备',
                         en_US: 'Video Device',
+                        en: 'Video Device',
                     }
                 },
                 owner: 'iot',
@@ -249,6 +261,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '查看',
                             en_US: 'View',
+                            en: 'View',
                         },
                         permissions: [
                             {
@@ -263,6 +276,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '删除',
                             en_US: 'Delete',
+                            en: 'Delete',
                         },
                         permissions: [
                             {
@@ -277,6 +291,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '编辑',
                             en_US: 'Edit',
+                            en: 'Edit',
                         },
                         permissions: [
                             {
@@ -311,6 +326,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '新增',
                             en_US: 'Add',
+                            en: 'Add',
                         },
                         description: '',
                         permissions: [
@@ -344,6 +360,7 @@ export default [
                     name: {
                         zh_CN: '分屏展示',
                         en_US: 'Split Screen',
+                        en: 'Split Screen',
                     }
                 },
                 owner: 'iot',
@@ -370,6 +387,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '查看',
                             en_US: 'View',
+                            en: 'View',
                         },
                         description: '',
                         permissions: [
@@ -391,6 +409,7 @@ export default [
                     name: {
                         zh_CN: '国标级联',
                         en_US: 'Cascade',
+                        en: 'Cascade',
                     }
                 },
                 owner: 'iot',
@@ -413,6 +432,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '查看',
                             en_US: 'View',
+                            en: 'View',
                         },
                         permissions: [
                             {
@@ -427,6 +447,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '启/禁用',
                             en_US: 'Enable/Disable',
+                            en: 'Enable/Disable',
                         },
                         permissions: [
                             {
@@ -441,6 +462,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '推送',
                             en_US: 'Push',
+                            en: 'Push',
                         },
                         permissions: [
                             {
@@ -459,6 +481,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '选择通道',
                             en_US: 'Select Channel',
+                            en: 'Select Channel',
                         },
                         permissions: [
                             {
@@ -481,6 +504,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '删除',
                             en_US: 'Delete',
+                            en: 'Delete',
                         },
                         permissions: [
                             {
@@ -499,6 +523,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '编辑',
                             en_US: 'Edit',
+                            en: 'Edit',
                         },
                         permissions: [
                             {
@@ -517,6 +542,7 @@ export default [
                         i18nMessages: {
                             zh_CN: '新增',
                             en_US: 'Add',
+                            en: 'Add',
                         },
                         permissions: [
                             {
@@ -541,6 +567,7 @@ export default [
                     name: {
                         zh_CN: '自动录像',
                         en_US: 'AutoVideo',
+                        en: 'AutoVideo',
                     }
                 },
                 "code": "media/AutoVideo",
@@ -569,6 +596,7 @@ export default [
                             name: {
                                 zh_CN: '录像计划',
                                 en_US: 'Plan',
+                                en: 'Plan',
                             }
                         },
                         "code": "media/AutoVideo/Plan",
@@ -590,6 +618,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '查询',
                                     en_US: 'View',
+                                    en: 'View',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -627,6 +656,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '添加',
                                     en_US: 'Add',
+                                    en: 'Add',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -671,6 +701,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '删除',
                                     en_US: 'Delete',
+                                    en: 'Delete',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -698,6 +729,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '编辑',
                                     en_US: 'Edit',
+                                    en: 'Edit',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -727,6 +759,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '启/禁用',
                                     en_US: 'Enable/Disable',
+                                    en: 'Enable/Disable',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -770,6 +803,7 @@ export default [
                             name: {
                                 zh_CN: '录像记录',
                                 en_US: 'Record',
+                                en: 'Record',
                             }
                         },
                         "code": "media/AutoVideo/Record",
@@ -792,6 +826,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '查询',
                                     en_US: 'Query',
+                                    en: 'Query',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -834,6 +869,7 @@ export default [
                     name: {
                         zh_CN: '定时抓拍',
                         en_US: 'Timing Capture',
+                        en: 'Timing Capture',
                     }
                 },
                 "code": "media/TimingCapture",
@@ -862,6 +898,7 @@ export default [
                             name: {
                                 zh_CN: '抓拍计划',
                                 en_US: 'Capture Plan',
+                                en: 'Capture Plan',
                             }
                         },
                         "code": "media/TimingCapture/Plan",
@@ -884,6 +921,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '查看',
                                     en_US: 'View',
+                                    en: 'View',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -928,6 +966,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '新增',
                                     en_US: 'Add',
+                                    en: 'Add',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -969,6 +1008,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '删除',
                                     en_US: 'Delete',
+                                    en: 'Delete',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -997,6 +1037,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '编辑',
                                     en_US: 'Edit',
+                                    en: 'Edit',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -1026,6 +1067,7 @@ export default [
                                 i18nMessages: {
                                     zh_CN: '启/禁用',
                                     en_US: 'Enable/Disable',
+                                    en: 'Enable/Disable',
                                 },
                                 "description": "",
                                 "permissions": [
@@ -1068,6 +1110,7 @@ export default [
                             name: {
                                 zh_CN: '抓拍记录',
                                 en_US: 'Capture Record',
+                                en: 'Capture Record',
                             }
                         },
                         "code": "media/TimingCapture/Record",

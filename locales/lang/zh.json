@@ -1742,5 +1742,8 @@
 	"Detail.index.594355-8": "计划名称不能为空",
 	"Detail.index.594355-9": "最多可输入64位字符",
 	"Plan.index.987266-0": "确认{0}?",
-	"Plan.index.987266-1": "hh小时mm分钟ss秒"
+	"Plan.index.987266-1": "hh小时mm分钟ss秒",
+	"jetlinks-media-ui.index.422038-0": "详情",
+	"jetlinks-media-ui.index.422038-1": "通道",
+	"jetlinks-media-ui.index.422038-2": "回放"
 }
