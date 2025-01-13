@@ -305,7 +305,7 @@
                                                 :name="[
                                                     'configuration',
 
-                                                    'rtpIp',
+                                                    'apiHost',
                                                 ]"
                                                 :rules="[
                                                     {
@@ -317,7 +317,7 @@
                                                 <a-input
                                                     v-model:value="
                                                         formData.configuration
-                                                            .rtpIp
+                                                            .apiHost
                                                     "
                                                     :disabled="true"
                                                     :placeholder="$t('Detail.index.416932-23')"
