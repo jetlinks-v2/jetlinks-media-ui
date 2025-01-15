@@ -135,22 +135,6 @@
                             >
                                 <div class="center-volume" :style="{ height: `${volume}%`}"> </div>
                                 <AIcon :type=" showAudio ? 'AudioOutlined' : 'AudioMutedOutlined' "/>
-                                <!--                                <div>{{ $t('Live.index.5349821-13') }}</div>-->
-                                <!--                                <j-dropdown>-->
-                                <!--                                    <span-->
-                                <!--                                        >{{ _speed }}<AIcon type="DownOutlined"-->
-                                <!--                                    /></span>-->
-                                <!--                                    <template #overlay>-->
-                                <!--                                        <j-menu @click="onMenuChange">-->
-                                <!--                                            <j-menu-item-->
-                                <!--                                                :key="item.value"-->
-                                <!--                                                v-for="item in speedList"-->
-                                <!--                                            >-->
-                                <!--                                                {{ item.label }}-->
-                                <!--                                            </j-menu-item>-->
-                                <!--                                        </j-menu>-->
-                                <!--                                    </template>-->
-                                <!--                                </j-dropdown>-->
                             </div>
                         </template>
                     </MediaTool>
@@ -271,7 +255,7 @@ const openAudioPlay = () => {
 }
 
 const onMenuChange = (val: any) => {
-    speed.value = val.key;
+    speed.value = val;
 };
 
 const mouseleave = () => {
