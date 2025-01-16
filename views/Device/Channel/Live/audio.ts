@@ -37,7 +37,7 @@ export const rtcStream = () => {
 export const openAudio = (deviceId: string, channelId: string, options: { volume: (value: number) => void }) => {
     createRtc()
 
-    navigator.mediaDevices.getUserMedia({
+    navigator.mediaDevices?.getUserMedia({
         audio: true
     }).then(async stream => {
         let audioTransceiver
