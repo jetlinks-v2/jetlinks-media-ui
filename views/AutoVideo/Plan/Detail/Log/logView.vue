@@ -60,7 +60,7 @@
 </template>
 
 <script setup name="logView">
-import JsonViewer from 'vue3-json-viewer';
+import { JsonViewer } from 'vue3-json-viewer';
 import { useI18n } from 'vue-i18n';
 
 const { t: $t } = useI18n();

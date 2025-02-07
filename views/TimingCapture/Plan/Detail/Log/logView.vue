@@ -60,7 +60,7 @@
 </template>
 
 <script setup name="logView">
-import JsonViewer from 'vue3-json-viewer';
+import { JsonViewer } from 'vue3-json-viewer';
 import i18n from '@/locales/index'
 const $t = i18n.global.t
 const props = defineProps({
