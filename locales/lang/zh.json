@@ -1745,5 +1745,6 @@
 	"Plan.index.987266-1": "hh小时mm分钟ss秒",
 	"jetlinks-media-ui.index.422038-0": "详情",
 	"jetlinks-media-ui.index.422038-1": "通道",
-	"jetlinks-media-ui.index.422038-2": "回放"
+	"jetlinks-media-ui.index.422038-2": "回放",
+	"components.Card.744979-0": "播放数量(人次)"
 }
