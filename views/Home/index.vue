@@ -29,7 +29,7 @@
         v-model:visible="visible"
         :maskClosable="false"
         :destroyOnClose="true"
-        @cancel="visible = false"
+        @cancel="handleCancel"
         @ok="handleSubmit"
     >
       <j-advanced-search
@@ -210,6 +210,11 @@ const handleSearch = (e: any) => {
 };
 
 const deviceItem = ref();
+
+const handleCancel = () => {
+  visible.value = false
+  deviceItem.value = null;
+}
 const handleSubmit = () => {
   if (deviceItem.value && deviceItem.value.id) {
     menuStory.jumpPage(
