@@ -163,7 +163,7 @@ const getPlayCount = async (params: any) => {
   const day = hour * 24;
   const month = day * 30;
   const year = 365 * day;
-  let format = ''
+  let format = $t('DashBoard.index.240761-13')
 
   if (dt <= day) {
     _limit = Math.abs(Math.ceil(dt / hour));

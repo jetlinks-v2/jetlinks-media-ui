@@ -746,9 +746,9 @@
 	"views.data.812529-0": "Mobile OneLink",
 	"views.data.812529-1": "Telecom Ctwing",
 	"views.data.812529-2": "China Unicom",
-	"views.data.812529-3": "move",
-	"views.data.812529-4": "telecom",
-	"views.data.812529-5": "Unicom",
+	"views.data.812529-3": "China Mobile",
+	"views.data.812529-4": "China Telecom",
+	"views.data.812529-5": "China Unicom",
 	"views.data.812529-6": "Annual card",
 	"views.data.812529-7": "Seasonal card",
 	"views.data.812529-8": "Monthly card",
@@ -1208,6 +1208,7 @@
 	"DashBoard.index.240761-10": "Number of viewers",
 	"DashBoard.index.240761-11": "M-dd",
 	"DashBoard.index.240761-12": "YYYY-MM",
+	"DashBoard.index.240761-13": "MM-dd HH:00",
 	"VideoShare.index.5349817-0": "Video sharing",
 	"VideoShare.index.5349817-1": "term of validity:",
 	"VideoShare.index.5349817-2": "second",
@@ -1745,5 +1746,6 @@
 	"Plan.index.987266-1": "hhHmmMssS",
 	"jetlinks-media-ui.index.422038-0": "Details",
 	"jetlinks-media-ui.index.422038-1": "Channel",
-	"jetlinks-media-ui.index.422038-2": "Playback"
+	"jetlinks-media-ui.index.422038-2": "Playback",
+	"components.Card.744979-0": "Number of plays (person-times)"
 }

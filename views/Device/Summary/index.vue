@@ -87,8 +87,10 @@ const showPassword = computed(() => {
             : deviceData.value?.others?.access_pwd;
     if (!visiblePassword.value) {
         let hiddenPassword  = ''
-        for (let i = 0; i < password.length; i++) {
+        if (password) {
+          for (let i = 0; i < password.length; i++) {
             hiddenPassword += '*'
+          }
         }
         return hiddenPassword
     }else{
@@ -108,10 +110,15 @@ const getProductList = async () => {
     if (res.success) {
         deviceData.value.productName = res.result?.[0]?.name;
         if (deviceData.value.provider !== 'media-plugin') {
-            deviceData.value.others.access_pwd = deviceData.value.others
-                .access_pwd
-                ? deviceData.value.others.access_pwd
-                : res.result?.[0]?.configuration?.access_pwd;
+          if (deviceData.value.others) {
+            deviceData.value.others.access_pwd = deviceData.value.others?.access_pwd
+              ? deviceData.value.others.access_pwd
+              : res.result?.[0]?.configuration?.access_pwd;
+          } else {
+            deviceData.value.others = {
+              access_pwd: res.result?.[0]?.configuration?.access_pwd
+            }
+          }
         }
     }
 };

@@ -105,6 +105,7 @@ const jumpPage = (item: bootConfig) => {
         color: @text-color;
         font-weight: 700;
         font-size: 20px;
+        white-space: nowrap;
       }
 
       .item-image {

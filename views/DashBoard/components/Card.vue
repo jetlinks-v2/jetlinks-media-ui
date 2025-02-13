@@ -109,7 +109,7 @@ const createChart = () => {
                 //     data: sData,
                 // },
                 {
-                    name: '播放数量(人次)',
+                    name: $t('components.Card.744979-0'),
                     data: sData,
                     type: 'line',
                     smooth: true,
@@ -187,12 +187,6 @@ watch(
             dateRange.value[0] = dayjs().subtract(1, 'year').format('x');
         }
         dateRange.value[1] = dayjs().format('x');
-        emits('change', {
-            time: {
-                start: dateRange.value[0],
-                end: dateRange.value[1],
-            },
-        });
     },
 );
 </script>

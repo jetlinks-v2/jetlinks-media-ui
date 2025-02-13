@@ -1208,6 +1208,7 @@
 	"DashBoard.index.240761-10": "播放人数",
 	"DashBoard.index.240761-11": "M月dd日",
 	"DashBoard.index.240761-12": "YYYY年-MM月",
+	"DashBoard.index.240761-13": "MM月DD日 HH时",
 	"VideoShare.index.5349817-0": "视频分享",
 	"VideoShare.index.5349817-1": "有效期：",
 	"VideoShare.index.5349817-2": "秒",
@@ -1745,5 +1746,6 @@
 	"Plan.index.987266-1": "hh小时mm分钟ss秒",
 	"jetlinks-media-ui.index.422038-0": "详情",
 	"jetlinks-media-ui.index.422038-1": "通道",
-	"jetlinks-media-ui.index.422038-2": "回放"
+	"jetlinks-media-ui.index.422038-2": "回放",
+	"components.Card.744979-0": "播放数量(人次)"
 }

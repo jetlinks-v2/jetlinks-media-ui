@@ -130,7 +130,7 @@
               <template #img>
                 <slot name="img">
                   <img
-                      :src="getImage('/device-access.png')"
+                      :src="deviceImg.deviceAccess"
                   />
                 </slot>
               </template>
@@ -213,6 +213,7 @@ import {useAuthStore} from '@/store/auth';
 import {pick} from 'lodash-es';
 import {getAccessConfig} from '../../../api/product';
 import { useI18n } from 'vue-i18n';
+import { deviceImg } from '../../../assets/device'
 
 const { t: $t } = useI18n();
 const isPermission = useAuthStore().hasPermission(
