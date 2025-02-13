@@ -187,12 +187,6 @@ watch(
             dateRange.value[0] = dayjs().subtract(1, 'year').format('x');
         }
         dateRange.value[1] = dayjs().format('x');
-        emits('change', {
-            time: {
-                start: dateRange.value[0],
-                end: dateRange.value[1],
-            },
-        });
     },
 );
 </script>

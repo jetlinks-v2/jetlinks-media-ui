@@ -31,19 +31,19 @@ const getExtraRoutesMap = () => {
                 {
                     code: 'Save',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
-                    url: '/save:id',
+                    url: '/save/:id',
                     component: () => import('./views/Device/Save/index.vue')
                 },
                 {
                     code: 'Channel',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
-                    url: '/channel:id',
+                    url: '/channel/:id',
                     component: () => import('./views/Device/Channel/index.vue')
                 },
                 {
                     code: 'Playback',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-2'),
-                    url: '/playback:id',
+                    url: '/playback/:id',
                     component: () => import('./views/Device/Playback/index.vue')
                 }
             ]
@@ -53,13 +53,13 @@ const getExtraRoutesMap = () => {
                 {
                     code: 'Save',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
-                    url: '/save:id',
+                    url: '/save/:id',
                     component: () => import('./views/Cascade/Save/index.vue')
                 },
                 {
                     code: 'Channel',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
-                    url: '/channel:id',
+                    url: '/channel/:id',
                     component: () => import('./views/Cascade/Channel/index.vue')
                 }
             ]
@@ -75,7 +75,7 @@ const getExtraRoutesMap = () => {
                 {
                     code: 'Channel',
                     name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
-                    url: '/channel:id',
+                    url: '/channel/:id',
                     component: () => import('./views/Cascade/Channel/index.vue')
                 }
             ]

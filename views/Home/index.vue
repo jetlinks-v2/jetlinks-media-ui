@@ -214,11 +214,16 @@ const handleSubmit = () => {
   if (deviceItem.value && deviceItem.value.id) {
     menuStory.jumpPage(
         'media/Device/Channel',
-        {},
-        {
+      {
+        params: {
           id: deviceItem.value.id,
           type: deviceItem.value.provider,
         },
+        query: {
+          id: deviceItem.value.id,
+          type: deviceItem.value.provider,
+        }
+      }
     );
   } else {
     onlyMessage($t('Home.index.010851-18'), 'warning');
