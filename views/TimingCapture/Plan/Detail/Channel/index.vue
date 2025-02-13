@@ -50,7 +50,7 @@
                     <j-pro-table
                         style="min-height: calc(100% - 60px)"
                         ref="tableRef"
-                        model="table"
+                        mode="table"
                         rowKey="channelId"
                         :columns="columns"
                         :request="query"

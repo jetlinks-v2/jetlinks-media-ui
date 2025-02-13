@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 100%">
         <div class="rule-item">
             <span>{{ $t('Rule.index.312706-0') }}</span>
             <a-switch
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 24px">
+        <div style="margin-bottom: 24px; height: calc(100% - 140px); overflow-y: auto">
             <!-- <span>录制时段：</span> -->
             <Calendar v-model:value="detail.others.times"  v-model:trigger="detail.others.trigger" :disabled="!editType"/>
         </div>

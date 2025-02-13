@@ -1,5 +1,5 @@
 <template>
-    <page-container
+    <j-page-container
         :tabList="list"
         :showBack="true"
         :tabActiveKey="tabActiveKey"
@@ -58,7 +58,7 @@
                 <component :is="tabs[tabActiveKey]" @onJump="onTabChange" :key="tabActiveKey" :first="first"/>
             </div>
         </FullPage>
-    </page-container>
+    </j-page-container>
 </template>
 
 <script setup name="Detail">
@@ -120,7 +120,7 @@ const onTabChange = (e) => {
 
 const onSave = async (val) => {
     if(nameTips.value){
-        return 
+        return
     }
     if (!val) {
         loading.value = true;

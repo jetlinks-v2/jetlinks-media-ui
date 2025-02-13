@@ -119,7 +119,7 @@ const columns = [
         dataIndex: 'state',
         key: 'state',
         scopedSlots: true,
-        width: 100,
+        width: 150,
         search: {
             type: 'select',
             options: [

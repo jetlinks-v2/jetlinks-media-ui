@@ -202,7 +202,7 @@ const columns = [
     key: 'count',
     scopedSlots: true,
     ellipsis: true,
-    width: 100,
+
   },
   {
     title: $t('Cascade.index.122691-6'),
@@ -228,7 +228,7 @@ const columns = [
     key: 'onlineStatus',
     scopedSlots: true,
     ellipsis: true,
-    width: 100,
+    width: 150,
     search: {
       type: 'select',
       options: [
@@ -244,7 +244,7 @@ const columns = [
     title: $t('Cascade.index.122691-12'),
     key: 'action',
     fixed: 'right',
-    width: 200,
+    width: 250,
     scopedSlots: true,
   },
 ];
