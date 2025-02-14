@@ -23,7 +23,7 @@
       <div class="item" v-for="item in list">
         <div class="item-label">
           <j-ellipsis>
-            {{ item.label }}
+            {{ item.i18nName || item.label }}
           </j-ellipsis>
         </div>
         <div class="item-content">
@@ -281,6 +281,7 @@ const initList = async (trigger) => {
     const res = await queryTags();
     if (res.success) {
       tags.value = res.result.map((item) => ({
+        ...item,
         label: item.name,
         value: item.id,
       }));
