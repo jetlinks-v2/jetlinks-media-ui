@@ -72,12 +72,22 @@ const getExtraRoutesMap = () => {
                     url: '/detail/:id',
                     component: () => import('./views/AutoVideo/Plan/Detail/index.vue')
                 },
+                // {
+                //     code: 'Channel',
+                //     name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
+                //     url: '/channel:id',
+                //     component: () => import('./views/Cascade/Channel/index.vue')
+                // }
+            ]
+        },
+        'media/TimingCapture/Plan': {
+            children: [
                 {
-                    code: 'Channel',
-                    name: i18n.global.t('jetlinks-media-ui.index.422038-1'),
-                    url: '/channel/:id',
-                    component: () => import('./views/Cascade/Channel/index.vue')
-                }
+                    code: 'Detail',
+                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
+                    url: '/detail/:id',
+                    component: () => import('./views/TimingCapture/Plan/Detail/index.vue')
+                },
             ]
         },
         'media/Stream': {

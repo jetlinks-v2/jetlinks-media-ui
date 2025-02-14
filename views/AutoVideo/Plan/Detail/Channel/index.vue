@@ -49,7 +49,7 @@
                     <j-pro-table
                         style="min-height: calc(100% - 60px)"
                         ref="tableRef"
-                        model="table"
+                        mode="table"
                         rowKey="channelId"
                         :columns="columns"
                         :request="query"
@@ -66,7 +66,7 @@
                             />
                         </template>
                         <template #action="slotProps">
-                            <j-space :size="16">
+                            <a-space :size="16">
                                 <template v-if="editType">
                                     <j-permission-button
                                         type="link"
@@ -127,7 +127,7 @@
                                         <AIcon type="ExceptionOutlined" />
                                     </j-permission-button>
                                 </template>
-                            </j-space>
+                            </a-space>
                         </template>
                     </j-pro-table>
                 </div>
@@ -456,7 +456,7 @@ const saveChannel = async () => {
     });
     if (resp.success) {
         cacheDeviceIds.value = {};
-        
+
     }
     const keys = Object.keys(unBindChannelIds.value);
     if (keys.length) {

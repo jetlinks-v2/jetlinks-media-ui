@@ -10,7 +10,7 @@
             ref="tableRef"
             :columns="columns"
             :params="params"
-            model="table"
+            mode="table"
             :request="(e) => queryLogs(route.params.id, e)"
         >
             <template #createTime="slotProps">

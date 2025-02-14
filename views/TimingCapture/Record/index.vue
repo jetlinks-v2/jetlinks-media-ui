@@ -214,8 +214,7 @@ watch(() => [deviceId.value, channelId.value], () => {
 
 <style lang="less" scoped>
 .bound {
-    padding: 0 20px;
-    margin-top: 20px;
+    padding: 24px;
     display: flex;
     .bound_device {
         flex: 1;
