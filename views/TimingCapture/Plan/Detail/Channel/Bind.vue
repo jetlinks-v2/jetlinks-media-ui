@@ -32,51 +32,53 @@
                     target="capture-plan-channel-bind"
                     @search="handleSearch"
                 ></pro-search>
-                <j-pro-table
-                    v-if="deviceId"
-                    style="min-height: calc(100% - 60px); padding-top: 0"
-                    ref="tableRef"
-                    model="table"
-                    rowKey="channelId"
-                    :columns="columns"
-                    :request="query"
-                    :params="params"
-                    :rowSelection="{
+                <div style="height: 500px">
+                  <j-pro-table
+                      v-if="deviceId"
+                      style="min-height: calc(100% - 60px); padding-top: 0"
+                      ref="tableRef"
+                      mode="table"
+                      rowKey="channelId"
+                      :columns="columns"
+                      :request="query"
+                      :params="params"
+                      :rowSelection="{
                         selectedRowKeys: _selectedRowKeys,
                         onSelect: onSelectChange,
                         onSelectAll: selectAll,
                         onSelectNone: () => (_selectedRowKeys = []),
                     }"
-                >
+                  >
                     <template #status="slotProps">
-                        <JBadgeStatus
-                            :text="slotProps.status.text"
-                            :status="slotProps.status.value"
-                            :statusNames="{
+                      <JBadgeStatus
+                          :text="slotProps.status.text"
+                          :status="slotProps.status.value"
+                          :statusNames="{
                                 online: 'success',
                                 offline: 'error',
                             }"
-                        />
+                      />
                     </template>
                     <template #action="slotProps">
-                        <a-space :size="16">
-                            <template
-                                v-for="i in getActions(slotProps, 'table')"
-                                :key="i.key"
-                            >
-                                <j-permission-button
-                                    :disabled="i.disabled"
-                                    :popConfirm="i.popConfirm"
-                                    type="link"
-                                    :tooltip="{
+                      <a-space :size="16">
+                        <template
+                            v-for="i in getActions(slotProps, 'table')"
+                            :key="i.key"
+                        >
+                          <j-permission-button
+                              :disabled="i.disabled"
+                              :popConfirm="i.popConfirm"
+                              type="link"
+                              :tooltip="{
                                         ...i.tooltip,
                                     }"
-                                    @click="i.onClick"
-                                >
-                                    <AIcon :type="i.icon" />
-                                </j-permission-button> </template
+                              @click="i.onClick"
+                          >
+                            <AIcon :type="i.icon" />
+                          </j-permission-button> </template
                         ></a-space> </template
-                ></j-pro-table>
+                    ></j-pro-table>
+                </div>
             </div>
         </div>
     </a-modal>
@@ -203,7 +205,7 @@ const onSelectChange = (item, state) => {
     const arr = new Set([..._selectedRowKeys.value, ...oldChannelIds]);
 
     const currentDeviceChannel  = new Set([...oldChannelIds])
-   
+
     if (state) {
         arr.add(item.channelId);
         currentDeviceChannel.add(item.channelId)
