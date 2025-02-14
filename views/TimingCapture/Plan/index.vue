@@ -182,9 +182,9 @@ const getActions = (data, type) => {
             },
             icon: 'EditOutlined',
             onClick: () => {
-                menuStory.jumpPage('media/TimingCapture/Plan/Detail', {
+                menuStory.jumpPage('media/TimingCapture/Plan/Detail', {params: {
                     id: data.id,
-                },{type:'edit'});
+                  }});
             },
         },
         {
@@ -259,10 +259,12 @@ const handleClick = (data) => {
     menuStory.jumpPage(
         'media/TimingCapture/Plan/Detail',
         {
-            id: data.id,
-        },
-        {
-            type: 'view',
+            params: {
+                id: data.id,
+            },
+            query: {
+                type: 'view',
+            }
         },
     );
 };
@@ -272,13 +274,14 @@ const onClose = (id?: string) => {
     if(id){
         menuStory.jumpPage(
         'media/TimingCapture/Plan/Detail',
-        {
-            id: id,
-        },
-        {
-            type: 'edit',
-        },
-    ); 
+            {
+                params: {
+                    id: id,
+                },
+                query: {
+                    type: 'edit',
+                }
+        });
     }
 }
 </script>
