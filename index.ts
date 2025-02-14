@@ -100,16 +100,6 @@ const getExtraRoutesMap = () => {
                 },
             ]
         },
-        'media/TimingCapture/Plan': {
-            children: [
-                {
-                    code: 'Detail',
-                    name: i18n.global.t('jetlinks-media-ui.index.422038-0'),
-                    url: 'detail/:id',
-                    component: () => import('./views/TimingCapture/Plan/Detail/index.vue')
-                }
-            ]
-        }
     }
 }
 
