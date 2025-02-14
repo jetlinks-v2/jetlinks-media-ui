@@ -99,7 +99,7 @@ const getExtraRoutesMap = () => {
                     component: () => import('./views/Stream/Detail/index.vue')
                 },
             ]
-        }
+        },
     }
 }
 
