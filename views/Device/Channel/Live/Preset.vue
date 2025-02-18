@@ -105,7 +105,12 @@ const handleSearch = async (id: string, arr: Item[] = []) => {
   if (route.query.type === 'gb28181-2016') {
     params.channel = props.data.channelId
   }
-    const resp = await channelApi.opFunction(id, 'QueryPreset', params);
+    const resp = await channelApi.opFunction(id, 'QueryPreset', params).catch((err) => {
+      const el = document.getElementsByClassName('ant-notification');
+      for (let i = 0; i < el.length; i++) {
+        el[i].getElementsByClassName('ant-notification-notice-description')[0].innerHTML = '该通道无预置点位'
+      }
+    });
     if (resp.status === 200) {
         dataSource.value = unionBy([ ...arr, ...init], 'id').map((item) => {
             const _item = (resp.result?.[0] || []).find(
