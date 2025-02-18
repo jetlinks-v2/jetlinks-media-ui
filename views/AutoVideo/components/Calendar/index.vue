@@ -11,7 +11,8 @@
         <a-radio value="calender">{{ $t('Calendar.index.3127118-3') }}</a-radio>
       </a-radio-group>
     </div>
-    <div class="content">
+    <div class="content-box">
+      <div class="content">
       <div class="top">
         <div
             v-for="item in Array.from(Array(24), (v, k) => k)"
@@ -20,14 +21,14 @@
           <div class="top-item">{{ item }}</div>
         </div>
       </div>
-      <div class="item" v-for="item in list">
+      <div class="item" v-for="(item, index) in list">
         <div class="item-label">
           <j-ellipsis>
             {{ item.i18nName || item.label }}
           </j-ellipsis>
         </div>
         <div class="item-content">
-          <div v-for="i in item?.times">
+          <div v-for="(i, _index) in item?.times">
             <div
                 v-if="i?.mod === 'once' && i.once.time"
                 class="item-content-point"
@@ -89,6 +90,7 @@
           >
         </div>
       </div>
+    </div>
     </div>
   </div>
   <Setting
@@ -363,12 +365,15 @@ watch(
   flex-direction: column;
   gap: 12px;
 
-  .content {
-    position: relative;
-    padding-top: 35px;
+  .content-box {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+  }
+
+  .content {
+    position: relative;
+    padding-top: 35px;
 
     .top {
       display: flex;
