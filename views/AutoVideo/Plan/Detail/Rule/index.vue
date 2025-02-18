@@ -49,13 +49,15 @@
             <!-- <span>录制时段：</span> -->
             <Calendar v-model:value="detail.others.times"  v-model:trigger="detail.others.trigger" :disabled="!editType"/>
         </div>
-        <a-button
-            v-if="editType"
-            type="primary"
-            :loading="loading"
-            @click="save"
-            >{{ $t('Rule.index.312706-6') }}</a-button
-        >
+        <div>
+            <a-button
+                v-if="editType"
+                type="primary"
+                :loading="loading"
+                @click="save"
+                >{{ $t('Rule.index.312706-6') }}</a-button
+            >
+        </div>
     </div>
 </template>
 
