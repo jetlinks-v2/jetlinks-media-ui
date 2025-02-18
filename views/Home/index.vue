@@ -54,7 +54,8 @@
                         : undefined,
                     onSelect: (record: any) => {
                         deviceItem = record;
-                    }
+                    },
+                    onSelectNone: () => (deviceItem = undefined),
                 }"
           :alertRender="false"
       >
