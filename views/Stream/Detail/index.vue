@@ -601,6 +601,10 @@
                                                             message:
                                                                 $t('Detail.index.416932-43'),
                                                         },
+                                                        {
+                                                            validator: validateAddress,
+                                                            message: $t('Detail.index.416932-8'),
+                                                        },
                                                     ]"
                                             ><a-input
                                                 :placeholder="$t('Detail.index.416932-43')"
