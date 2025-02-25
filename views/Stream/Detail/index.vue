@@ -341,7 +341,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-25') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-26')"
+                                                        :title="tooltipText('RTSP', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -382,7 +382,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-28') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-29')"
+                                                        :title="tooltipText('RTMP', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -424,7 +424,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-31') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-32')"
+                                                        :title="tooltipText('RTC', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -467,7 +467,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-34') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-35')"
+                                                        :title="tooltipText('MP4', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -511,7 +511,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-37') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-38')"
+                                                        :title="tooltipText('HLS', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -555,7 +555,7 @@
                                                 <template #label>
                                                     {{ $t('Detail.index.416932-40') }}
                                                     <a-tooltip
-                                                        :title="$t('Detail.index.416932-41')"
+                                                        :title="tooltipText('FLV', 'Intranet')"
                                                     >
                                                         <AIcon
                                                             type="QuestionCircleOutlined"
@@ -601,6 +601,10 @@
                                                             message:
                                                                 $t('Detail.index.416932-43'),
                                                         },
+                                                        {
+                                                            validator: validateAddress,
+                                                            message: $t('Detail.index.416932-8'),
+                                                        },
                                                     ]"
                                             ><a-input
                                                 :placeholder="$t('Detail.index.416932-43')"
@@ -629,7 +633,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-44') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-26')"
+                                                            :title="tooltipText('RTSP')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -673,7 +677,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-45') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-29')"
+                                                            :title="tooltipText('RTMP', 'Extranet')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -717,7 +721,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-31') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-32')"
+                                                            :title="tooltipText('RTC', 'Extranet')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -761,7 +765,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-34') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-35')"
+                                                            :title="tooltipText('MP4', 'Extranet')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -805,7 +809,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-37') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-38')"
+                                                            :title="tooltipText('HLS', 'Extranet')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -849,7 +853,7 @@
                                                     <template #label>
                                                         {{ $t('Detail.index.416932-40') }}
                                                         <a-tooltip
-                                                            :title="$t('Detail.index.416932-41')"
+                                                            :title="tooltipText('FLV', 'Extranet')"
                                                         >
                                                             <AIcon
                                                                 type="QuestionCircleOutlined"
@@ -1086,6 +1090,19 @@ const onSubmit = async () => {
     }
 };
 
+const tooltipText = computed(() => {
+  return (val: string, key?: string) => {
+    if(!formData.value.configuration.distinguish) {
+      return $t('Detail.index.416932-48', [val])
+    } else {
+      if(key === 'Intranet') {
+        return $t('Detail.index.416932-49', [val])
+      } else {
+        return $t('Detail.index.416932-50', [val])
+      }
+    }
+  }
+})
 const detail = async (id: string) => {
     loading.value = true;
     const resp: any = await queryProviders();

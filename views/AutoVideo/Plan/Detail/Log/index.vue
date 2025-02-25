@@ -1,5 +1,5 @@
 <template>
-    <div v-if="loading">
+    <div class="plan-log" v-if="loading">
         <pro-search
             :columns="columns"
             style="margin-bottom: 0"
@@ -186,4 +186,9 @@ onBeforeUnmount(() => {
 });
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+.plan-log {
+  overflow: auto;
+  height: 100%;
+}
+</style>
