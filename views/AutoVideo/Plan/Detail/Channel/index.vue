@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="plan-channel">
         <a-spin :spinning="spinning">
             <div class="channelControl">
                 <div class="bind">{{ $t('Channel.index.312709-0') }}{{ bindCount }}</div>
@@ -524,6 +524,10 @@ getBindTotal();
 </script>
 
 <style lang="less" scoped>
+.plan-channel {
+    height: 100%;
+    padding: 24px;
+}
 .channelControl {
     display: flex;
     align-items: center;
