@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100%">
+    <div class="plan-rule">
         <div class="rule-item">
             <span>{{ $t('Rule.index.312706-0') }}</span>
             <a-switch
@@ -153,6 +153,10 @@ onMounted(()=>{
 </script>
 
 <style lang="less">
+.plan-rule {
+    height: 100%;
+    padding: 24px;
+}
 .rule-item {
     margin-bottom: 20px;
     display: flex;
