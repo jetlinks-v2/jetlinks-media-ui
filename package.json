@@ -1,5 +1,6 @@
 {
   "name": "jetlinks-media-ui",
+  "id": "jetlinks-media",
   "version": "1.0.0",
   "description": "视频中心",
   "main": "index.js",
