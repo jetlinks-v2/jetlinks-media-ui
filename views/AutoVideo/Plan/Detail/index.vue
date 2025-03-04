@@ -63,9 +63,7 @@
             </a-descriptions>
         </template>
         <FullPage>
-            <div style="padding: 24px; height: 100%">
-                <component :is="tabs[tabActiveKey]" @onJump="onTabChange" :key="tabActiveKey" :first="first"/>
-            </div>
+            <component :is="tabs[tabActiveKey]" @onJump="onTabChange" :key="tabActiveKey" :first="first"/>
         </FullPage>
     </j-page-container>
 </template>

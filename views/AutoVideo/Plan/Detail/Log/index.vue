@@ -6,38 +6,40 @@
             target="AutoVideoPlanLog"
             @search="handleSearch"
         ></pro-search>
-        <j-pro-table
-            ref="tableRef"
-            :columns="columns"
-            :params="params"
-            mode="table"
-            :request="(e) => queryLogs(route.params.id, e)"
-        >
-            <template #createTime="slotProps">
-                {{ dayjs(slotProps.createTime).format('YYYY-MM-DD HH:mm:ss') }}
-            </template>
-            <template #state="slotProps">
-                {{ slotProps.state?.text }}
-            </template>
-            <template #action="slotProps">
-                <a-space :size="16">
-                    <template
-                        v-for="i in getActions(slotProps, 'table')"
-                        :key="i.key"
-                    >
-                        <j-permission-button
-                            :disabled="i.disabled"
-                            :popConfirm="i.popConfirm"
-                            type="link"
-                            :tooltip="{
+        <FullPage>
+            <j-pro-table
+                ref="tableRef"
+                :columns="columns"
+                :params="params"
+                mode="table"
+                :request="(e) => queryLogs(route.params.id, e)"
+            >
+                <template #createTime="slotProps">
+                    {{ dayjs(slotProps.createTime).format('YYYY-MM-DD HH:mm:ss') }}
+                </template>
+                <template #state="slotProps">
+                    {{ slotProps.state?.text }}
+                </template>
+                <template #action="slotProps">
+                    <a-space :size="16">
+                        <template
+                            v-for="i in getActions(slotProps, 'table')"
+                            :key="i.key"
+                        >
+                            <j-permission-button
+                                :disabled="i.disabled"
+                                :popConfirm="i.popConfirm"
+                                type="link"
+                                :tooltip="{
                                 ...i.tooltip,
                             }"
-                            @click="i.onClick"
-                        >
-                            <AIcon :type="i.icon" />
-                        </j-permission-button> </template
-                ></a-space> </template
-        ></j-pro-table>
+                                @click="i.onClick"
+                            >
+                                <AIcon :type="i.icon" />
+                            </j-permission-button> </template
+                        ></a-space> </template
+                ></j-pro-table>
+        </FullPage>
         <logView
             v-if="logsVisible"
             :data="logData"

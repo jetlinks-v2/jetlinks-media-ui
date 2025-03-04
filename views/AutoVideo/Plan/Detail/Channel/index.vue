@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="plan-channel">
         <a-spin :spinning="spinning">
             <div class="channelControl">
                 <div class="bind">{{ $t('Channel.index.312709-0') }}{{ bindCount }}</div>
@@ -411,10 +411,20 @@ const query = (params) => {
 
     if (cacheDeviceIds.value[deviceId.value]) {
         defaultParams.terms.push({
-            column: 'channelId',
-            termType: 'in',
-            value: cacheDeviceIds.value[deviceId.value].channelIds.toString(),
-            type: 'or',
+            terms: [
+                {
+                    column: 'channelId',
+                    termType: 'in',
+                    value: cacheDeviceIds.value[deviceId.value].channelIds.toString(),
+                    type: 'and',
+                },
+                {
+                    column: 'deviceId',
+                    value: deviceId.value,
+                    type: 'and',
+                }
+            ],
+          type: 'or'
         });
     }
 
@@ -524,6 +534,10 @@ getBindTotal();
 </script>
 
 <style lang="less" scoped>
+.plan-channel {
+    height: 100%;
+    padding: 24px;
+}
 .channelControl {
     display: flex;
     align-items: center;
