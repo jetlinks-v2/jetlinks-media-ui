@@ -411,10 +411,20 @@ const query = (params) => {
 
     if (cacheDeviceIds.value[deviceId.value]) {
         defaultParams.terms.push({
-            column: 'channelId',
-            termType: 'in',
-            value: cacheDeviceIds.value[deviceId.value].channelIds.toString(),
-            type: 'or',
+            terms: [
+                {
+                    column: 'channelId',
+                    termType: 'in',
+                    value: cacheDeviceIds.value[deviceId.value].channelIds.toString(),
+                    type: 'and',
+                },
+                {
+                    column: 'deviceId',
+                    value: deviceId.value,
+                    type: 'and',
+                }
+            ],
+          type: 'or'
         });
     }
 
