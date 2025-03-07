@@ -576,7 +576,7 @@ import { useI18n } from 'vue-i18n';
 const { t: $t } = useI18n();
 const router = useRouter();
 const route = useRoute();
-import {cascade} from '../../../assets/cascade/index'
+import {cascade} from '../../../assets/northbound/index'
 
 // 表单数据
 const formData = ref({

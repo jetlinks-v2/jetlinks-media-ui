@@ -161,7 +161,7 @@ import CascadeApi from '../../api/cascade';
 import {onlyMessage} from '@jetlinks-web/utils'
 import Publish from './Publish/index.vue';
 import {useMenuStore} from '@/store/menu';
-import {cascade} from '../../assets/cascade/index'
+import {cascade} from '../../assets/index'
 import { useI18n } from 'vue-i18n';
 
 const { t: $t } = useI18n();
