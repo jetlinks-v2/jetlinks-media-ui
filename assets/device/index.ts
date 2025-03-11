@@ -1,16 +1,16 @@
 import deviceMedia from './device-media.png';
-import doc1 from './doc1.png';
-import doc2 from './doc2.png';
-import doc3 from './doc3.png';
-import doc4 from './doc4.png';
-import doc5 from './doc5.png';
-import doc6 from './doc6.png';
-import doc7 from './doc7.png';
-import cloud from './cloud.png';
+import doc1 from '../media/doc1.png';
+import doc2 from '../media/doc2.png';
+import doc3 from '../media/doc3.png';
+import doc4 from '../media/doc4.png';
+import doc5 from '../media/doc5.png';
+import doc6 from '../media/doc6.png';
+import doc7 from '../media/doc7.png';
+import cloud from '../media/cloud.png';
 import local from './local.png';
-import capturePlan from './capturePlan.png';
-import videoPlan from './videoPlan.png';
-import agentDoc from './agent_doc.png';
+import capturePlan from '../media/capturePlan.png';
+import videoPlan from '../media/videoPlan.png';
+import agentDoc from '../media/agent_doc.png';
 import deviceAccess from './device-access.png';
 
 export const deviceImg = {

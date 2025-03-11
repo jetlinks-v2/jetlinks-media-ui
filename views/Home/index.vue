@@ -57,7 +57,7 @@
                     },
                     onSelectNone: () => (deviceItem = undefined),
                 }"
-          :alertRender="false"
+          :alertShow="false"
       >
         <template #channelNumber="slotProps">
           <span>{{ slotProps.channelNumber || 0 }}</span>

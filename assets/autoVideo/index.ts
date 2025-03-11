@@ -1,5 +1,5 @@
-import point from './point.png';
-import points from './points.png';
+import point from '../media/point.png';
+import points from '../media/points.png';
 
 export const autoVideoImg = {
     point,
