@@ -1,7 +1,7 @@
 <template>
     <j-page-container>
         <FullPage>
-            <a-card>
+            <div style="padding: 24px">
                 <a-form
                     ref="formRef"
                     class="form"
@@ -47,6 +47,7 @@
                                     ref="select"
                                     v-model:value="formData.provider"
                                     :options="options"
+                                    @change="onProviderChange"
                                     :placeholder="$t('Detail.index.416932-4')"
                                 ></a-select>
                             </a-form-item>
@@ -898,7 +899,7 @@
                         </a-col>
                     </a-row>
                 </a-form>
-            </a-card>
+            </div>
         </FullPage>
     </j-page-container>
 </template>
@@ -979,6 +980,12 @@ const changePort = (port: any) => {
     formData.value.otherConfiguration.internalNet.mp4Port = port;
     formData.value.otherConfiguration.internalNet.hlsPort = port;
 };
+
+const onProviderChange = (val: string) => {
+  if(val === 'embedded-zlmedia' && formData.value.configuration?.apiPort){
+    changePort(formData.value.configuration.apiPort)
+  }
+}
 
 const onSubmit = async () => {
     let data: any = await formRef.value?.validate();
