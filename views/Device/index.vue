@@ -37,10 +37,7 @@
             :showStatus="true"
             :status="slotProps.state.value"
             :statusText="slotProps.state.text"
-            :statusNames="{
-              online: 'processing',
-              offline: 'error',
-            }"
+            :statusNames="stateObj"
           >
             <template #img>
               <slot name="img">
@@ -128,11 +125,7 @@
         <template #state="slotProps">
           <a-badge
             :text="slotProps.state?.text"
-            :status="
-              slotProps.state?.value === 'online'
-                ? 'success'
-                : 'error'
-            "
+            :status="stateObj?.[slotProps.state?.value]"
           />
         </template>
         <template #action="slotProps">
@@ -286,6 +279,11 @@ const columns = [
   },
 ];
 
+const stateObj = {
+  online: 'processing',
+  offline: 'error',
+  notActive: 'warning',
+}
 /**
  * 搜索
  * @param params
@@ -409,6 +407,7 @@ const getProductList = () => {
           'fixed-media',
           'onvif',
           'media-plugin',
+          'agent-media-device-gateway',
         ],
       },
     }),
