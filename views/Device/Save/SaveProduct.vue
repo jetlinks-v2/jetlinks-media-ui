@@ -388,13 +388,13 @@ const handleOk = async () => {
   formRef.value
       ?.validate()
       .then(async () => {
-        btnLoading.value = true;
         if (
             productData.metadata &&
             Object.keys(productData.metadata).length
         ) {
           formData.value.metadata = JSON.stringify(productData.metadata);
         }
+        btnLoading.value = true;
         const res = await DeviceApi.saveProduct(formData.value);
         if (res.success) {
           emit('update:productId', res.result.id);
@@ -420,7 +420,9 @@ const handleOk = async () => {
       })
       .catch((err: any) => {
         console.log('err: ', err);
-      });
+      }).finally(() => {
+    btnLoading.value = false;
+  })
 };
 
 const handleCancel = () => {
