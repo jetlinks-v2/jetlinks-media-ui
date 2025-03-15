@@ -26,7 +26,7 @@
                         (num) => {
                             const minSize = pageIndex * pageSize + 1;
                             const MaxSize = (pageIndex + 1) * pageSize;
-                            return $t('RecordPicture.index.855188-2', [minSize,total]);
+                            return $t('RecordPicture.index.855188-2', [minSize, MaxSize > num ? num : MaxSize, num]);
                         }
                     "
                     @change="onChange"

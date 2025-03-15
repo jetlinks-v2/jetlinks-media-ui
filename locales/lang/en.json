@@ -1705,7 +1705,7 @@
 	"Log.logView.855189-9": "Log flow",
 	"RecordPicture.index.855188-0": "Capture files",
 	"RecordPicture.index.855188-1": "Select date:",
-	"RecordPicture.index.855188-2": "",
+	"RecordPicture.index.855188-2": "Articles {0} - {1}/Total of {2}",
 	"Channel.Bind.855185-0": "Bind channel",
 	"Channel.Bind.855185-1": "Select device and directory to view the bound channels:",
 	"Channel.Bind.855185-2": "Current directory:",

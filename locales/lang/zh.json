@@ -1705,7 +1705,7 @@
 	"Log.logView.855189-9": "日志流水",
 	"RecordPicture.index.855188-0": "抓拍文件",
 	"RecordPicture.index.855188-1": "选择日期：",
-	"RecordPicture.index.855188-2": "第 {0} - ${\r\n                                MaxSize > num ? num : MaxSize\r\n                            } 条/总共 {1} 条",
+	"RecordPicture.index.855188-2": "第 {0} - {1} 条/总共 {2} 条",
 	"Channel.Bind.855185-0": "绑定通道",
 	"Channel.Bind.855185-1": "选择设备及目录查看已绑定的通道：",
 	"Channel.Bind.855185-2": "当前目录：",

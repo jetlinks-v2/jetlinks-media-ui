@@ -11,7 +11,6 @@
           :columns="columns"
           :request="queryList"
           mode="CARD"
-          modelValue="CARD"
           :gridColumn="2"
           :gridColumns="[2]"
           :defaultParams="{
@@ -175,7 +174,7 @@ const columns = [
   },
 ];
 
-const getActions = (data, type) => {
+const getActions = (data: any) => {
   if (!data) return [];
   const actions = [
     {
@@ -187,8 +186,11 @@ const getActions = (data, type) => {
       icon: 'EditOutlined',
       onClick: () => {
         menuStory.jumpPage('media/TimingCapture/Plan/Detail', {
-          id: data.id,
-        }, {type: 'edit'});
+          params: {
+            id: data.id,
+          },
+          query: {type: 'edit'}
+        })
       },
     },
     {
@@ -264,7 +266,7 @@ const handleClick = (data) => {
       'media/TimingCapture/Plan/Detail',
       {
         params: {
-          id: data.id,
+          id: data?.id,
         },
         query: {
           type: 'view',
