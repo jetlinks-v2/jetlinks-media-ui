@@ -32,10 +32,10 @@
                 :min="1"
                 :max="99999"
                 :placeholder="$t('Rule.index.855183-4')"
-                v-model:value="detail.saveDays"
+                v-model:value="saveDays"
                 style="width: 200px"
             ></a-input-number>
-            <div v-else style="margin-left: 10px">{{ detail.saveDays }}</div>
+            <div v-else style="margin-left: 10px">{{ detail.saveDays || '--' }}</div>
             <div class="retentionCycleTip">
                 {{ $t('Rule.index.855183-5') }}
             </div>
@@ -62,7 +62,7 @@
 
 <script setup lang="ts" name="Rule">
 import Calendar from '../../../../AutoVideo/components/Calendar/index.vue';
-import { inject, onMounted, reactive, ref, watch } from 'vue';
+import { inject, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { updatePlan } from '../../../../../api/auto';
 import { onlyMessage } from '@jetlinks-web/utils';
@@ -80,12 +80,13 @@ const route = useRoute();
 const editType = ref();
 const detail = inject<any>('detail');
 const _state = ref();
+const saveDays = ref()
 
-const handleArr = (arr) => {
-    const schedules = [];
+const handleArr = (arr: any[]) => {
+    const schedules: any[] = [];
     arr.forEach((item) => {
         if (item.times.length !== 0) {
-            item.times.forEach((i) => {
+            item.times.forEach((i: any) => {
                 if (i?.period?.from !== '') {
                     schedules.push(i);
                 }
@@ -98,6 +99,7 @@ const handleArr = (arr) => {
 const handleSave = async () => {
     const schedules = handleArr(detail.value?.others.times);
     detail.value.state.value = _state.value;
+    detail.value.saveDays = saveDays.value;
     if (detail.value.others.trigger === 'week') {
         detail.value.schedules = schedules;
     } else {
@@ -123,10 +125,11 @@ const handleSave = async () => {
 
 watch(
     () => detail.value?.state?.value,
-    (val) => {
+    () => {
         _state.value = detail.value?.state?.value;
+        saveDays.value = detail.value?.saveDays;
     },
-    { immediate: true },
+    { immediate: true, deep: true },
 );
 
 onMounted(()=>{
