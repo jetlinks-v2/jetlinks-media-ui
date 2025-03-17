@@ -100,9 +100,9 @@
                                     </div>
                                     <div>
                                         {{
-                                            slotProps.others?.trigger === 'week'
-                                                ? $t('Plan.index.312701-7')
-                                                : $t('Plan.index.312701-8')
+                                            slotProps.others?.trigger === 'calender'
+                                                ? $t('Plan.index.312701-8')
+                                                : $t('Plan.index.312701-7')
                                         }}
                                     </div>
                                 </a-col>
