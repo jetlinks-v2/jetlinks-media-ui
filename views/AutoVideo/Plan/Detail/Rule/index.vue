@@ -37,7 +37,7 @@
                 :max="99999"
                 :placeholder="$t('Rule.index.312706-4')"
                 style="width: 200px"
-                v-model:value="detail.saveDays"
+                v-model:value="saveDays"
             ></a-input-number>
             <div v-else>{{ detail.saveDays }}</div>
             <div class="retentionCycleTip">
@@ -82,6 +82,7 @@ const editType = ref();
 
 const detail = usePlanDetail();
 const _state = ref();
+const saveDays = ref();
 
 const { run, loading } = useRequest(updatePlan, {
     immediate: false,
@@ -135,11 +136,12 @@ const save = () => {
 }
 
 watch(
-    () => detail.value?.state?.value,
+    () => detail.value,
     () => {
         _state.value = detail.value?.state?.value;
+        saveDays.value = detail.value?.saveDays;
     },
-    { immediate: true },
+    { immediate: true, deep: true },
 );
 
 onMounted(()=>{
