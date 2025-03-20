@@ -12,7 +12,7 @@
               @select="treeSelect"
           />
         </div>
-        <div class="bound_channel">
+        <div class="bound_channel"  v-if="deviceId">
           <div style="padding: 12px 24px 0;display: flex">
             <div class="catalogue">{{ $t('Record.index.312702-1') }}</div>
             <a-breadcrumb>
@@ -22,56 +22,60 @@
               </a-breadcrumb-item>
             </a-breadcrumb>
           </div>
-          <pro-search
-              :columns="columns"
-              @search="handleSearch"
-              :params="params"
-              target="auto-video-record"
-              style="padding-bottom: 0; margin-bottom: 0"
-          ></pro-search>
-          <j-pro-table
-              style="max-height: calc(100vh - 276px)"
-              ref="tableRef"
-              :columns="columns"
-              mode="table"
-              :params="params"
-              :request="query"
+
+        <pro-search
+            :columns="columns"
+            @search="handleSearch"
+            :params="params"
+            target="auto-video-record"
+            style="padding-bottom: 0; margin-bottom: 0"
+        ></pro-search>
+        <j-pro-table
+            style="max-height: calc(100vh - 276px)"
+            ref="tableRef"
+            :columns="columns"
+            mode="table"
+            :params="params"
+            :request="query"
+        >
+          <template #fileSize="slotProps">
+            {{ slotProps.fileSize ? (slotProps.fileSize / 1024 / 1024).toFixed(2) : 0 }}M
+          </template>
+          <template #duration="slotProps">
+            {{ slotProps.duration ? formatTime(slotProps.duration) : 0 }}
+          </template>
+          <template #action="slotProps">
+            <a-space>
+              <template
+                  v-for="i in getActions(slotProps, 'table')"
+                  :key="i.key"
+              >
+                <j-permission-button
+                    :disabled="i.disabled"
+                    :popConfirm="i.popConfirm"
+                    type="link"
+                    style="padding: 0px"
+                    :tooltip="{
+                                        ...i.tooltip,
+                                    }"
+                    @click="i.onClick"
+                >
+                  <AIcon :type="i.icon"/>
+                </j-permission-button>
+              </template
+              >
+            </a-space>
+          </template
           >
-            <template #fileSize="slotProps">
-              {{ slotProps.fileSize ? (slotProps.fileSize / 1024 / 1024).toFixed(2) : 0 }}M
-            </template>
-            <template #duration="slotProps">
-              {{ slotProps.duration ? formatTime(slotProps.duration) : 0 }}
-            </template>
-            <template #action="slotProps">
-              <a-space :size="16">
-                <template
-                    v-for="i in getActions(slotProps, 'table')"
-                    :key="i.key"
-                >
-                  <j-permission-button
-                      :disabled="i.disabled"
-                      :popConfirm="i.popConfirm"
-                      type="link"
-                      style="padding: 0px"
-                      :tooltip="{
-                                            ...i.tooltip,
-                                        }"
-                      @click="i.onClick"
-                  >
-                    <AIcon :type="i.icon"/>
-                  </j-permission-button>
-                </template
-                >
-              </a-space>
-            </template
-            >
-          </j-pro-table>
+        </j-pro-table>
+        </div>
+        <div v-else  class="bound_channel_empty">
+          <j-empty />
         </div>
       </div>
-      <PlayBack :data="playbackData" v-if="playbackVisible" @close="playbackVisible = false"/>
     </FullPage>
   </j-page-container>
+  <PlayBack :data="playbackData" v-if="playbackVisible" @close="playbackVisible = false"/>
 </template>
 
 <script setup>
@@ -207,7 +211,9 @@ const treeSelect = ({node}) => {
 };
 
 watch(() => [deviceId.value, channelId.value], () => {
-  tableRef.value.reload()
+  if(deviceId.value && channelId.value){
+    tableRef.value.reload()
+  }
 }, {deep: true})
 
 </script>
@@ -231,6 +237,11 @@ watch(() => [deviceId.value, channelId.value], () => {
     :deep(.ant-breadcrumb-link) {
       color: #777777
     }
+  }
+
+  .bound_channel_empty{
+    flex: 4;
+    margin-top: 15%
   }
 }
 </style>
