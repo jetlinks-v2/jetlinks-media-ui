@@ -179,7 +179,7 @@ import Preset from './Preset.vue';
 import { useSystemStore } from '@/store/system';
 import { mediaConfigMap } from '../data';
 import { onlyMessage } from '@jetlinks-web/utils';
-import {closeAudio, openAudio, rtcStream} from "./audio";
+import {closeAudio, openAudio} from "./audio";
 import {closeVideo, openVideo} from "./video";
 import { useI18n } from 'vue-i18n';
 

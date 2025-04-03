@@ -106,9 +106,9 @@
 
 <script setup lang="ts" name="Calendar">
 import {weeks} from '../utils';
-import {computed, onMounted, ref, watch} from 'vue';
+import { ref, watch} from 'vue';
 import Setting from './Setting.vue';
-import {onlyMessage, getImage} from '@jetlinks-web/utils';
+import {onlyMessage} from '@jetlinks-web/utils';
 import {queryTags} from '../../../../api/auto';
 import {cloneDeep} from 'lodash-es';
 import {formatTime} from '../../../../utils/utils';
