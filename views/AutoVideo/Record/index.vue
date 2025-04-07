@@ -208,6 +208,7 @@ const query = (params) => {
 const treeSelect = ({node}) => {
   const {channelCatalog} = node;
   pathsName.value = channelCatalog;
+  tableRef.value?.reload();
 };
 
 watch(() => [deviceId.value, channelId.value], () => {
