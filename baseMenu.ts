@@ -1,10 +1,10 @@
 import baseMenu from './baseMenu.json'
-import p from './package.json'
+import pkg from './package.json'
 
 const handleMenu = (menus: any[]): any[] => menus.map(item => ({
     ...item,
     children: item.children ? handleMenu(item.children) : undefined,
-    options: { appName: p.id || p.name, ...item.options }
+    options: { appName: pkg.id || pkg.name, ...item.options }
 }))
 
 export default () => {
