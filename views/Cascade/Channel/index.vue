@@ -88,7 +88,7 @@ const columns = [
     },
   },
   {
-    title: '类型',
+    title: $t('Cascade.index.122691-24'),
     dataIndex:'channelType',
     key:'channelType',
     ellipsis: true,

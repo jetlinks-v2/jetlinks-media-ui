@@ -1309,7 +1309,137 @@
           }
         ],
         "supportDataAccess": false
-      }
+      },
+      {
+        "id": "9dbd2ce372e75f7fad4b3997cd4a9b37",
+        "path": "SKBi-tvws",
+        "sortIndex": 8,
+        "level": 2,
+        "owner": "iot",
+        "name": "目录管理",
+        "i18nMessages": {
+          "name": {
+            "zh_CN": "目录管理",
+            "en_US": "Catalog Management",
+            "en": "Catalog Management"
+          }
+        },
+        "code": "media/Catalog",
+        "icon": "icon-chanpinfenlei",
+        "url": "/media/catalog",
+        "describe": "",
+        "buttons": [
+          {
+              "id": "add",
+              "name": "新增",
+              "permissions": [
+                  {
+                      "permission": "media-catalog",
+                      "actions": [
+                          "query",
+                          "save"
+                      ]
+                  }
+              ],
+              "i18nMessages": {
+                "zh_CN": "新增",
+                "en_US": "Add",
+                "en": "Add"
+              }
+          },
+          {
+              "id": "delete",
+              "name": "删除",
+              "permissions": [
+                  {
+                      "permission": "media-catalog",
+                      "actions": [
+                          "query",
+                          "delete"
+                      ]
+                  }
+              ],
+              "i18nMessages": {
+                "zh_CN": "删除",
+                "en_US": "Delete",
+                "en": "Delete"
+              }
+          },
+          {
+              "id": "update",
+              "name": "编辑",
+              "permissions": [
+                  {
+                      "permission": "media-catalog",
+                      "actions": [
+                          "query",
+                          "save"
+                      ]
+                  }
+              ],
+              "i18nMessages": {
+                "zh_CN": "编辑",
+                "en_US": "Edit",
+                "en": "Edit"
+              }
+          },
+          {
+              "id": "bind",
+              "name": "绑定",
+              "permissions": [
+                  {
+                      "permission": "media-catalog",
+                      "actions": [
+                          "bind",
+                          "query"
+                      ]
+                  }
+              ],
+              "i18nMessages": {
+                "zh_CN": "绑定",
+                "en_US": "Bind",
+                "en": "Bind"
+              }
+          },
+          {
+              "id": "unbind",
+              "name": "解绑",
+              "permissions": [
+                  {
+                      "permission": "media-catalog",
+                      "actions": [
+                          "unbind",
+                          "query"
+                      ]
+                  }
+              ],
+              "i18nMessages": {
+                "zh_CN": "解绑",
+                "en_US": "Unbind",
+                "en": "Unbind"
+              }
+          }
+      ],
+        "accessSupport": {
+            "text": "不支持",
+            "value": "unsupported"
+        },
+        "showPage": [
+            "media-catalog"
+        ],
+        "permissions": [
+          {
+            "permission": "media-catalog",
+            "actions": [
+                "query"
+            ]
+          }
+        ],
+        "assetAccesses": [],
+        "createTime": 1746671550615,
+        "granted": true,
+        "i18nName": "目录管理"
+    }
     ]
   }
 ]

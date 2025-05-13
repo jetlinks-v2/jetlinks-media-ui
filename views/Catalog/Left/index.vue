@@ -1,7 +1,7 @@
 <template>
   <div class="contents-tree">
     <a-input-search v-model:value="searchValue" :placeholder="$t('Tree.index.5349815-0')" @search="onSearch"></a-input-search>
-    <j-permission-button type="primary" block style="margin: 16px 0;" @click="handleAdd">{{ $t('Config.index.133246-0') }}</j-permission-button>
+    <j-permission-button type="primary" block style="margin: 16px 0;" @click="handleAdd" hasPermission="media/Catalog:add">{{ $t('Config.index.133246-0') }}</j-permission-button>
     <a-tree :tree-data="treeData" :selectedKeys="selectedKeys" blockNode showIcon @select="handleSelect" :field-names="{title: 'name', key: 'id'}">
       <template #switcherIcon="{ switcherCls }">
         <AIcon type="DownOutlined" :class="switcherCls"></AIcon>
@@ -22,6 +22,7 @@
                 title: action.title
               }" 
               :danger="action.key === 'delete'"
+              :hasPermission="`media/Catalog:${action.key}`"
               @click.stop="action.onClick?.()"
               :popConfirm="action.popConfirm"
             >

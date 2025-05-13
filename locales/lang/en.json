@@ -1186,6 +1186,7 @@
 	"Cascade.index.122691-21": "delete",
 	"Cascade.index.122691-22": "Please disable first, then delete",
 	"Cascade.index.122691-23": "Are you sure to delete?",
+  "Cascade.index.122691-24": "Type",
 	"Save.index.398285-0": "This platform will be cascaded to the higher-level platform as a \"device\". Please set the manufacturer displayed on this platform in the higher-level platform",
 	"Save.index.497102-0": "This platform will be cascaded to the higher-level platform as a \"device\". Please set the manufacturer displayed on this platform in the higher-level platform",
 	"components.Card.240764-0": "today",

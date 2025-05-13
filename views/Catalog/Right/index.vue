@@ -20,7 +20,7 @@
     >
       <template #headerRightRender>
         <a-space>
-          <j-permission-button type="primary" @click="visible = true">{{ $t('Channel.Bind.1046520-0') }}</j-permission-button>
+          <j-permission-button type="primary" @click="visible = true" hasPermission="media/Catalog:bind">{{ $t('Channel.Bind.1046520-0') }}</j-permission-button>
           <j-permission-button 
             type="primary" 
             :popConfirm="{
@@ -29,6 +29,7 @@
                 handleBatchUnbind()
               }
             }"
+            hasPermission="media/Catalog:unbind"
           >
             {{ $t('Channel.index.122695-3') }}
           </j-permission-button>
@@ -55,6 +56,7 @@
               handleUnBind([scopedSlots.id])
             }
           }"
+          hasPermission="media/Catalog:unbind"
         >
           <AIcon type="DisconnectOutlined"></AIcon>
         </j-permission-button>
