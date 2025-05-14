@@ -18,13 +18,13 @@
       <a-form-item :label="$t('Catalog.Left.Save.1-5')" name="type">
         <a-select v-model:value="formData.type" :options="typeList" :placeholder="$t('Catalog.Left.Save.1-6')" :fieldNames="{label: 'text'}" />
       </a-form-item>
-      <a-form-item :label="$t('Catalog.Left.Save.1-7')">
+      <a-form-item :label="$t('Catalog.Left.Save.1-7')" name="manufacturer">
         <a-input v-model:value="formData.manufacturer" :placeholder="$t('Catalog.Left.Save.1-8')" />
       </a-form-item>
       <a-form-item :label="$t('Catalog.Left.Save.1-9')" name="model">
         <a-input v-model:value="formData.model" :placeholder="$t('Catalog.Left.Save.1-10')" />
       </a-form-item>
-      <a-form-item :label="$t('Catalog.Left.Save.1-11')">
+      <a-form-item :label="$t('Catalog.Left.Save.1-11')" name="address">
         <a-input v-model:value="formData.address" :placeholder="$t('Catalog.Left.Save.1-12')" />
       </a-form-item>
       <a-form-item :label="$t('Catalog.Left.Save.1-13')">
