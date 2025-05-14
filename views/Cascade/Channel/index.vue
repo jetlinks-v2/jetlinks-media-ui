@@ -8,6 +8,7 @@
         :columns="columns"
         type="TREE"
         :alertShow="false"
+        v-model:expandedRowKeys="expandedRowKeys"
         :request="(e) => CascadeApi.getCatalogAndChannel(route.query.id, e)"
         :params="params"
         :rowSelection="{
@@ -125,6 +126,7 @@ const handleSearch = (e: any) => {
 
 const listRef = ref();
 const _selectedRowKeys = ref<string[]>([]);
+const expandedRowKeys = ref<string[]>([]);
 
 const onSelectNone = () => {
   _selectedRowKeys.value = [];
@@ -171,6 +173,7 @@ watch(() => listRef.value?.dataSource, (val) => {
     function treeMap(arr: any[]) {
       arr.forEach((item) => {
         if (item.children) {
+          expandedRowKeys.value.push(item.id)
           treeMap(item.children)
         }
         if (item.bind) {
