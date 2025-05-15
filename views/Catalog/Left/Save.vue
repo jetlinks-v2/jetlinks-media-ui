@@ -27,9 +27,6 @@
       <a-form-item :label="$t('Catalog.Left.Save.1-11')" name="address">
         <a-input v-model:value="formData.address" :placeholder="$t('Catalog.Left.Save.1-12')" />
       </a-form-item>
-      <a-form-item :label="$t('Catalog.Left.Save.1-13')">
-        <a-textarea v-model:value="formData.description" :placeholder="$t('Catalog.Left.Save.1-14')" showCount :maxlength="200"/>
-      </a-form-item>
     </a-form>
   </a-modal>
 </template>
@@ -69,7 +66,6 @@ const formData = reactive({
   manufacturer: '',
   model: '',
   address: '',
-  description: ''
 })
 
 const rules = {
