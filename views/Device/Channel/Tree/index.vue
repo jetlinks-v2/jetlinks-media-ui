@@ -27,7 +27,13 @@
                         :fieldNames="{ key: 'id', title: 'name' }"
                         :showLine="{ showLeafIcon: false }"
                         :show-icon="true"
-                    />
+                    >
+                      <template #title="{dataRef}">
+                        <j-ellipsis>
+                          {{ dataRef.name }}
+                        </j-ellipsis>
+                      </template>
+                    </a-tree>
                 </div>
             </div>
         </div>

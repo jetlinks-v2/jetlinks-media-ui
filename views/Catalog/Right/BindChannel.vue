@@ -99,6 +99,7 @@ const columns = [
   {
     title: $t('CardManagement.BindDevice.427957-3'),
     dataIndex: 'deviceName',
+    ellipsis: true,
     search: {
       type: 'string'
     }
@@ -106,6 +107,7 @@ const columns = [
   {
     title: $t('Record.index.104651-2'),
     dataIndex: 'name',
+    ellipsis: true,
     search: {
       type: 'string'
     }
@@ -113,6 +115,7 @@ const columns = [
   {
     title: $t('Record.index.104651-4'),
     dataIndex: 'address',
+    ellipsis: true,
     search: {
       type: 'string'
     }
@@ -120,6 +123,7 @@ const columns = [
   {
     title: $t('Record.index.312702-3'),
     dataIndex: 'manufacturer',
+    ellipsis: true,
     search: {
       type: 'string'
     }

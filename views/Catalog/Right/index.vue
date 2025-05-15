@@ -85,28 +85,32 @@ const columns = [
     dataIndex: 'deviceName',
     search: {
       type: 'string'
-    }
+    },
+    ellipsis: true,
   },
   {
     title: $t('Record.index.104651-2'),
     dataIndex: 'name',
     search: {
       type: 'string'
-    }
+    },
+    ellipsis: true,
   },
   {
     title: $t('Channel.Bind.1046520-5'),
     dataIndex: 'address',
     search: {
       type: 'string'
-    }
+    },
+    ellipsis: true,
   },
   {
     title: $t('Channel.Bind.1046520-4'),
     dataIndex: 'manufacturer',
     search: {
       type: 'string'
-    }
+    },
+    ellipsis: true,
   },
   {
     title: $t('Log.index.689569-2'),
