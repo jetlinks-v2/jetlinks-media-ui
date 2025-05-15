@@ -2,7 +2,7 @@
   <div class="contents-tree">
     <a-input-search v-model:value="searchValue" allow-clear :placeholder="$t('Tree.index.5349815-0')" @search="onSearch"></a-input-search>
     <j-permission-button type="primary" block style="margin: 16px 0;" @click="handleAdd" hasPermission="media/Catalog:add">{{ $t('Config.index.133246-0') }}</j-permission-button>
-    <a-tree :tree-data="treeData" :selectedKeys="selectedKeys" blockNode showIcon @select="handleSelect" :field-names="{title: 'name', key: 'id'}">
+    <a-tree v-if="treeData.length" :tree-data="treeData" :selectedKeys="selectedKeys" blockNode showIcon @select="handleSelect" :field-names="{title: 'name', key: 'id'}">
       <template #switcherIcon="{ switcherCls }">
         <AIcon type="DownOutlined" :class="switcherCls"></AIcon>
       </template>
@@ -32,6 +32,7 @@
         </div>
       </template>
     </a-tree>
+    <j-empty v-else></j-empty>
     <Save v-if="saveVisible" :data="current" @close="saveVisible = false" @save="onSaveCatalog"/>
   </div>
 </template>

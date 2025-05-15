@@ -19,7 +19,7 @@
       }"
     >
       <template #headerRightRender>
-        <a-space>
+        <a-space v-if="selectCatalog?.length">
           <j-permission-button type="primary" @click="visible = true" hasPermission="media/Catalog:bind">{{ $t('Channel.Bind.1046520-0') }}</j-permission-button>
           <j-permission-button 
             type="primary" 
