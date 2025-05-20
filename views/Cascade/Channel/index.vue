@@ -261,7 +261,7 @@ const handleSave = async () => {
   })
   if (resp.success) {
     onlyMessage($t('BindChannel.index.122696-12'));
-    listRef.value?.refresh();
+    listRef.value?.reload();
   } else {
     onlyMessage($t('BindChannel.index.122696-13'), 'error');
   }
