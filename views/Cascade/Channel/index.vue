@@ -24,6 +24,54 @@
       <template #headerRightRender>
         <j-permission-button type="primary" :loading="loading" @click="handleSave">保存</j-permission-button>
       </template>
+      <template #gbChannelId="slotProps">
+        <a-space>
+          <j-ellipsis style="width: 200px;">
+            {{ slotProps.gbChannelId }}
+          </j-ellipsis>
+          <a-button v-if="slotProps.bindId" type="link" @click="handleShowPopover(slotProps)">
+            <AIcon type="EditOutlined"/>
+          </a-button>
+          <a-popover
+            v-if="_data === slotProps.id"
+            :visible="true"
+            trigger="click"
+          >
+            <template #title>
+              <div class="header">
+                <span>{{ $t('Channel.index.122695-5') }}</span>
+                <div @click="handleClose">
+                  <AIcon type="CloseOutlined"/>
+                </div>
+              </div>
+            </template>
+            <template #content>
+              <div class="simple-form">
+                <a-input
+                    v-model:value="gbID"
+                    @change="validField(slotProps)"
+                    :placeholder="$t('Channel.index.122695-6')"
+                />
+                <div
+                    class="error"
+                    v-if="valid && !valid?.passed"
+                >
+                  <!-- {{ valid?.reason }} -->
+                  {{ $t('Channel.index.122695-7') }}
+                </div>
+              </div>
+              <a-button
+                  type="primary"
+                  @click="handleSaveGbChannelId(slotProps)"
+                  :loading="loading"
+                  style="width: 100%"
+              >
+                {{ $t('Channel.index.122695-8') }}
+              </a-button>
+            </template>
+          </a-popover>
+        </a-space>
+      </template>
       <template #status="slotProps">
         <a-space>
           <a-badge
@@ -71,6 +119,12 @@ const columns = [
     },
   },
   {
+    title: $t('Channel.index.122695-11'),
+    dataIndex: 'gbChannelId',
+    key: 'gbChannelId',
+    scopedSlots: true,
+  },
+  {
     title: $t('BindChannel.index.122696-6'),
     dataIndex: 'address',
     key: 'address',
@@ -114,6 +168,12 @@ const columns = [
   },
 ];
 
+const _data = ref('')
+/**
+ * 验证ID是否存在
+ */
+const valid = ref<{ passed: string; reason: string }>();
+const gbID = ref('');
 const params = ref<Record<string, any>>({});
 
 /**
@@ -122,6 +182,45 @@ const params = ref<Record<string, any>>({});
  */
 const handleSearch = (e: any) => {
   params.value = e;
+};
+
+/**
+ * 取消
+ */
+ const handleClose = () => {
+  _data.value = ''
+  valid.value = undefined;
+  gbID.value = '';
+};
+
+const handleShowPopover = (data: any) => {
+  _data.value = data.id
+};
+
+const validField = async (data: any) => {
+    const { result } = await CascadeApi.validateField(<string>route.query.id, [
+        gbID.value,
+    ]);
+    valid.value = result;
+};
+const handleSaveGbChannelId = async (data: any) => {
+    if (!gbID.value) onlyMessage($t('Channel.index.122695-6'), 'error');
+    if (!valid.value?.passed) return;
+
+    loading.value = true;
+    const resp = await CascadeApi.updateGbChannelId(data.bindId, {
+        gbChannelId: gbID.value,
+    });
+    loading.value = false;
+    if (resp.success) {
+        onlyMessage($t('Channel.index.122695-20'));
+        listRef.value?.reload();
+        valid.value = undefined;
+        gbID.value = '';
+        _data.value = '';
+    } else {
+        onlyMessage($t('Channel.index.122695-21'), 'error');
+    }
 };
 
 const listRef = ref();
