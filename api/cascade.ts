@@ -43,5 +43,10 @@ export default {
     // 分屏展示接口
     // 设备树
     getMediaTree: (data?: any) => request.post<any>(`/media/device/_query/no-paging`, data),
-
+    // 查询目录和通道
+    getCatalogAndChannel: (id: string, data?: any) => request.post<any>(`/media/gb28181-cascade/${id}/catalog/tree`, data),
+    //绑定通道或目录
+    bindCatalogOrChannel: (id: string, data: any) => request.post<any>(`/media/gb28181-cascade/${id}/catalog/_bind`, data),
+    // 解绑通道或目录
+    unbindCatalogOrChannel: (id: string, data: any) => request.post<any>(`/media/gb28181-cascade/${id}/catalog/_unbind`, data),
 }

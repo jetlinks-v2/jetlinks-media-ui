@@ -15,35 +15,24 @@
         @search="handleSearch"
         type="simple"
     />
-
     <JProTable
         ref="listRef"
         mode="table"
         :columns="columns"
-        :request="CascadeApi.queryChannelList"
-        :defaultParams="{
-                sorts: [{ name: 'deviceName', order: 'asc' }, { name: 'name', order: 'asc' }],
-                terms: [
-                    {
-                        column: 'id',
-                        termType: 'cascade_channel$not',
-                        type: 'and',
-                        value: route.query.id,
-                    },
-                    {
-                        column: 'catalogType',
-                        termType: 'eq',
-                        type: 'and',
-                        value: 'device',
-                    },
-                ],
-            }"
+        type="TREE"
+        :request="(e) => CascadeApi.getCatalogAndChannel(route.query.id, e)"
         :params="params"
         :rowSelection="{
-                selectedRowKeys: _selectedRowKeys,
+                selectedRowKeys: map(_selectedRowKeys, 'id'),
                 onSelectNone: onSelectNone,
                 onSelect: onSelect,
                 onSelectAll: onAllSelect,
+                getCheckboxProps: (record) => {
+                  return {
+                    disabled: record.bind,
+                    checked: record.bind,
+                  }
+                }
             }"
     >
       <template #headerLeftRender>
@@ -61,6 +50,9 @@
           ></a-badge>
         </a-space>
       </template>
+      <template #channelType="slotProps">
+        {{ slotProps.channelType.text }}
+      </template>
     </JProTable>
   </a-modal>
 </template>
@@ -68,6 +60,7 @@
 <script setup lang="ts">
 import CascadeApi from '../../../../api/cascade';
 import {onlyMessage} from '@jetlinks-web/utils';
+import { map } from 'lodash-es';
 import { useI18n } from 'vue-i18n';
 
 const { t: $t } = useI18n();
@@ -80,15 +73,6 @@ type Emits = {
 const emit = defineEmits<Emits>();
 
 const columns = [
-  {
-    title: $t('BindChannel.index.122696-4'),
-    dataIndex: 'deviceName',
-    key: 'deviceName',
-    ellipsis: true,
-    search: {
-      type: 'string',
-    },
-  },
   {
     title: $t('BindChannel.index.122696-5'),
     dataIndex: 'name',
@@ -116,6 +100,13 @@ const columns = [
     search: {
       type: 'string',
     },
+  },
+  {
+    title: '类型',
+    dataIndex:'channelType',
+    key:'channelType',
+    ellipsis: true,
+    scopedSlots: true,
   },
   {
     title: $t('BindChannel.index.122696-8'),
@@ -154,26 +145,15 @@ const onSelectNone = () => {
 };
 
 const onSelect = (record: any, selected: boolean) => {
-  const _set = new Set([..._selectedRowKeys.value])
   if (selected) {
-    _set.add(record.id)
+    _selectedRowKeys.value.push(record)
   } else {
-    _set.delete(record.id)
+    _selectedRowKeys.value.splice(_selectedRowKeys.value.findIndex((item) => item.id === record.id), 1)
   }
-  _selectedRowKeys.value = [..._set]
 };
 
 const onAllSelect = (selected: boolean, _: any, keys: any[]) => {
-  const _keys = keys.map(item => item.id) || []
-  const _set = new Set([..._selectedRowKeys.value])
-  _keys.map((i: any) => {
-    if (selected) {
-      _set.add(i)
-    } else {
-      _set.delete(i)
-    }
-  });
-  _selectedRowKeys.value = [..._set]
+  _selectedRowKeys.value = [..._]
 };
 
 const loading = ref(false);
@@ -183,9 +163,15 @@ const handleSave = async () => {
     return;
   }
   loading.value = true;
-  const resp = await CascadeApi.bindChannel(
+  const resp = await CascadeApi.bindCatalogOrChannel(
       route.query.id as string,
-      _selectedRowKeys.value,
+      _selectedRowKeys.value.map((item: any) => {
+        return {
+          channelId: item.id,
+          gbChannelId: item.gbChannelId,
+          channelType: item.channelType?.value
+        }
+      }),
   ).finally(() => {
     loading.value = false;
   })

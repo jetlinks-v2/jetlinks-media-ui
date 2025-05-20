@@ -411,6 +411,7 @@ const getActions = (
 const deviceId = computed(() => route.query.id as string);
 const handleSelect = (key: string) => {
   if (key === deviceId.value && listRef.value?.reload) {
+    params.value = {};
     listRef.value?.reload();
   } else {
     params.value = {
