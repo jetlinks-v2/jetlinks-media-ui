@@ -10,6 +10,11 @@
         v-model:selectedKeys="selectedKeys"
         @select="onSelect"
     >
+      <template #title="{ name }">
+        <j-ellipsis>
+          {{name}}
+        </j-ellipsis>
+      </template>
     </a-tree>
 </template>
 
