@@ -55,8 +55,12 @@
             <j-ellipsis style="width: 150px">
               {{ slotProps.gbChannelId }}
             </j-ellipsis>
+            <a-button type="link" @click="handleShowPopover(slotProps)">
+              <AIcon type="EditOutlined"/>
+            </a-button>
             <a-popover
-                v-model:visible="popVis"
+                v-if="_data === slotProps.channelId"
+                :visible="true"
                 trigger="click"
             >
               <template #title>
@@ -91,9 +95,6 @@
                   {{ $t('Channel.index.122695-8') }}
                 </a-button>
               </template>
-              <a-button type="link" @click="_data = slotProps.id">
-                <AIcon type="EditOutlined"/>
-              </a-button>
             </a-popover>
           </div>
         </template>
@@ -227,7 +228,6 @@ const columns = [
 ];
 
 const params = ref<Record<string, any>>({});
-const popVis = ref(false)
 const _data = ref('')
 
 const handleSearch = (e: any) => {
@@ -420,10 +420,13 @@ const handleClose = () => {
   gbID.value = '';
 };
 
+const handleShowPopover = (data: any) => {
+  _data.value = data.channelId
+};
+
 watch(() => _data.value, () => {
   const arr = listRef.value?.dataSource || []
   const dt = arr.find((i: any) => _data.value === i.id)
-  popVis.value = !!dt
 }, {
   immediate: true
 })
