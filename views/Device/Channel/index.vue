@@ -161,15 +161,15 @@
         @refresh="listRef.reload()"
     />
     <VideoShare
-      v-if="visible"
-      @close="visible = false"
-      :data="channelData"
+        v-if="visible"
+        @close="visible = false"
+        :data="channelData"
     />
     <Plan
-      v-if="planVis"
-      :data="channelData"
-      @close="planVis = false"
-      :type="planType"
+        v-if="planVis"
+        :data="channelData"
+        @close="planVis = false"
+        :type="planType"
     />
   </j-page-container>
 </template>
@@ -185,9 +185,9 @@ import {onlyMessage} from '@jetlinks-web/utils';
 import DeviceApi from '../../../api/device';
 import VideoShare from './VideoShare/index.vue';
 import Plan from './Plan/index.vue';
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
 
-const { t: $t } = useI18n();
+const {t: $t} = useI18n();
 const menuStory = useMenuStore();
 const route: any = useRoute();
 
@@ -329,13 +329,13 @@ const getActions = (
       onClick: () => {
         menuStory.jumpPage(
             'media/Device/Playback',
-          {
-            query: {
-              id: route.query.id,
-              type: route.query.type,
-              channelId: data.channelId,
+            {
+              query: {
+                id: route.query.id,
+                type: route.query.type,
+                channelId: data.channelId,
+              }
             }
-          }
         );
       },
     },
@@ -401,7 +401,7 @@ const getActions = (
       icon: 'DeleteOutlined',
     },
   ];
-  return route?.query.type === 'gb28181-2016'
+  return ['onvif', 'gb28181-2016'].includes(route.query?.type)
       ? actions.filter((f) => f.key !== 'delete')
       : actions;
 };
