@@ -34,7 +34,7 @@
         }
 
         .playback-list {
-            display: flex;
+            display: block;
             height: 300px;
             margin-top: 16px;
             overflow-y: auto;
@@ -43,6 +43,18 @@
             &.no-list {
                 align-items: center;
                 justify-content: center;
+                display: flex;
+            }
+
+            .playback-total {
+                padding: 12px 12px 0 12px;
+                color: #777777;
+
+                span {
+                    color: #1A1A1A;
+                    font-size: 16px;
+                    font-weight: bold;
+                }
             }
 
             .playback-list-items {

@@ -6,7 +6,13 @@
       </div>
       <div class="name">
         <span v-if="!visible">{{ item.name }}</span>
-        <a-input v-else v-model:value="name" />
+        <a-input
+            v-else
+            v-model:value="name"
+            @blur="onBlur"
+            ref="inputRef"
+            :maxLength="64"
+        />
       </div>
       <div v-if="item.default" class="default">
         <AIcon type="PushpinFilled"/>
@@ -17,24 +23,34 @@
             <AIcon type="MoreOutlined"/>
           </div>
           <template #overlay>
-            <a-menu @click="handleMenuClick">
+            <a-menu>
               <a-menu-item key="setting">
-                <a-button type="text">
+                <j-permission-button type="text" @click="setDefault(item)">
                   <AIcon type="SettingOutlined"/>
                   设为默认
-                </a-button>
+                </j-permission-button>
               </a-menu-item>
               <a-menu-item key="edit">
-                <a-button type="text">
+                <j-permission-button type="text" @click="onEdit(item)">
                   <AIcon type="EditOutlined"/>
                   编辑
-                </a-button>
+                </j-permission-button>
               </a-menu-item>
               <a-menu-item key="delete">
-                <a-button type="text" danger>
-                  <AIcon type="DeleteOutlined"/>
+                <j-permission-button
+                    type="text"
+                    danger
+                    :popConfirm="{
+                        title: $t('Player.ScreenPlayer.521467-10'),
+                        onConfirm: (e) => {
+                            e?.stopPropagation();
+                            deleteHistory(item.key);
+                        }
+                    }"
+                >
+                  <AIcon type="DeleteOutlined" />
                   删除
-                </a-button>
+                </j-permission-button>
               </a-menu-item>
             </a-menu>
           </template>
@@ -48,17 +64,71 @@
 </template>
 
 <script setup>
+import {deleteSearchHistory, getSearchHistory, saveSearchHistory} from "@/api/comm";
+import {DEFAULT_SAVE_CODE} from "@media/views/SplitScreen/data";
+import {useI18n} from "vue-i18n";
+import {onlyMessage} from "@jetlinks-web/utils";
+
 const props = defineProps({
   data: {
     type: Array,
-    default: () => [],
-  },
-});
+    default: () => []
+  }
+})
+const emits = defineEmits(['refresh'])
+const {t: $t} = useI18n();
 const visible = ref(false)
-const name = ref(props.data.name)
+const name = ref()
+const current = ref({})
+const inputRef = ref()
 
-const handleMenuClick = (e) => {
-  console.log(e)
+/**
+ * 删除历史分屏
+ * @param id
+ */
+const deleteHistory = (id) => {
+  const response = deleteSearchHistory(DEFAULT_SAVE_CODE, id);
+  response.then((res) => {
+    if (res.success) {
+      onlyMessage($t('Channel.index.1046519-22'))
+      emits('refresh')
+    }
+  })
+  return response
+};
+
+const onBlur = () => {
+  if (name.value !== current.value.name) {
+    updateHistory({...current.value, name: name.value})
+  }
+  setTimeout(() => {
+    visible.value = false
+  }, 100)
+}
+
+const updateHistory = (item) => {
+  const response = saveSearchHistory(item, DEFAULT_SAVE_CODE);
+  response.then((res) => {
+    if (res.success) {
+      onlyMessage($t('Channel.index.1046519-22'))
+      emits('refresh')
+    }
+  })
+  return response
+}
+
+const setDefault = async (item) => {
+  const _item = props.data.find((i) => i.default);
+  if (_item) {
+    await updateHistory({..._item, default: false})
+  }
+  await updateHistory({...item, default: true})
+}
+
+const onEdit = (item) => {
+  current.value = item
+  name.value = item.name
+  visible.value = true
 }
 </script>
 

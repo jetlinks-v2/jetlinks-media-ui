@@ -1,9 +1,11 @@
 <template>
   <div style="display: flex">
     <div class="catalogue">{{ $t('Channel.index.312709-4') }}</div>
-    <a-breadcrumb>
-      <a-breadcrumb-item v-for="name in pathsName">{{name }}</a-breadcrumb-item>
-    </a-breadcrumb>
+    <div style="flex: 1; min-width: 0">
+      <j-ellipsis>
+        {{pathsName}}
+      </j-ellipsis>
+    </div>
   </div>
   <pro-search
       :columns="columns"
@@ -28,13 +30,13 @@
             },
           ],
         }"
+        :alertShow="false"
         bodyStyle="padding: 0;"
         :rowSelection="{
             selectedRowKeys: _selectedRowKeys,
             onSelect: onSelectChange,
             onSelectAll: onSelectAllChange,
-            onChange: onChange,
-          }"
+        }"
     >
       <template #status="slotProps">
         <JBadgeStatus
@@ -51,7 +53,7 @@
             type="link"
             :tooltip="{title: '播放'}"
         >
-          <AIcon type="PlayCircleOutlined" />
+          <AIcon type="PlayCircleOutlined"/>
         </j-permission-button>
       </template>
     </j-pro-table>
@@ -60,14 +62,20 @@
 
 <script setup>
 import cascadeApi from "@media/api/cascade";
+import {useI18n} from "vue-i18n";
+import {map} from "lodash-es";
 
 const props = defineProps({
   data: {
     type: Object,
     default: () => ({}),
+  },
+  selectedKeys: {
+    type: Array,
+    default: () => [],
   }
 });
-import {useI18n} from "vue-i18n";
+const emits = defineEmits(['update:selectedKeys']);
 
 const {t: $t} = useI18n();
 const columns = [
@@ -128,53 +136,47 @@ const columns = [
 ];
 const params = ref({});
 const _selectedRowKeys = ref([]);
+const tableRef = ref();
 
 const pathsName = computed(() => {
-  return props.data.name ? [props.data.name] : []
+  return props.data.name
 });
 
-const handleClick = (dt) => {
-  if (_selectedRowKeys.value.includes(dt.id)) {
-    const _index = _selectedRowKeys.value.findIndex((i) => i === dt.id);
-    _selectedRowKeys.value.splice(_index, 1);
-  } else {
-    _selectedRowKeys.value = [..._selectedRowKeys.value, dt.id];
+const onSelectChange = (record, selected) => {
+  const obj = {
+    channelId: record.channelId,
+    deviceId: record.deviceId,
+    name: record.name,
   }
-}
-
-const getSelectedRowsKey = (selectedRows) => {
-  return selectedRows.map((item) => item?.id).filter((i) => !!i);
-}
-
-const getSetRowKey = (selectedRows) => {
-  return new Set([..._selectedRowKeys.value, ...getSelectedRowsKey(selectedRows)])
-};
-const onSelectChange = (record, selected, selectedRows) => {
   if (selected) {
-    _selectedRowKeys.value = [...getSetRowKey(selectedRows)]
+    emits('update:selectedKeys', [...props.selectedKeys, obj])
   } else {
-    _selectedRowKeys.value = _selectedRowKeys.value.filter((item) => item !== record?.id);
+    emits('update:selectedKeys', props.selectedKeys.filter((item) => item.channelId !== record?.channelId))
   }
 };
 
-const onSelectAllChange = (selected, selectedRows, changeRows) => {
-  const unRowsKeys = getSelectedRowsKey(changeRows);
-  _selectedRowKeys.value = selected
-      ? [...getSetRowKey(selectedRows)]
-      : _selectedRowKeys.value
-          .concat(unRowsKeys)
-          .filter((item) => !unRowsKeys.includes(item));
-};
-
-
-const onChange = (selectedRowKeys) => {
-  if (selectedRowKeys.length === 0) {
-    _selectedRowKeys.value = [];
+const onSelectAllChange = (selected, _, changeRows) => {
+  const _list = changeRows.map((item) => ({
+    channelId: item.channelId,
+    deviceId: item.deviceId,
+    name: item.name,
+  }))
+  if(selected){
+    emits('update:selectedKeys', [...props.selectedKeys, ..._list])
+  } else {
+    const _data = props.selectedKeys.filter((item) => {
+      return !map(_list, 'channelId').includes(item.channelId)
+    })
+    emits('update:selectedKeys', _data)
   }
 };
 const handleSearch = (e) => {
   params.value = e;
 };
+
+watch(() => props.selectedKeys, () => {
+  _selectedRowKeys.value = map(props.selectedKeys, 'channelId');
+}, {deep: true, immediate: true})
 </script>
 
 <style lang="less" scoped>

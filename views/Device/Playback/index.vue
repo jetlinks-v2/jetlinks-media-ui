@@ -88,12 +88,19 @@
                                     (currentDate: Dayjs) => currentDate > dayjs(new Date())
                                 "
                   @change="handlePanelChange"
-              />
+              >
+<!--                <template #dateCellRender="{ current }">-->
+<!--                  <a-badge v-if="current.date() === 11" color="blue" />-->
+<!--                </template>-->
+              </a-calendar>
             </div>
             <div
                 class="playback-list"
                 :class="{ 'no-list': !historyList.length }"
             >
+              <div class="playback-total" v-if="historyList.length">
+                今日录制总时长： <span>1</span> 小时 <span>25</span> 分钟
+              </div>
               <a-empty
                   v-if="!historyList.length"
                   :description="$t('Playback.index.534981-5')"

@@ -1,22 +1,13 @@
 .media-live {
     display: flex;
-
-    // .live-player-tools {
-    //     flex-basis: 300px;
-
-    //     .direction-item {
-    //         font-size: 30px !important;
-    //     }
-
-    //     .zoom-item {
-    //         font-size: 20px !important;
-    //     }
-    // }
+    gap: 16px;
+    min-height: 670px;
+    overflow: hidden;
 
     .media-live-video {
         position: relative;
         flex: 1;
-        min-height: 490px;
+        min-height: 480px;
         .media-tool {
             position: absolute;
             top: 4px;
@@ -48,14 +39,20 @@
                 }
             }
         }
-    }
 
-    .media-live-actions {
-        width: 300px;
-        margin-left: 10px;
-
-        .actions-tool {
-            padding: 0 40px 5px 40px;
+        .media-right-switch {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            background-color: #CCCCCC;
+            width: 24px;
+            height: 40px;
+            border-radius: 6px 0 0 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
         }
     }
 }
