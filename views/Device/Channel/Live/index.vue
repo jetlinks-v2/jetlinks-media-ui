@@ -180,7 +180,7 @@ import { useSystemStore } from '@/store/system';
 import { mediaConfigMap } from '../data';
 import { onlyMessage } from '@jetlinks-web/utils';
 import {closeAudio, openAudio} from "./audio";
-import {closeVideo, openVideo} from "./video";
+import {closeVideo, creatRTCUrl} from "./video";
 import { useI18n } from 'vue-i18n';
 
 const { t: $t } = useI18n();
@@ -298,18 +298,15 @@ const mediaToolClass = computed(() => {
 /**
  * 媒体开始播放
  */
-const mediaStart = () => {
-    const _url = channelApi.ptzStart(
-        props.data.deviceId,
-        props.data.channelId,
-        mediaType.value,
-    );
+const mediaStart = async () => {
     if (mediaType.value !== 'rtc') {
-        url.value = _url
+        url.value = channelApi.ptzStart(
+            props.data.deviceId,
+            props.data.channelId,
+            mediaType.value,
+        );
     } else {
-        openVideo(props.data.deviceId, props.data.channelId,(e) => {
-            url.value = e
-        })
+      url.value = (await creatRTCUrl(props.data.deviceId, props.data.channelId)) as string
     }
 };
 

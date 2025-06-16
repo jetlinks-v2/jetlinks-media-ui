@@ -1,62 +1,64 @@
 import mediaApi from "../../../../api/channel";
 
-let pc: RTCPeerConnection | null
-let _tracks: Array<MediaStreamTrack> = []
-const createRtc = () => {
-    pc = new RTCPeerConnection()
-}
+let pc: RTCPeerConnection | null = null;
+let _tracks: MediaStreamTrack[] = [];
 
-export const openVideo = (deviceId: string, channelId: string, cb: (e: MediaStream) => void) =>{
+export const creatRTCUrl = (
+  deviceId: string,
+  channelId: string,
+): Promise<MediaStream> => {
+    return new Promise((resolve) => {
 
-    createRtc()
-
-    const  AudioTransceiverInit = {
-        direction: 'recvonly',
-        sendEncodings:[]
-    };
-    const VideoTransceiverInit= {
-        direction: 'recvonly',
-        sendEncodings:[],
-    };
-
-    pc!.addTransceiver('video',VideoTransceiverInit);
-    pc!.addTransceiver('audio',AudioTransceiverInit);
-
-    pc!.createOffer().then((desc)=>{
-        pc!.setLocalDescription(desc).then(() => {
-            mediaApi.ptzStartPlay(deviceId, channelId, 'rtc',desc.sdp).then(resp => {
-                let anwser: any = {};
-                anwser.sdp = resp.sdp;
-                anwser.type = 'answer';
-
-                pc!.setRemoteDescription(anwser)
-            })
-        });
-    })
-
-    pc!.ontrack = e => {
-        console.log('[ontrack]',e)
-        _tracks.push(e.track)
-        if (e.streams && e.streams.length>0) {
-            cb?.(e.streams[0])
-        } else {
-            if(pc!.getReceivers().length === _tracks.length){
-                const url = new MediaStream(_tracks);
-                cb?.(url)
-            }
+        if (pc) {
+            closeVideo()
         }
-    }
-}
+
+        pc = new RTCPeerConnection();
+
+        const transceiverOptions: RTCRtpTransceiverInit = {
+            direction: "recvonly",
+            sendEncodings: []
+        };
+
+        pc.addTransceiver("video", transceiverOptions);
+        pc.addTransceiver("audio", transceiverOptions);
+
+        pc.createOffer()
+          .then(offer => {
+              return pc!.setLocalDescription(offer).then(() => offer);
+          })
+          .then(offer => {
+              return mediaApi.ptzStartPlay(deviceId, channelId, "rtc", offer.sdp);
+          })
+          .then(response => {
+              return pc!.setRemoteDescription({
+                  type: "answer",
+                  sdp: response.sdp
+              });
+          })
+          .catch(error => {
+              console.error("Error setting up RTC connection:", error);
+          });
+
+        pc.ontrack = (event: RTCTrackEvent) => {
+            _tracks.push(event.track);
+
+            if (event.streams && event.streams.length > 0) {
+                resolve(event.streams[0])
+            } else if (pc!.getReceivers().length === _tracks.length) {
+                const stream = new MediaStream(_tracks);
+                resolve(stream)
+            }
+        };
+    })
+};
 
 export const closeVideo = () => {
     if (pc) {
-        pc.close()
-        pc = null
+        pc.close();
+        pc = null;
     }
 
-    if (_tracks.length) {
-        _tracks.forEach(item => {
-            item.stop()
-        })
-    }
-}
+    _tracks.forEach(track => track.stop());
+    _tracks = [];
+};
