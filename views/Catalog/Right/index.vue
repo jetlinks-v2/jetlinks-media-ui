@@ -3,13 +3,13 @@
     <pro-search :columns="columns" @search="handleSearch" style="padding-bottom: 0;" target="media-catalog"></pro-search>
     <j-pro-table
       ref="tableRef"
-      :columns="columns" 
-      mode="TABLE" 
+      :columns="columns"
+      mode="TABLE"
       :request="queryChannelFn"
       :params="params"
       :defaultParams="{
         sorts: [{ name: 'createTime', order: 'desc' }],
-      }" 
+      }"
       :scroll="{y: '500px'}"
       :rowSelection="{
         selectedRowKeys: _selectedRowKeys,
@@ -21,8 +21,8 @@
       <template #headerRightRender>
         <a-space v-if="selectCatalog?.length">
           <j-permission-button type="primary" @click="visible = true" hasPermission="media/Catalog:bind">{{ $t('Channel.Bind.1046520-0') }}</j-permission-button>
-          <j-permission-button 
-            type="primary" 
+          <j-permission-button
+            type="primary"
             :popConfirm="{
               title: $t('Channel.index.122695-2'),
               onConfirm: () => {
@@ -48,7 +48,7 @@
         </j-badge-status>
       </template>
       <template #action="scopedSlots">
-        <j-permission-button 
+        <j-permission-button
           type="link"
           :popConfirm="{
             title: $t('Channel.index.122695-2'),
@@ -80,6 +80,15 @@ const selectCatalog = inject('selectCatalog', [])
 const params = ref();
 
 const columns = [
+  {
+    title: $t('Log.logView.855189-2'),
+    dataIndex: 'channelId',
+    key: 'channelId',
+    search: {
+      type:'string'
+    },
+    ellipsis: true,
+  },
   {
     title: $t('CardManagement.BindDevice.427957-3'),
     dataIndex: 'deviceName',

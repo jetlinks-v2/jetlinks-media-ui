@@ -13,11 +13,11 @@
       <a-space align="start" size="large">
         <AIcon type="CheckCircleFilled" class="status-icon success"></AIcon>
         <div>
-          <p>成功数</p>
+          <p>{{ $t('Publish.index.122692-3') }}</p>
           <a-space size="large">
             <span class="count">{{ successCount }}</span>
             <a-space size="middle">
-              <span>其中通道数量</span>
+              <span>{{ $t('Publish.index.122692-7') }}</span>
               <span>{{ data.count }}</span>
             </a-space>
           </a-space>
@@ -29,7 +29,7 @@
       <a-space size="large">
         <AIcon type="CloseCircleFilled" class="status-icon fail"></AIcon>
         <div>
-          <p>失败数</p>
+          <p>{{ $t('Publish.index.122692-4') }}</p>
           <a-space size="large">
             <span class="count">{{ failCount }}</span>
             <a

@@ -67,7 +67,7 @@ const { loading, run: runBind } = useRequest(bindChannel, {
     emits('close')
     emits('save')
   },
-}) 
+})
 
 const onSelectNone = () => {
   _selectedRowKeys.value = [];
@@ -96,6 +96,15 @@ const onAllSelect = (selected: boolean, _: any, keys: any[]) => {
   _selectedRowKeys.value = [..._set]
 };
 const columns = [
+  {
+    title: $t('Log.logView.855189-2'),
+    dataIndex: 'channelId',
+    key: 'channelId',
+    search: {
+      type:'string'
+    },
+    ellipsis: true,
+  },
   {
     title: $t('CardManagement.BindDevice.427957-3'),
     dataIndex: 'deviceName',
