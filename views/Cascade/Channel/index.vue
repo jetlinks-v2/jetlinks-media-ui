@@ -33,7 +33,7 @@
             <AIcon type="EditOutlined"/>
           </a-button>
           <a-popover
-            v-if="_data === slotProps.id"
+            v-if="_data === slotProps.channelId"
             :visible="true"
             trigger="click"
           >
@@ -194,7 +194,7 @@ const handleSearch = (e: any) => {
 };
 
 const handleShowPopover = (data: any) => {
-  _data.value = data.id
+  _data.value = data.channelId
 };
 
 const validField = async (data: any) => {
@@ -257,7 +257,7 @@ const handleSave = async () => {
         }
       }),
   ).finally(() => {
-    loading.value = false;  
+    loading.value = false;
   })
   if (resp.success) {
     onlyMessage($t('BindChannel.index.122696-12'));
