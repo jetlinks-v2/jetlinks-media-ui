@@ -207,7 +207,7 @@
 
 <script setup lang="ts">
 import DeviceApi from '../../../api/device';
-import { onlyMessage } from '@jetlinks-web/utils';
+import { onlyMessage, randomString } from '@jetlinks-web/utils';
 import {getProductsById, savePluginData} from '../../../api/plugin';
 import {gatewayType} from '../../Device/typings';
 import {providerType} from '../const';
@@ -436,14 +436,17 @@ const handleCancel = () => {
  * 添加接入网关
  */
 const handleAdd = () => {
-  const tab: any = props.channels.length > 1
+  const sourceId = `add_gateway_${randomString()}`; // 唯一标识
+  const tab: any = props.channels?.length > 1
     ? window.open(
-        `${origin}/#/iot/link/accessConfig/detail/:id?save=true&view=false`,
+        `${origin}/#/iot/link/accessConfig/detail/:id?save=true&view=false&sourceId=${sourceId}`,
     )
-    : window.open(`${origin}/#/iot/link/accessConfig/detail/:id?save=true&view=false&type=${props.channels?.[0]}`);
-  tab.onTabSaveSuccess = async (value: any) => {
-    await getGatewayList();
-    handleClick(gatewayList.value?.[0]);
+    : window.open(`${origin}/#/iot/link/accessConfig/detail/:id?save=true&view=false&type=${props.channels?.[0]}&sourceId=${sourceId}`);
+  tab.onTabSaveSuccess = async (_sourceId: string, value: any) => {
+    if (sourceId === _sourceId) {
+      await getGatewayList();
+      handleClick(gatewayList.value?.[0]);
+    } 
   };
 };
 </script>
