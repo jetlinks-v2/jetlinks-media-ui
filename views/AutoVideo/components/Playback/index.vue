@@ -189,6 +189,7 @@ import type { Dayjs } from 'dayjs';
 import { ref, computed, watch, onMounted } from 'vue';
 import { deviceImg } from "../../../../assets";
 import { useI18n } from 'vue-i18n';
+import RadioCard from '@media/components/RadioCard/index.vue';
 
 const { t: $t } = useI18n();
 const props = defineProps({
@@ -291,8 +292,8 @@ const queryServiceRecords = async (date: Dayjs) => {
             endTime: date.format('YYYY-MM-DD 23:59:59'),
             includeFiles: true,
         };
-       
-        const resp = props.scheduleId === '' ? 
+
+        const resp = props.scheduleId === '' ?
             await playBackApi.recordsInServerFiles(deviceId.value,channelId.value,params) :
             await playBackApi.recordsInServerFilesByVideo(props.scheduleId,deviceId.value,channelId.value,params);
         loading.value = false;
